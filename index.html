@@ -103,10 +103,22 @@
               <span>АР</span>
               <div class="profile__dropdown">
                 <ul>
-                  <li>история покупок</li>
-                  <li>избранное</li>
-                  <li>настройки</li>
-                  <li>выйти</li>
+                  <li>
+                    <img src="/media/main/icons/icon_history.svg" alt="" />
+                    <span>история покупок</span>
+                  </li>
+                  <li>
+                    <img src="/media/main/icons/icon_heart.svg" alt="" />
+                    <span>избранное</span>
+                  </li>
+                  <li>
+                    <img src="/media/main/icons/icon_settings.svg" alt="" />
+                    <span>настройки</span>
+                  </li>
+                  <li>
+                    <img src="/media/main/icons/icon_log-out.svg" alt="" />
+                    <span>выйти</span>
+                  </li>
                 </ul>
               </div>
             </button>
@@ -124,7 +136,7 @@
           <div class="sidebar__top">
             <div class="sidebar__logo">
               <a href="#"
-                ><img src="/media/main/icons/LF_logo_header.webp" alt=""
+                ><img src="/media/main/icons/icon_logo-sidebar.svg" alt=""
               /></a>
             </div>
             <button class="close__btn" id="closeBtn" aria-label="Закрыть меню">
@@ -132,32 +144,33 @@
             </button>
           </div>
 
-          <div class="sidebar__search">
+          <div class="search__wrap">
             <button
               class="search__toggle"
               id="sidebarSearchToggle"
               aria-label="Открыть поиск"
             >
               <img src="/media/main/icons/icon_magnifying-glass.webp" alt="" />
-              <span class="search__title" id="searchTitle">Поиск</span>
+              <span class="search__title" id="sidebarSearchTitle">Поиск</span>
             </button>
-            <div class="search__field" id="searchField" role="search">
+            <div class="search__field" id="sidebarSearchField" role="search">
               <input
                 class="search__input"
-                id="searchInput"
+                id="sidebarSearchInput"
                 type="text"
                 placeholder="Введите свой запрос"
                 aria-label="Поиск по сайту"
               />
               <button
                 class="search__clear"
-                id="searchClear"
+                id="sidebarSearchClear"
                 aria-label="Очистить поиск"
               >
                 ✕
               </button>
             </div>
           </div>
+
           <ul class="sidebar__nav">
             <li><a href="#">Главная</a></li>
             <li>
@@ -183,7 +196,7 @@
             <li><a href="#">FAQ</a></li>
             <li><a href="#">Для корпоративных клиентов</a></li>
           </ul>
-          <hr>
+          <hr />
           <div class="sidebar__contacts">
             <div class="contact__block">
               <a class="contact__link" href="mailto:zakaz@loverflower.by"
@@ -198,7 +211,7 @@
               <p class="contact__sub">10:00 до 21:00<br />без выходных</p>
             </div>
             <p class="legal">
-              <a href="#">Политика конфиденциальности</a><br />
+              <a href="#">Политика конфиденциальности</a>
               <a href="#">Обработка персональных данных</a>
             </p>
             <a class="sidebar__phone" href="tel:+375291136969"

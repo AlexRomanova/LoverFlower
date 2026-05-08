@@ -1,73 +1,79 @@
-const searchToggle = document.getElementById("searchToggle");
-const searchField = document.getElementById("searchField");
-const searchInput = document.getElementById("searchInput");
-const searchClear = document.getElementById("searchClear");
-const phoneBlock = document.getElementById("phoneBlock");
-const searchTitle = document.getElementById("searchTitle");
-const sidebarSearchToggle = document.getElementById("sidebarSearchToggle");
+const ui = {
+  header: {
+    toggle: document.getElementById("searchToggle"),
+    field: document.getElementById("searchField"),
+    input: document.getElementById("searchInput"),
+    clear: document.getElementById("searchClear"),
+    extras: [
+      document.getElementById("phoneBlock"),
+      document.getElementById("searchTitle"),
+    ],
+  },
+  sidebar: {
+    toggle: document.getElementById("sidebarSearchToggle"),
+    field: document.getElementById("sidebarSearchField"),
+    input: document.getElementById("sidebarSearchInput"),
+    clear: document.getElementById("sidebarSearchClear"),
+    extras: [document.getElementById("sidebarSearchTitle")],
+  },
+  menu: {
+    burger: document.getElementById("burgerBtn"),
+    close: document.getElementById("closeBtn"),
+    el: document.getElementById("sidebar"),
+    overlay: document.getElementById("overlay"),
+  },
+};
 
-function openHeaderSearch() {
-  searchField.classList.add("open");
-  phoneBlock.classList.add("hidden");
-  searchTitle.classList.add("hidden");
-  setTimeout(() => searchInput.focus(), 50);
-}
-function closeHeaderSearch() {
-  searchField.classList.remove("open");
-  phoneBlock.classList.remove("hidden");
-  searchTitle.classList.remove("hidden");
-  searchInput.value = "";
+function toggleSearch(context, forceClose = false) {
+  const isOpening = !context.field.classList.contains("open") && !forceClose;
+
+  if (isOpening) {
+    context.field.classList.add("open");
+    context.extras.forEach((el) => el?.classList.add("hidden"));
+    setTimeout(() => context.input?.focus(), 50);
+  } else {
+    context.field.classList.remove("open");
+    context.extras.forEach((el) => el?.classList.remove("hidden"));
+    if (context.input) context.input.value = "";
+  }
 }
 
-searchToggle.addEventListener("click", () => {
-  searchField.classList.contains("open") ? closeHeaderSearch() : openHeaderSearch();
+[ui.header, ui.sidebar].forEach((context) => {
+  if (!context.toggle) return;
+
+  context.toggle.addEventListener("click", (e) => {
+    e.stopPropagation(); 
+    toggleSearch(context);
+  });
+
+  context.clear?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleSearch(context, true);
+  });
+
+  context.input?.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") toggleSearch(context, true);
+  });
+
+  context.field?.addEventListener("click", (e) => e.stopPropagation());
 });
-sidebarSearchToggle.addEventListener("click", () => {
-  searchField.classList.contains("open") ? closeHeaderSearch() : openHeaderSearch();
-});
-searchClear.addEventListener("click", closeHeaderSearch);
-searchInput.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeHeaderSearch();
-});
 
-const burgerBtn = document.getElementById("burgerBtn");
-const closeBtn = document.getElementById("closeBtn");
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
 
-function openSidebar() {
-  sidebar.classList.add("open");
-  overlay.classList.add("open");
-  burgerBtn.setAttribute("aria-expanded", "true");
-  document.body.style.overflow = "hidden";
-}
-function closeSidebar() {
-  sidebar.classList.remove("open");
-  overlay.classList.remove("open");
-  burgerBtn.setAttribute("aria-expanded", "false");
-  document.body.style.overflow = "";
+function toggleSidebar(isOpen) {
+  ui.menu.el?.classList.toggle("open", isOpen);
+  ui.menu.overlay?.classList.toggle("open", isOpen);
+  ui.menu.burger?.setAttribute("aria-expanded", isOpen);
+  document.body.style.overflow = isOpen ? "hidden" : "";
 }
 
-burgerBtn.addEventListener("click", openSidebar);
-closeBtn.addEventListener("click", closeSidebar);
-overlay.addEventListener("click", closeSidebar);
+ui.menu.burger?.addEventListener("click", () => toggleSidebar(true));
+ui.menu.close?.addEventListener("click", () => toggleSidebar(false));
+ui.menu.overlay?.addEventListener("click", () => toggleSidebar(false));
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeSidebar();
-});
-
-
-
-
-let timeout;
-
-dropdownItem.addEventListener("mouseenter", () => {
-  clearTimeout(timeout);
-  document.body.style.overflow = "hidden";
-});
-
-dropdownItem.addEventListener("mouseleave", () => {
-  timeout = setTimeout(() => {
-    document.body.style.overflow = "";
-  }, 100);
+  if (e.key === "Escape") {
+    toggleSidebar(false);
+    toggleSearch(ui.header, true);
+    toggleSearch(ui.sidebar, true);
+  }
 });
