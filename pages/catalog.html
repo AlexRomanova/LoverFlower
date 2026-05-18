@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Каталог букетов Lover Flower: цветы и композиции для любых событий." />
+    <title>Каталог букетов — Lover Flower</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/catalog.css" />
+  </head>
+  <body class="catalog-page" id="top">
+    <a class="skip-link" href="#products">Перейти к букетам</a>
+    <div class="catalog-backdrop" aria-hidden="true">
+      <img
+        src="../media/catalog/catalog-backdrop__flower--left.png"
+        class="catalog-backdrop__flower catalog-backdrop__flower--left"
+        alt=""
+        aria-hidden="true" />
+      <img
+        src="../media/catalog/catalog-backdrop__flower--right.png"
+        class="catalog-backdrop__flower catalog-backdrop__flower--right"
+        alt=""
+        aria-hidden="true" />
+      <div class="catalog-glow catalog-glow--top">
+        <img src="../media/catalog/catalog-glow--top.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="catalog-glow catalog-glow--hero">
+        <img src="../media/catalog/catalog-glow--hero.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="catalog-glow catalog-glow--left-top">
+        <img src="../media/catalog/catalog-glow--left-top.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="catalog-glow catalog-glow--left-bottom">
+        <img src="../media/catalog/catalog-glow--left-bottom.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="catalog-glow catalog-glow--filter">
+        <img src="../media/catalog/catalog-glow--filter.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="catalog-glow catalog-glow--bottom-right">
+        <img src="../media/catalog/catalog-glow--bottom-right.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="catalog-glow catalog-glow--bottom">
+        <img src="../media/catalog/catalog-glow--bottom.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="catalog-glow catalog-glow--bottom-left">
+        <img src="../media/catalog/catalog-glow--bottom-left.svg" class="" alt="" aria-hidden="true" />
+      </div>
+    </div>
+
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+
+    <main class="catalog-main">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <a href="index.html">Главная</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Каталог</span>
+        </nav>
+        <section class="catalog-intro" aria-labelledby="catalog-title">
+          <h1 id="catalog-title">
+            Каталог
+            <span>букетов</span>
+          </h1>
+          <p class="catalog-intro__description">В нашем магазине самый большой выбор букетов для любых событий:</p>
+          <nav class="catalog-categories" aria-label="Категории букетов">
+            <div class="catalog-categories__row">
+              <a href="#products">Букеты из гипсофил</a>
+              <a href="#products">Букеты из ромашек</a>
+              <a href="#products">Букеты из хризантем</a>
+              <a href="#products">Комнатные цветы в горшках</a>
+              <a href="#products">Монобукеты</a>
+            </div>
+            <div class="catalog-categories__row">
+              <a href="#products">Сборные букеты</a>
+              <a href="#products">Букет на праздник</a>
+              <a href="#products">Композиции из цветов</a>
+              <a href="#products">Конверты</a>
+              <a href="#products">Открытки</a>
+              <a href="#products">Подарки</a>
+              <a href="#products">Букеты из сухоцветов</a>
+            </div>
+            <div class="catalog-categories__row">
+              <a href="#products">Шары</a>
+              <a href="#products">Популярное</a>
+              <a href="#products">Букеты роз</a>
+              <a href="#products">Цветы на похороны</a>
+              <a href="#products">Упаковка подарков</a>
+            </div>
+          </nav>
+        </section>
+        <aside class="catalog-contact" aria-label="Связаться с магазином">
+          <div class="catalog-contact__socials">
+            <img src="../media/icons/icon_instagram.svg" class="" alt="Instagram" />
+            <img src="../media/icons/icon_whatsapp.svg" class="" alt="WhatsApp" />
+            <img src="../media/icons/icon_viber.svg" class="" alt="Viber" />
+          </div>
+          <div class="catalog-contact__phone">
+            <a href="tel:+375291136969">+375 (29) 113-69-69</a>
+            <a class="catalog-contact__callback" href="index.html#questions">
+              <img src="../media/icons/icon_phone.webp" class="" alt="" aria-hidden="true" />
+              Заказать звонок
+            </a>
+          </div>
+          <button class="catalog-cart" type="button" aria-label="Корзина: 5 товаров" aria-disabled="true">
+            <img src="../media/icons/icon_cart_handbag.webp" class="" alt="" aria-hidden="true" />
+            <span class="catalog-cart__badge">
+              <img src="../media/catalog/cart__badge.svg" class="" alt="" aria-hidden="true" />
+              <span>5</span>
+            </span>
+          </button>
+        </aside>
+        <div class="catalog-toolbar">
+          <label class="sr-only" for="catalog-sort">Сортировка букетов</label>
+          <div class="catalog-sort">
+            <select id="catalog-sort" name="sort">
+              <option value="popular">По популярности</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="new">Сначала новинки</option>
+            </select>
+            <img src="../media/catalog/catalog-sort__down-arrow.svg" class="" alt="" aria-hidden="true" />
+          </div>
+        </div>
+        <div class="catalog-layout">
+          <aside class="catalog-filters" aria-label="Фильтры каталога">
+            <form class="catalog-filters__form">
+              <fieldset class="filter-group">
+                <legend>По свету</legend>
+                <label class="filter-option">
+                  <input type="checkbox" name="light" value="0" />
+                  <span>Нежные</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="light" value="1" />
+                  <span>Яркие</span>
+                </label>
+              </fieldset>
+              <fieldset class="filter-group">
+                <legend>По цвету</legend>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="0" />
+                  <span>Белый</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="1" />
+                  <span>Желтый</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="2" />
+                  <span>Зеленый</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="3" />
+                  <span>Красный</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="4" />
+                  <span>Оранжевый</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="5" />
+                  <span>Розовый</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="6" />
+                  <span>Синий</span>
+                </label>
+              </fieldset>
+              <fieldset class="filter-group">
+                <legend>По формату</legend>
+                <label class="filter-option">
+                  <input type="checkbox" name="format" value="0" />
+                  <span>Букет</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="format" value="1" />
+                  <span>В вазе</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="format" value="2" />
+                  <span>В конверте</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="format" value="3" />
+                  <span>В корзине</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="format" value="4" />
+                  <span>В шляпной коробке</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="format" value="5" />
+                  <span>В ящике</span>
+                </label>
+              </fieldset>
+              <fieldset class="filter-group filter-price">
+                <legend>Стоимость</legend>
+                <div class="filter-price__track">
+                  <img src="../media/catalog/filter-price__trackLine.svg" class="" alt="" aria-hidden="true" />
+                  <img
+                    src="../media/catalog/filter-price__dot--min.svg"
+                    class="filter-price__dot filter-price__dot--min"
+                    alt=""
+                    aria-hidden="true" />
+                  <img
+                    src="../media/catalog/filter-price__dot--max.svg"
+                    class="filter-price__dot filter-price__dot--max"
+                    alt=""
+                    aria-hidden="true" />
+                </div>
+                <div class="filter-price__values">
+                  <span>Цена:</span>
+                  <label>
+                    <span class="sr-only">Минимальная цена в рублях</span>
+                    <input name="price-min" type="number" min="0" step="0.01" value="50.00" />
+                  </label>
+                  <span>₽ –</span>
+                  <label>
+                    <span class="sr-only">Максимальная цена в рублях</span>
+                    <input name="price-max" type="number" min="0" step="0.01" value="400.00" />
+                  </label>
+                  <span>₽</span>
+                </div>
+              </fieldset>
+              <div class="filter-flowers">
+                <fieldset class="filter-group">
+                  <legend>По цветку</legend>
+                  <label class="filter-option">
+                    <input type="checkbox" name="flower" value="0" />
+                    <span>Альстромерия (2)</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="flower" value="1" />
+                    <span>Антуриум (1)</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="flower" value="2" />
+                    <span>Аспарагус (1)</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="flower" value="3" />
+                    <span>Астильба (7)</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="flower" value="4" />
+                    <span>Астранция (1)</span>
+                  </label>
+                </fieldset>
+                <span class="filter-flowers__scroll"><img src="../media/catalog/f634b.svg" class="" alt="" aria-hidden="true" /></span>
+              </div>
+              <button class="btn btn--outline filter-reset" type="reset">Сбросить фильтр</button>
+            </form>
+          </aside>
+
+          <section class="catalog-products" id="products" aria-labelledby="products-title">
+            <h2 id="products-title" class="sr-only">Букеты в каталоге</h2>
+            <article class="catalog-product">
+              <a href="/pages/productCard.html">
+                <div class="catalog-product__image">
+                  <img src="../media/catalog/catalog-product__image1.png" class="" alt="Букет «Лучший день», вариант 1" />
+                </div>
+                <h3>Лучший день</h3>
+              </a>
+              <p class="catalog-product__price"><span>167.000 ₽</span></p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 1, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image2.png" class="" alt="Букет «Лучший день», вариант 2" />
+                <span class="catalog-product__badge">
+                  <img src="../media/img/product__badge-new.svg" class="" alt="" aria-hidden="true" />
+                  <span>NEW</span>
+                </span>
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price"><span>167.000 ₽</span></p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 2, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image3.png" class="" alt="Букет «Лучший день», вариант 3" />
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price"><span>167.000 ₽</span></p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 3, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image4.png" class="" alt="Букет «Лучший день», вариант 4" />
+                <span class="catalog-product__badge">
+                  <img src="../media/img/product__badge-sale.svg" class="" alt="" aria-hidden="true" />
+                  <span>SALE</span>
+                </span>
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price">
+                <span>167.000 ₽</span>
+                <del>187.000 ₽</del>
+              </p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 4, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image5.png" class="" alt="Букет «Лучший день», вариант 5" />
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price"><span>167.000 ₽</span></p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 5, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image6.png" class="" alt="Букет «Лучший день», вариант 6" />
+                <span class="catalog-product__badge">
+                  <img src="../media/img/product__badge-sale.svg" class="" alt="" aria-hidden="true" />
+                  <span>SALE</span>
+                </span>
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price">
+                <span>167.000 ₽</span>
+                <del>187.000 ₽</del>
+              </p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 6, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image7.png" class="" alt="Букет «Лучший день», вариант 7" />
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price"><span>167.000 ₽</span></p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 7, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image8.png" class="" alt="Букет «Лучший день», вариант 8" />
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price"><span>167.000 ₽</span></p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 8, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image9.png" class="" alt="Букет «Лучший день», вариант 9" />
+                <span class="catalog-product__badge">
+                  <img src="../media/img/product__badge-sale.svg" class="" alt="" aria-hidden="true" />
+                  <span>SALE</span>
+                </span>
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price">
+                <span>167.000 ₽</span>
+                <del>187.000 ₽</del>
+              </p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 9, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image10.png" class="" alt="Букет «Лучший день», вариант 10" />
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price"><span>167.000 ₽</span></p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 10, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image11.png" class="" alt="Букет «Лучший день», вариант 11" />
+                <span class="catalog-product__badge">
+                  <img src="../media/img/product__badge-sale.svg" class="" alt="" aria-hidden="true" />
+                  <span>SALE</span>
+                </span>
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price">
+                <span>167.000 ₽</span>
+                <del>187.000 ₽</del>
+              </p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 11, в корзину">
+                В корзину
+              </button>
+            </article>
+            <article class="catalog-product">
+              <div class="catalog-product__image">
+                <img src="../media/catalog/catalog-product__image12.png" class="" alt="Букет «Лучший день», вариант 12" />
+              </div>
+              <h3>Лучший день</h3>
+              <p class="catalog-product__price"><span>167.000 ₽</span></p>
+              <button
+                class="btn btn--outline"
+                type="button"
+                aria-disabled="true"
+                aria-label="Добавить букет Лучший день, вариант 12, в корзину">
+                В корзину
+              </button>
+            </article>
+          </section>
+        </div>
+
+        <div class="catalog-bottom">
+          <a class="catalog-back-to-top" href="#top" aria-label="Вернуться наверх">
+            <img src="../media/catalog/catalog-back-to-top.svg" class="" alt="" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="footer" id="contacts">
+      <div class="container footer__grid">
+        <div class="footer__legal">
+          <a class="logo" href="index.html" aria-label="Lover Flower — главная">
+            <span>L</span>
+            <span>F</span>
+          </a>
+          <h3>Реквизиты</h3>
+          <p>
+            ООО «Ловефлове» 220035, Республика Беларусь, г. Минск, ул. Тимирязева д. 67, комн. 112 (пом.11) УНП 193263781, р/с
+            BY55MTBK30120001093300096372 ЗАО «МТБанк», БИК MTBKBY22 220007, г. Минск, улица Толстого
+          </p>
+        </div>
+        <div>
+          <h3>Каталог</h3>
+          <ul>
+            <li><a href="catalog.html">Популярное</a></li>
+            <li><a href="catalog.html">Сухоцветы</a></li>
+            <li><a href="catalog.html">Букеты роз</a></li>
+            <li><a href="catalog.html">Композиции из цветов</a></li>
+            <li><a href="catalog.html">Индивидуальный букет</a></li>
+            <li><a href="catalog.html">Букет на праздник</a></li>
+            <li><a href="catalog.html">Упаковка подарков</a></li>
+            <li><a href="catalog.html">Шары</a></li>
+            <li><a href="catalog.html">Открытки</a></li>
+            <li><a href="catalog.html">Конверты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Букет</h3>
+          <ul>
+            <li><a href="catalog.html">Для девушки</a></li>
+            <li><a href="catalog.html">Для мужчины</a></li>
+            <li><a href="catalog.html">Для жены</a></li>
+            <li><a href="catalog.html">Для мамы</a></li>
+            <li><a href="catalog.html">Для коллеги</a></li>
+            <li><a href="catalog.html">Для начальника</a></li>
+            <li><a href="catalog.html">Для дочки</a></li>
+            <li><a href="catalog.html">Для детей</a></li>
+            <li><a href="catalog.html">Для женщины</a></li>
+          </ul>
+        </div>
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="index.html#order">Доставка и оплата</a>
+          <a href="index.html#special">О нас</a>
+          <a href="#contacts">Контакты</a>
+          <a href="index.html#questions">FAQ</a>
+          <a href="index.html#questions">Для корпоративных клиентов</a>
+        </nav>
+        <address class="footer__contacts">
+          <a href="mailto:zakaz@loverflower.by">zakaz@loverflower.by</a>
+          <small>Доставка 24/7 по договоренности с оператором</small>
+          <a href="#contacts">ул. Тимирязева 67</a>
+          <small>
+            10:00 до 21:00
+            <br />
+            без выходных
+          </small>
+          <a href="tel:+375291136969">+375 (29) 113-69-69</a>
+          <small>прием звонков круглосуточно</small>
+          <div class="socials">
+            <span title="Instagram"><img src="../media/icons/icon_instagram.svg" class="" alt="Instagram" /></span>
+            <span title="WhatsApp"><img src="../media/icons/icon_whatsapp.svg" class="" alt="WhatsApp" /></span>
+            <span title="Viber"><img src="../media/catalog/8177f.svg" class="" alt="Viber" /></span>
+          </div>
+        </address>
+      </div>
+    </footer>
+  </body>
+</html>
