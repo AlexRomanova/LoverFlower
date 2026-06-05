@@ -1,8 +1,11 @@
 app-header,
-app-footer {
+app-footer,
+app-mobile-menu,
+app-callback-modal {
   display: block;
 }
-body.is-menu-open {
+body.is-menu-open,
+body.is-callback-open {
   overflow: hidden;
 }
 :root {
@@ -350,6 +353,35 @@ body.is-cart-open .site-header__cart {
 }
 .callback-dialog {
   width: min(540px, calc(100vw - 20px));
+  max-width: calc(100vw - 20px);
+}
+.callback-dialog h2 {
+  padding-right: 32px;
+}
+.callback-dialog .site-dialog__close {
+  top: 6px;
+  right: 6px;
+  width: 44px;
+  height: 44px;
+}
+.callback-form__field {
+  display: grid;
+  gap: 6px;
+}
+.callback-form__field label {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.callback-form__error {
+  color: var(--color-accent-soft);
+  font-size: 12px;
+}
+.callback-form input[aria-invalid="true"] {
+  border-color: var(--color-accent-soft);
+}
+.callback-form .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .callback-dialog > p {
   max-width: 380px;
