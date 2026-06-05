@@ -2,7 +2,9 @@ app-header,
 app-footer {
   display: block;
 }
-
+body.is-menu-open {
+  overflow: hidden;
+}
 :root {
   --color-page: #040a0a;
   --color-ink: #000;
@@ -809,6 +811,8 @@ body.is-cart-open .site-header__cart {
   .mobile-drawer__head button {
     color: var(--color-accent);
     font-size: 28px;
+    width: 44px;
+    height: 44px;
   }
   .mobile-drawer__search {
     margin-top: 12px;

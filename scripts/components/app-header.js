@@ -14,7 +14,8 @@
       this.innerHTML = `
    <header class="site-header" id="top">
       <div class="site-header__inner container">
-        <button class="site-header__burger" type="button" data-open="menu" aria-label="Открыть меню">
+        <button class="site-header__burger" type="button" data-open="menu"
+          aria-label="Открыть меню" aria-controls="mobile-menu-dialog" aria-expanded="false" disabled>
           <span></span>
           <span></span>
           <span></span>
@@ -152,7 +153,19 @@
         document.fonts.ready.then(measureHomeHeader);
         measureHomeHeader();
       }
-      this.querySelectorAll("[data-open], [data-search-open]").forEach((button) => {
+      const menuButton = this.querySelector('[data-open="menu"]');
+      menuButton.addEventListener("click", () => {
+        this.dispatchEvent(
+          new CustomEvent("open-mobile-menu", {
+            bubbles: true,
+            detail: { trigger: menuButton },
+          })
+        );
+      });
+      customElements.whenDefined("app-mobile-menu").then(() => {
+        if (document.querySelector("app-mobile-menu")) menuButton.disabled = false;
+      });
+      this.querySelectorAll('[data-open]:not([data-open="menu"]), [data-search-open]').forEach((button) => {
         button.disabled = true;
         button.title = "Будет доступно после подключения соответствующего окна";
       });
