@@ -22,15 +22,27 @@
 
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
-        <img src="media/img/hero__bg-global.svg" class="hero__bg-global" alt="" aria-hidden="true" />
+        <picture>
+          <source media="(max-width: 760px)" srcset="media/home-mobile/hero-back.webp" />
+          <img src="media/img/hero__bg-global.svg" class="hero__bg-global" alt="" aria-hidden="true" />
+        </picture>
         <div class="hero__glow hero__glow--left">
-          <img src="media/img/hero__glow--left.svg" alt="" aria-hidden="true" />
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/hero-glow-left.svg" />
+            <img src="media/img/hero__glow--left.svg" alt="" aria-hidden="true" />
+          </picture>
         </div>
         <div class="hero__glow hero__glow--right">
-          <img src="media/img/hero__glow--right.svg" alt="" aria-hidden="true" />
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/hero-glow-right.svg" />
+            <img src="media/img/hero__glow--right.svg" alt="" aria-hidden="true" />
+          </picture>
         </div>
         <div class="hero__bg-local">
-          <img src="/media/img/hero__bg-local.svg" alt="" aria-hidden="true" />
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/hero-front.webp" />
+            <img src="media/img/hero__bg-local.svg" alt="" aria-hidden="true" />
+          </picture>
         </div>
         <div class="hero__gradient"></div>
         <div class="container hero__inner">
@@ -69,7 +81,10 @@
           <img src="media/img/catalog__glow--left.svg" alt="" aria-hidden="true" />
         </div>
         <div class="decoration catalog__glow--right">
-          <img src="media/img/catalog__glow--right.svg" alt="" aria-hidden="true" />
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/catalog-glow.svg" />
+            <img src="media/img/catalog__glow--right.svg" alt="" aria-hidden="true" />
+          </picture>
         </div>
         <div class="container">
           <h2 id="catalog-title">Каталог</h2>
@@ -92,7 +107,7 @@
                 <li><a href="#popular">Розы</a></li>
                 <li><a href="#popular">Свадебные</a></li>
               </ul>
-              <a class="text-link" href="catalog.html">Смотреть каталог</a>
+              <a class="text-link" href="pages/catalog.html">Смотреть каталог</a>
             </article>
             <article class="catalog__card catalog__card--dried">
               <h3>
@@ -105,7 +120,7 @@
                 <li><a href="#popular">Для интерьера</a></li>
                 <li><a href="#popular">Композиции</a></li>
               </ul>
-              <a class="text-link" href="catalog.html">Смотреть каталог</a>
+              <a class="text-link" href="pages/catalog.html">Смотреть каталог</a>
             </article>
             <article class="catalog__card catalog__card--extra">
               <h3>Дополнительно</h3>
@@ -115,7 +130,7 @@
                 <li><a href="#questions">Открытки</a></li>
                 <li><a href="#questions">Упаковка</a></li>
               </ul>
-              <a class="text-link" href="catalog.html">Смотреть каталог</a>
+              <a class="text-link" href="pages/catalog.html">Смотреть каталог</a>
             </article>
           </div>
         </div>
@@ -126,7 +141,10 @@
           <img src="media/img/popular__glow--left.svg" alt="" aria-hidden="true" />
         </div>
         <div class="decoration popular__glow--right">
-          <img src="media/img/popular__glow--right.svg" alt="" aria-hidden="true" />
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/popular-glow.svg" />
+            <img src="media/img/popular__glow--right.svg" alt="" aria-hidden="true" />
+          </picture>
         </div>
         <div class="container">
           <h2 id="popular-title">
@@ -142,9 +160,13 @@
               <article class="product" id="product-1" data-product-id="home-1" data-price="167">
                 <div class="product__image">
                   <picture>
-                    <source media="(max-width: 760px)" srcset="media/img/popular-mobile__image1.png" />
+                    <source media="(max-width: 760px)" srcset="media/home-mobile/popular-1.webp" />
                     <img src="media/img/product__image1.svg" class="" alt="Букет «Лучший день» — вариант 1" />
                   </picture>
+                  <span class="product__badge product__badge--mobile">
+                    <img src="media/home-mobile/popular-sale.svg" width="60" height="60" alt="" aria-hidden="true" />
+                    <span>SALE</span>
+                  </span>
                   <span class="product__badge">
                     <img src="media/img/product__badge-new.svg" alt="" aria-hidden="true" />
                     <span>NEW</span>
@@ -157,7 +179,7 @@
               <article class="product" id="product-2" data-product-id="home-2" data-price="167">
                 <div class="product__image">
                   <picture>
-                    <source media="(max-width: 760px)" srcset="media/img/popular-mobile__image2.png" />
+                    <source media="(max-width: 760px)" srcset="media/home-mobile/popular-2.webp" />
                     <img src="media/img/product__image2.svg" class="" alt="Букет «Лучший день» — вариант 2" />
                   </picture>
                 </div>
@@ -168,7 +190,7 @@
               <article class="product" id="product-3" data-product-id="home-3" data-price="167">
                 <div class="product__image">
                   <picture>
-                    <source media="(max-width: 760px)" srcset="media/img/popular-mobile__image3.png" />
+                    <source media="(max-width: 760px)" srcset="media/home-mobile/popular-3.webp" />
                     <img src="media/img/product__image3.svg" class="" alt="Букет «Лучший день» — вариант 3" />
                   </picture>
                   <span class="product__badge">
@@ -188,14 +210,20 @@
               <img src="media/img/products-arrow--next.svg" alt="" aria-hidden="true" />
             </a>
           </div>
-          <a class="text-link popular__all" href="catalog.html">
+          <a class="text-link popular__all" href="pages/catalog.html">
             Смотреть весь каталог
-            <img src="media/img/popular__all-arrow.svg" alt="" aria-hidden="true" />
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/popular-arrow.svg" />
+              <img src="media/img/popular__all-arrow.svg" alt="" aria-hidden="true" />
+            </picture>
           </a>
         </div>
       </section>
       <section class="order" id="order" aria-labelledby="order-title">
-        <img src="media/img/order__flowers.svg" class="order__flowers" alt="" aria-hidden="true" />
+        <picture>
+          <source media="(max-width: 760px)" srcset="media/home-mobile/order-flowers.webp" />
+          <img src="media/img/order__flowers.svg" class="order__flowers" alt="" aria-hidden="true" />
+        </picture>
         <div class="container">
           <h2 id="order-title">
             Как сделать
@@ -255,7 +283,10 @@
           <img src="media/img/special__top.webp" class="special__top" alt="Букет и подарок для особенного повода" />
           <div class="special__copy">
             <div class="special__line">
-              <img src="media/img/special__line.svg" alt="" aria-hidden="true" />
+              <picture>
+                <source media="(max-width: 760px)" srcset="media/home-mobile/special-rule.svg" />
+                <img src="media/img/special__line.webp" alt="" aria-hidden="true" />
+              </picture>
             </div>
             <p>
               Мы готовы прийти на помощь и собрать уникальный букет, на любой вкус, бюджет и для любого события по
@@ -268,7 +299,10 @@
             </ul>
             <a href="#questions" class="btn">Собрать индивидуальный букет</a>
             <span class="special__arrow">
-              <img src="media/img/special__arrow.svg" alt="" aria-hidden="true" />
+              <picture>
+                <source media="(max-width: 760px)" srcset="media/home-mobile/special-arrow.svg" />
+                <img src="media/img/special__arrow.webp" alt="" aria-hidden="true" />
+              </picture>
             </span>
           </div>
           <div class="special__gallery">
@@ -280,17 +314,29 @@
       </section>
       <section class="contact" id="questions" aria-labelledby="contact-title">
         <div class="decoration contact__glow--pink">
-          <img src="media/img/contact__glow--pink.svg" alt="" aria-hidden="true" />
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/contact-glow-pink.svg" />
+            <img src="media/img/contact__glow--pink.svg" alt="" aria-hidden="true" />
+          </picture>
         </div>
         <div class="decoration contact__glow--green">
-          <img src="media/img/contact__glow--green.svg" alt="" aria-hidden="true" />
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/contact-glow-green.svg" />
+            <img src="media/img/contact__glow--green.svg" alt="" aria-hidden="true" />
+          </picture>
         </div>
-        <img
-          src="media/img/contact__leaves--shadow.svg"
-          class="contact__leaves contact__leaves--shadow"
-          alt=""
-          aria-hidden="true" />
-        <img src="media/img/contact__leaves.svg" class="contact__leaves" alt="" aria-hidden="true" />
+        <picture>
+          <source media="(max-width: 760px)" srcset="media/home-mobile/contact-leaves-shadow.webp" />
+          <img
+            src="media/img/contact__leaves--shadow.svg"
+            class="contact__leaves contact__leaves--shadow"
+            alt=""
+            aria-hidden="true" />
+        </picture>
+        <picture>
+          <source media="(max-width: 760px)" srcset="media/home-mobile/contact-leaves.webp" />
+          <img src="media/img/contact__leaves.svg" class="contact__leaves" alt="" aria-hidden="true" />
+        </picture>
         <div class="container contact__inner">
           <h2 id="contact-title">
             Остались
@@ -300,7 +346,7 @@
           <div class="contact__right">
             <div class="contact__description">
               <div>
-                <img src="media/3afdd.svg" alt="" aria-hidden="true" />
+                <img src="media/home-mobile/contact-rule.svg" alt="" aria-hidden="true" />
               </div>
               <p>
                 Отправьте ваш вопрос, заказ, предложение или жалобу через форму обратной связи, и наш специалист
@@ -326,20 +372,50 @@
       </section>
       <section class="social-section" aria-label="Фотографии цветочных композиций и социальные сети">
         <div class="decoration social-section__glow--right">
-          <img src="media/img/social-section__glow--right.svg" alt="" aria-hidden="true" />
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/social-glow-right.svg" />
+            <img src="media/img/social-section__glow--right.svg" alt="" aria-hidden="true" />
+          </picture>
         </div>
         <div class="decoration social-section__glow--bottom">
           <img src="media/img/social-section__glow--bottom.svg" alt="" aria-hidden="true" />
         </div>
         <div class="decoration social-section__glow--left">
-          <img src="media/img/social-section__glow--left.svg" alt="" aria-hidden="true" />
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/social-glow-left.svg" />
+            <img src="media/img/social-section__glow--left.svg" alt="" aria-hidden="true" />
+          </picture>
         </div>
         <div class="container social-section__inner">
           <div class="social-section__gallery">
-            <img src="media/img/social-section__gallery1.webp" class="" alt="Цветочная композиция из нашей коллекции" />
-            <img src="media/img/social-section__gallery2.webp" class="" alt="Цветочная композиция из нашей коллекции" />
-            <img src="media/img/social-section__gallery3.webp" class="" alt="Цветочная композиция из нашей коллекции" />
-            <img src="media/img/social-section__gallery4.webp" class="" alt="Цветочная композиция из нашей коллекции" />
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/social-1.webp" />
+              <img
+                src="media/img/social-section__gallery1.webp"
+                class=""
+                alt="Цветочная композиция из нашей коллекции" />
+            </picture>
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/social-2.webp" />
+              <img
+                src="media/img/social-section__gallery2.webp"
+                class=""
+                alt="Цветочная композиция из нашей коллекции" />
+            </picture>
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/social-3.webp" />
+              <img
+                src="media/img/social-section__gallery3.webp"
+                class=""
+                alt="Цветочная композиция из нашей коллекции" />
+            </picture>
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/social-4.webp" />
+              <img
+                src="media/img/social-section__gallery4.webp"
+                class=""
+                alt="Цветочная композиция из нашей коллекции" />
+            </picture>
           </div>
           <div class="social-section__links">
             <img
@@ -347,7 +423,10 @@
               class="social-section__signature"
               alt="Наши социальные сети" />
             <div>
-              <img src="media/img/social-section__line.svg" alt="" aria-hidden="true" />
+              <picture>
+                <source media="(max-width: 760px)" srcset="media/home-mobile/social-rule.svg" />
+                <img src="media/img/social-section__line.svg" alt="" aria-hidden="true" />
+              </picture>
             </div>
             <div class="socials">
               <span title="Instagram"><img src="media/icons/icon_instagram.svg" class="" alt="Instagram" /></span>

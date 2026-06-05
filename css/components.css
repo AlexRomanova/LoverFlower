@@ -1,3 +1,8 @@
+app-header,
+app-footer {
+  display: block;
+}
+
 :root {
   --color-page: #040a0a;
   --color-ink: #000;
@@ -25,6 +30,7 @@
 @media (max-width: 760px) {
   :root {
     --size-header: 72px;
+    --home-brand-collapse-distance: 48px;
   }
 }
 .site-header {
@@ -265,6 +271,9 @@ body.is-cart-open .site-header__cart {
 }
 .home-page .hero {
   padding-top: var(--size-header);
+}
+.footer__nav .footer__catalog-link {
+  display: none;
 }
 .site-overlays dialog {
   padding: 0;
@@ -661,6 +670,9 @@ body.is-cart-open .site-header__cart {
   }
 }
 @media (max-width: 760px) {
+  .home-page .hero {
+    padding-top: 0;
+  }
   .site-header,
   .home-page .site-header {
     height: var(--size-header);
@@ -869,6 +881,7 @@ body.is-cart-open .site-header__cart {
   .footer__legal .logo {
     order: -2;
     margin: 0 auto 20px;
+    flex-basis: auto;
   }
   .footer__legal h3 {
     order: 2;
@@ -884,6 +897,9 @@ body.is-cart-open .site-header__cart {
     order: 0;
     align-items: center;
     gap: 20px;
+  }
+  .footer__nav .footer__catalog-link {
+    display: block;
   }
   .footer__contacts {
     order: 1;
@@ -923,7 +939,6 @@ body.is-cart-open .site-header__cart {
     transition: font-size 0.25s, top 0.25s;
   }
 }
-/* Обёртка остаётся липкой при прокрутке всей страницы. */
 #site-header {
   position: sticky;
   top: 0;
@@ -976,7 +991,6 @@ body[data-auth="member"] .mobile-drawer__account--member {
 .home-page .search-results {
   padding-top: calc(var(--size-header) + 60px);
 }
-/* Общие элементы используют те же токены, даже пока старые имена остаются в common.css. */
 body {
   background: var(--color-page);
   color: var(--color-text);

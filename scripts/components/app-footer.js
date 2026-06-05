@@ -1,4 +1,3 @@
-// <app-footer>: разметка и поведение компонента.
 (() => {
   const root = new URL("../../", document.currentScript.src).href;
   const asset = (path) => new URL(path, root).href;
@@ -56,6 +55,7 @@
           </ul>
         </div>
         <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a class="footer__catalog-link" href="${root}pages/catalog.html">Каталог</a>
           <a href="${root}pages/delivery.html">Доставка и оплата</a>
           <a href="${root}pages/about.html">О нас</a>
           <a href="${root}pages/contacts.html">Контакты</a>
@@ -65,7 +65,7 @@
         <address class="footer__contacts">
           <a href="mailto:zakaz@loverflower.by">zakaz@loverflower.by</a>
           <small>Доставка 24/7 по договоренности с оператором</small>
-          <a href="${root}pages/contacts.html">ул. Тимирязева 67</a>
+          <a href="#contacts">ул. Тимирязева 67</a>
           <small>
             10:00 до 21:00
             <br />

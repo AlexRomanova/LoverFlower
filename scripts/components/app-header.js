@@ -1,4 +1,3 @@
-// <app-header>: разметка и поведение компонента.
 (() => {
   const root = new URL("../../", document.currentScript.src).href;
   const asset = (path) => new URL(path, root).href;
@@ -81,7 +80,7 @@
               class="site-header__member-button"
               aria-label="Меню личного кабинета"
               aria-expanded="false">
-              <img src="${asset("media/0275c.svg")}" alt="" /> АР
+              <img src="${asset("media/icons/icon_account.webp")}" alt="" /> АР
             </button>
             <nav class="site-header__profile-menu" aria-label="Личный кабинет">
               <button type="button" data-open="history">История заказов</button>
@@ -124,14 +123,36 @@
         });
       }
       if (home) {
+        let collapseAt = 0;
+        let framePending = false;
         const updateHomeHeader = () => {
-          document.body.classList.toggle("is-past-hero", window.scrollY > window.innerHeight);
+          document.body.classList.toggle("is-past-hero", window.scrollY > collapseAt);
+          framePending = false;
         };
-        window.addEventListener("scroll", updateHomeHeader, { passive: true });
-        updateHomeHeader();
+        const measureHomeHeader = () => {
+          const headerHeight = this.getBoundingClientRect().height;
+          if (window.matchMedia("(max-width: 760px)").matches) {
+            collapseAt = parseFloat(getComputedStyle(this).getPropertyValue("--home-brand-collapse-distance"));
+          } else {
+            const title = document.querySelector(".hero__title");
+            collapseAt = title ? Math.max(0, title.getBoundingClientRect().top + window.scrollY - headerHeight) : 0;
+          }
+          updateHomeHeader();
+        };
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (framePending) return;
+            framePending = true;
+            window.requestAnimationFrame(updateHomeHeader);
+          },
+          { passive: true }
+        );
+        window.addEventListener("resize", measureHomeHeader);
+        document.fonts.ready.then(measureHomeHeader);
+        measureHomeHeader();
       }
-      // Эти кнопки подключим вместе с соответствующими окнами на следующих этапах.
-      this.querySelectorAll('[data-open], [data-search-open]').forEach((button) => {
+      this.querySelectorAll("[data-open], [data-search-open]").forEach((button) => {
         button.disabled = true;
         button.title = "Будет доступно после подключения соответствующего окна";
       });
