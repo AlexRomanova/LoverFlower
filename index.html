@@ -13,13 +13,12 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/components.css" />
-    <script src="scripts/components.js" defer></script>
+    <script src="scripts/components/app-header.js" defer></script>
+    <script src="scripts/components/app-footer.js" defer></script>
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main">Перейти к содержимому</a>
-    <div id="site-header"></div>
-
-    
+    <app-header id="site-header"></app-header>
 
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
@@ -253,7 +252,7 @@
             Особенный
             <span>повод?</span>
           </h2>
-          <img src="media/img/special__top.png" class="special__top" alt="Букет и подарок для особенного повода" />
+          <img src="media/img/special__top.webp" class="special__top" alt="Букет и подарок для особенного повода" />
           <div class="special__copy">
             <div class="special__line">
               <img src="media/img/special__line.svg" alt="" aria-hidden="true" />
@@ -359,6 +358,6 @@
         </div>
       </section>
     </main>
-    <div id="site-footer"></div>
+    <app-footer id="site-footer"></app-footer>
   </body>
 </html>

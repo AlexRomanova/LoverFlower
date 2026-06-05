@@ -12,6 +12,9 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/catalog.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+      <script src="/scripts/components/app-header.js" defer></script>
+    <script src="/scripts/components/app-footer.js" defer></script>
   </head>
   <body class="catalog-page" id="top">
     <a class="skip-link" href="#products">Перейти к букетам</a>
@@ -52,8 +55,7 @@
       </div>
     </div>
 
-    <app-header></app-header>
-    <app-sidebar></app-sidebar>
+    <app-header id="site-header"></app-header>
 
     <main class="catalog-main">
       <div class="container">
@@ -252,7 +254,9 @@
                     <span>Астранция (1)</span>
                   </label>
                 </fieldset>
-                <span class="filter-flowers__scroll"><img src="../media/catalog/f634b.svg" class="" alt="" aria-hidden="true" /></span>
+                <span class="filter-flowers__scroll">
+                  <img src="../media/catalog/f634b.svg" class="" alt="" aria-hidden="true" />
+                </span>
               </div>
               <button class="btn btn--outline filter-reset" type="reset">Сбросить фильтр</button>
             </form>
@@ -263,7 +267,10 @@
             <article class="catalog-product">
               <a href="/pages/productCard.html">
                 <div class="catalog-product__image">
-                  <img src="../media/catalog/catalog-product__image1.png" class="" alt="Букет «Лучший день», вариант 1" />
+                  <img
+                    src="../media/catalog/catalog-product__image1.png"
+                    class=""
+                    alt="Букет «Лучший день», вариант 1" />
                 </div>
                 <h3>Лучший день</h3>
               </a>
@@ -415,7 +422,10 @@
             </article>
             <article class="catalog-product">
               <div class="catalog-product__image">
-                <img src="../media/catalog/catalog-product__image10.png" class="" alt="Букет «Лучший день», вариант 10" />
+                <img
+                  src="../media/catalog/catalog-product__image10.png"
+                  class=""
+                  alt="Букет «Лучший день», вариант 10" />
               </div>
               <h3>Лучший день</h3>
               <p class="catalog-product__price"><span>167.000 ₽</span></p>
@@ -429,7 +439,10 @@
             </article>
             <article class="catalog-product">
               <div class="catalog-product__image">
-                <img src="../media/catalog/catalog-product__image11.png" class="" alt="Букет «Лучший день», вариант 11" />
+                <img
+                  src="../media/catalog/catalog-product__image11.png"
+                  class=""
+                  alt="Букет «Лучший день», вариант 11" />
                 <span class="catalog-product__badge">
                   <img src="../media/img/product__badge-sale.svg" class="" alt="" aria-hidden="true" />
                   <span>SALE</span>
@@ -450,7 +463,10 @@
             </article>
             <article class="catalog-product">
               <div class="catalog-product__image">
-                <img src="../media/catalog/catalog-product__image12.png" class="" alt="Букет «Лучший день», вариант 12" />
+                <img
+                  src="../media/catalog/catalog-product__image12.png"
+                  class=""
+                  alt="Букет «Лучший день», вариант 12" />
               </div>
               <h3>Лучший день</h3>
               <p class="catalog-product__price"><span>167.000 ₽</span></p>
@@ -472,73 +488,7 @@
         </div>
       </div>
     </main>
-    <footer class="footer" id="contacts">
-      <div class="container footer__grid">
-        <div class="footer__legal">
-          <a class="logo" href="index.html" aria-label="Lover Flower — главная">
-            <span>L</span>
-            <span>F</span>
-          </a>
-          <h3>Реквизиты</h3>
-          <p>
-            ООО «Ловефлове» 220035, Республика Беларусь, г. Минск, ул. Тимирязева д. 67, комн. 112 (пом.11) УНП 193263781, р/с
-            BY55MTBK30120001093300096372 ЗАО «МТБанк», БИК MTBKBY22 220007, г. Минск, улица Толстого
-          </p>
-        </div>
-        <div>
-          <h3>Каталог</h3>
-          <ul>
-            <li><a href="catalog.html">Популярное</a></li>
-            <li><a href="catalog.html">Сухоцветы</a></li>
-            <li><a href="catalog.html">Букеты роз</a></li>
-            <li><a href="catalog.html">Композиции из цветов</a></li>
-            <li><a href="catalog.html">Индивидуальный букет</a></li>
-            <li><a href="catalog.html">Букет на праздник</a></li>
-            <li><a href="catalog.html">Упаковка подарков</a></li>
-            <li><a href="catalog.html">Шары</a></li>
-            <li><a href="catalog.html">Открытки</a></li>
-            <li><a href="catalog.html">Конверты</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Букет</h3>
-          <ul>
-            <li><a href="catalog.html">Для девушки</a></li>
-            <li><a href="catalog.html">Для мужчины</a></li>
-            <li><a href="catalog.html">Для жены</a></li>
-            <li><a href="catalog.html">Для мамы</a></li>
-            <li><a href="catalog.html">Для коллеги</a></li>
-            <li><a href="catalog.html">Для начальника</a></li>
-            <li><a href="catalog.html">Для дочки</a></li>
-            <li><a href="catalog.html">Для детей</a></li>
-            <li><a href="catalog.html">Для женщины</a></li>
-          </ul>
-        </div>
-        <nav class="footer__nav" aria-label="Навигация в подвале">
-          <a href="index.html#order">Доставка и оплата</a>
-          <a href="index.html#special">О нас</a>
-          <a href="#contacts">Контакты</a>
-          <a href="index.html#questions">FAQ</a>
-          <a href="index.html#questions">Для корпоративных клиентов</a>
-        </nav>
-        <address class="footer__contacts">
-          <a href="mailto:zakaz@loverflower.by">zakaz@loverflower.by</a>
-          <small>Доставка 24/7 по договоренности с оператором</small>
-          <a href="#contacts">ул. Тимирязева 67</a>
-          <small>
-            10:00 до 21:00
-            <br />
-            без выходных
-          </small>
-          <a href="tel:+375291136969">+375 (29) 113-69-69</a>
-          <small>прием звонков круглосуточно</small>
-          <div class="socials">
-            <span title="Instagram"><img src="../media/icons/icon_instagram.svg" class="" alt="Instagram" /></span>
-            <span title="WhatsApp"><img src="../media/icons/icon_whatsapp.svg" class="" alt="WhatsApp" /></span>
-            <span title="Viber"><img src="../media/catalog/8177f.svg" class="" alt="Viber" /></span>
-          </div>
-        </address>
-      </div>
-    </footer>
+
+    <app-footer id="site-footer"></app-footer>
   </body>
 </html>

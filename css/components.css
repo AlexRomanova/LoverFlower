@@ -27,7 +27,6 @@
     --size-header: 72px;
   }
 }
-/* Общие компоненты Lover Flower. Подключать после common.css и CSS страницы. */
 .site-header {
   position: sticky;
   z-index: 100;
