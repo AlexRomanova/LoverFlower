@@ -37,6 +37,11 @@
               <a href="${root}pages/faq.html">FAQ</a>
               <a href="${root}pages/corporate.html">Для корпоративных клиентов</a>
             </nav>
+            <button type="button" class="mobile-drawer__account mobile-drawer__account--guest" data-mobile-auth>Войти / Зарегистрироваться</button>
+            <div class="mobile-drawer__account mobile-drawer__account--member">
+              <span class="mobile-drawer__account-name" data-mobile-account-name></span>
+              <button type="button" data-mobile-logout>Выйти из аккаунта</button>
+            </div>
             <address>
               <a href="mailto:zakaz@loverflower.by">zakaz@loverflower.by</a>
               <small>Доставка 24/7 по договоренности с оператором</small>
@@ -57,22 +62,64 @@
     bindEvents() {
       const options = { signal: this.controller.signal };
       document.addEventListener("open-mobile-menu", (event) => this.open(event.detail?.trigger), options);
+      document.addEventListener(
+        "auth-changed",
+        (event) => {
+          this.querySelector("[data-mobile-account-name]").textContent = event.detail.user?.nickname || "";
+        },
+        options
+      );
+      this.querySelector("[data-mobile-auth]").addEventListener(
+        "click",
+        () => {
+          const trigger = this.trigger;
+          this.close();
+          this.dispatchEvent(new CustomEvent("open-auth", { bubbles: true, detail: { trigger } }));
+        },
+        options
+      );
+      this.querySelector("[data-mobile-logout]").addEventListener(
+        "click",
+        () => {
+          this.close();
+          this.dispatchEvent(new CustomEvent("auth-logout", { bubbles: true }));
+        },
+        options
+      );
       this.querySelector("[data-menu-close]").addEventListener("click", () => this.close(), options);
-      this.dialog.addEventListener("click", (event) => {
-        if (event.target.closest("a")) this.close();
-        if (event.target !== this.dialog) return;
-        const bounds = this.dialog.getBoundingClientRect();
-        if (event.clientX < bounds.left || event.clientX > bounds.right ||
-            event.clientY < bounds.top || event.clientY > bounds.bottom) this.close();
-      }, options);
+      this.dialog.addEventListener(
+        "click",
+        (event) => {
+          if (event.target.closest("a")) this.close();
+          // У клика по backdrop цель — dialog, поэтому проверяем границы самого окна.
+          if (event.target !== this.dialog) return;
+          const bounds = this.dialog.getBoundingClientRect();
+          if (
+            event.clientX < bounds.left ||
+            event.clientX > bounds.right ||
+            event.clientY < bounds.top ||
+            event.clientY > bounds.bottom
+          )
+            this.close();
+        },
+        options
+      );
       this.dialog.addEventListener("close", () => this.restorePage(), options);
-      this.dialog.addEventListener("cancel", (event) => {
-        event.preventDefault();
-        this.close();
-      }, options);
-      window.matchMedia("(min-width: 761px)").addEventListener("change", (event) => {
-        if (event.matches) this.close();
-      }, options);
+      this.dialog.addEventListener(
+        "cancel",
+        (event) => {
+          event.preventDefault();
+          this.close();
+        },
+        options
+      );
+      window.matchMedia("(min-width: 761px)").addEventListener(
+        "change",
+        (event) => {
+          if (event.matches) this.close();
+        },
+        options
+      );
     }
 
     open(trigger) {

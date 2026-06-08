@@ -81,7 +81,7 @@
               class="site-header__member-button"
               aria-label="Меню личного кабинета"
               aria-expanded="false">
-              <img src="${asset("media/icons/icon_account.webp")}" alt="" /> АР
+              <img src="${asset("media/icons/icon_account.webp")}" alt="" /> <span data-account-label></span>
             </button>
             <nav class="site-header__profile-menu" aria-label="Личный кабинет">
               <button type="button" data-open="history">История заказов</button>
@@ -133,6 +133,7 @@
         const measureHomeHeader = () => {
           const headerHeight = this.getBoundingClientRect().height;
           if (window.matchMedia("(max-width: 760px)").matches) {
+            // Две строки надписи должны уместиться в хэдере уже в начале прокрутки.
             collapseAt = parseFloat(getComputedStyle(this).getPropertyValue("--home-brand-collapse-distance"));
           } else {
             const title = document.querySelector(".hero__title");
@@ -165,7 +166,29 @@
       customElements.whenDefined("app-mobile-menu").then(() => {
         if (document.querySelector("app-mobile-menu")) menuButton.disabled = false;
       });
-      this.querySelectorAll('[data-open]:not([data-open="menu"]), [data-search-open]').forEach((button) => {
+      const authButton = this.querySelector('[data-open="auth"]');
+      authButton.disabled = true;
+      authButton.setAttribute("aria-controls", "auth-dialog");
+      authButton.addEventListener("click", () => {
+        this.dispatchEvent(new CustomEvent("open-auth", { bubbles: true, detail: { trigger: authButton } }));
+      });
+      customElements.whenDefined("app-auth-modal").then(() => {
+        if (document.querySelector("app-auth-modal")) authButton.disabled = false;
+      });
+      document.addEventListener("auth-changed", (event) => {
+        const user = event.detail.user;
+        this.querySelector("[data-account-label]").textContent = user
+          ? `${user.firstName[0]}${user.surname[0]}`.toUpperCase()
+          : "";
+        this.querySelector(".site-header__member-button").title = user?.nickname || "Личный кабинет";
+      });
+      this.querySelector('[data-profile-action="logout"]').addEventListener("click", () => {
+        this.dispatchEvent(new CustomEvent("auth-logout", { bubbles: true }));
+        authButton.focus();
+      });
+      this.querySelectorAll(
+        '[data-open]:not([data-open="menu"]):not([data-open="auth"]), [data-search-open], [data-profile-action="favorites"], [data-profile-action="settings"]'
+      ).forEach((button) => {
         button.disabled = true;
         button.title = "Будет доступно после подключения соответствующего окна";
       });

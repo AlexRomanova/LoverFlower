@@ -1,3 +1,4 @@
+// <app-footer>: разметка и поведение компонента.
 (() => {
   const root = new URL("../../", document.currentScript.src).href;
   const asset = (path) => new URL(path, root).href;
