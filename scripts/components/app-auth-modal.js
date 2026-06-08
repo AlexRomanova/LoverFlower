@@ -424,7 +424,7 @@ class AppAuthModal extends HTMLElement {
   }
 
   restorePage() {
-    if (this.dialog.open) return;
+    if (this.dialog.open || !document.body.classList.contains("is-auth-open")) return;
     document.body.classList.remove("is-auth-open");
     const fallback = document.querySelector('[data-open="menu"]')?.getClientRects().length
       ? document.querySelector('[data-open="menu"]')
@@ -432,6 +432,7 @@ class AppAuthModal extends HTMLElement {
     const trigger = this.trigger?.isConnected && this.trigger.getClientRects().length ? this.trigger : fallback;
     trigger?.focus({ preventScroll: true });
     this.trigger = null;
+    this.dispatchEvent(new CustomEvent("auth-closed", { bubbles: true }));
   }
 }
 

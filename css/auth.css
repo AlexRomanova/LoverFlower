@@ -1,0 +1,65 @@
+/* Вход и регистрация: только стили <app-auth-modal>. */
+app-auth-modal { display: block; }
+body.is-auth-open { overflow: hidden; }
+.auth-dialog {
+  width: min(520px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  max-height: 90dvh;
+  padding: 30px !important;
+  scrollbar-gutter: stable;
+}
+.auth-dialog--register { width: min(780px, calc(100vw - 32px)); }
+.auth-dialog [hidden] { display: none !important; }
+.auth-dialog .site-dialog__close { width: 44px; height: 44px; top: 4px; right: 4px; }
+.auth-dialog h2 { padding-right: 30px; }
+.auth-dialog button, .auth-dialog input { font-family: var(--font-body); }
+.auth-demo, .auth-hint { font-size: 13px; line-height: 1.5; color: #bac9c6; }
+.auth-demo { margin: 15px 0 0; }
+.auth-dialog .auth-form { gap: 18px; margin-top: 18px; }
+.auth-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; }
+.auth-field { min-width: 0; }
+.auth-dialog .auth-field > label { display: block; margin: 0 0 8px; font-size: 13px; letter-spacing: 0.04em; }
+.auth-dialog .auth-field input { height: 50px; padding: 12px; border-color: #728582; min-width: 0; border-radius: 0; color-scheme: dark; }
+.auth-dialog input[readonly] { color: var(--color-accent); }
+.auth-dialog input:focus { border-color: var(--color-accent); }
+.auth-dialog input[aria-invalid="true"] { border-color: #ff9dbd; }
+.auth-required { color: var(--color-accent); }
+.auth-hint { display: block; margin-top: 6px; text-transform: none; }
+.auth-error, .auth-status { margin: 6px 0 0; font-size: 13px; line-height: 1.5; }
+.auth-error { color: #ff9dbd; }
+.auth-error:empty, .auth-status:empty { display: none; }
+.auth-inline { display: flex; align-items: center; gap: 14px; }
+.auth-inline input { flex: 1; }
+.auth-link { border: 0; background: transparent; color: var(--color-accent); font-size: 13px; line-height: 1.5; padding: 6px 0; text-decoration: underline; cursor: pointer; }
+.auth-inline .auth-link { flex: 0 0 105px; text-align: left; }
+.auth-dialog button:disabled { opacity: 0.5; cursor: not-allowed; }
+.auth-password-mode { margin: 0; padding: 14px 0 0; border: 0; border-top: 1px solid #405450; }
+.auth-password-mode legend { padding-right: 12px; font-size: 14px; }
+.auth-dialog .auth-password-mode label { display: inline-flex; align-items: center; gap: 8px; margin: 0 22px 4px 0; text-transform: none; }
+.auth-dialog input[type="radio"], .auth-dialog input[type="checkbox"] { width: 18px; height: 18px; min-width: 18px; padding: 0; margin: 0; accent-color: var(--color-accent); }
+.auth-agreement { border-top: 1px solid #405450; padding-top: 12px; }
+.auth-agreement__text { max-height: 190px; overflow: auto; overscroll-behavior: contain; margin: 10px 0; padding: 16px; border: 1px solid #728582; background: #071512; font-size: 14px; line-height: 1.65; }
+.auth-agreement__text h3 { font-size: 20px; margin: 0 0 12px; }
+.auth-agreement__text h4 { font-size: 15px; margin: 14px 0 6px; }
+.auth-agreement__text p { margin: 8px 0; }
+.auth-agreement__end { color: var(--color-accent); }
+.auth-dialog .auth-consent { display: flex; align-items: flex-start; gap: 9px; margin-top: 15px; text-transform: none; font-size: 14px; line-height: 1.4; }
+.auth-consent input { margin-top: 2px !important; }
+.auth-dialog .auth-form .btn { width: 100%; margin-top: 0; }
+.auth-success { display: grid; gap: 18px; margin-top: 24px; }
+.auth-success h3 { color: var(--color-accent); font-size: 24px; }
+.auth-success p { line-height: 1.5; overflow-wrap: anywhere; }
+.auth-success label { display: block; margin-bottom: 8px; font-size: 14px; }
+.auth-success input { width: 100%; height: 50px; border: 1px solid var(--color-accent); background: transparent; padding: 12px; font-size: 16px; color: var(--color-accent); }
+.auth-success .btn { width: 100%; }
+.site-header__member-button [data-account-label] { max-width: 70px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mobile-drawer__account-name { display: block; margin-bottom: 8px; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .auth-dialog, .auth-dialog--register { width: calc(100vw - 20px); max-width: calc(100vw - 20px); padding: 24px 16px !important; }
+  .auth-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .auth-dialog .auth-tabs { gap: 22px; }
+  .auth-dialog .auth-field input { font-size: 16px; }
+  .auth-password-mode label { min-height: 32px; }
+  .auth-inline { gap: 10px; }
+  .auth-inline .auth-link { flex-basis: 82px; }
+}

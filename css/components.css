@@ -1,13 +1,8 @@
-app-header,
-app-footer,
-app-mobile-menu,
-app-callback-modal {
-  display: block;
-}
-body.is-menu-open,
-body.is-callback-open {
-  overflow: hidden;
-}
+/* Корневые элементы Web Components участвуют в раскладке как блоки. */
+app-header, app-footer, app-mobile-menu, app-callback-modal { display: block; }
+
+body.is-menu-open, body.is-callback-open { overflow: hidden; }
+
 :root {
   --color-page: #040a0a;
   --color-ink: #000;
@@ -38,6 +33,7 @@ body.is-callback-open {
     --home-brand-collapse-distance: 48px;
   }
 }
+/* Общие компоненты Lover Flower. Подключать после common.css и CSS страницы. */
 .site-header {
   position: sticky;
   z-index: 100;
@@ -355,34 +351,18 @@ body.is-cart-open .site-header__cart {
   width: min(540px, calc(100vw - 20px));
   max-width: calc(100vw - 20px);
 }
-.callback-dialog h2 {
-  padding-right: 32px;
-}
+.callback-dialog h2 { padding-right: 32px; }
 .callback-dialog .site-dialog__close {
   top: 6px;
   right: 6px;
   width: 44px;
   height: 44px;
 }
-.callback-form__field {
-  display: grid;
-  gap: 6px;
-}
-.callback-form__field label {
-  font-size: 14px;
-  text-transform: uppercase;
-}
-.callback-form__error {
-  color: var(--color-accent-soft);
-  font-size: 12px;
-}
-.callback-form input[aria-invalid="true"] {
-  border-color: var(--color-accent-soft);
-}
-.callback-form .btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+.callback-form__field { display: grid; gap: 6px; }
+.callback-form__field label { font-size: 14px; text-transform: uppercase; }
+.callback-form__error { color: var(--color-accent-soft); font-size: 12px; }
+.callback-form input[aria-invalid="true"] { border-color: var(--color-accent-soft); }
+.callback-form .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .callback-dialog > p {
   max-width: 380px;
   margin: 14px 0 20px;
@@ -917,7 +897,6 @@ body.is-cart-open .site-header__cart {
   .footer__legal .logo {
     order: -2;
     margin: 0 auto 20px;
-    flex-basis: auto;
   }
   .footer__legal h3 {
     order: 2;
@@ -975,6 +954,7 @@ body.is-cart-open .site-header__cart {
     transition: font-size 0.25s, top 0.25s;
   }
 }
+/* Обёртка остаётся липкой при прокрутке всей страницы. */
 #site-header {
   position: sticky;
   top: 0;
@@ -1027,6 +1007,7 @@ body[data-auth="member"] .mobile-drawer__account--member {
 .home-page .search-results {
   padding-top: calc(var(--size-header) + 60px);
 }
+/* Общие элементы используют те же токены, даже пока старые имена остаются в common.css. */
 body {
   background: var(--color-page);
   color: var(--color-text);

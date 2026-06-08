@@ -141,27 +141,21 @@
           }
           updateHomeHeader();
         };
-        window.addEventListener(
-          "scroll",
-          () => {
-            if (framePending) return;
-            framePending = true;
-            window.requestAnimationFrame(updateHomeHeader);
-          },
-          { passive: true }
-        );
+        window.addEventListener("scroll", () => {
+          if (framePending) return;
+          framePending = true;
+          window.requestAnimationFrame(updateHomeHeader);
+        }, { passive: true });
         window.addEventListener("resize", measureHomeHeader);
         document.fonts.ready.then(measureHomeHeader);
         measureHomeHeader();
       }
       const menuButton = this.querySelector('[data-open="menu"]');
       menuButton.addEventListener("click", () => {
-        this.dispatchEvent(
-          new CustomEvent("open-mobile-menu", {
-            bubbles: true,
-            detail: { trigger: menuButton },
-          })
-        );
+        this.dispatchEvent(new CustomEvent("open-mobile-menu", {
+          bubbles: true,
+          detail: { trigger: menuButton },
+        }));
       });
       customElements.whenDefined("app-mobile-menu").then(() => {
         if (document.querySelector("app-mobile-menu")) menuButton.disabled = false;
@@ -175,20 +169,31 @@
       customElements.whenDefined("app-auth-modal").then(() => {
         if (document.querySelector("app-auth-modal")) authButton.disabled = false;
       });
+      const cartButton = this.querySelector('[data-open="cart"]');
+      cartButton.disabled = true;
+      cartButton.setAttribute("aria-controls", "cart-dialog");
+      cartButton.setAttribute("aria-expanded", "false");
+      cartButton.addEventListener("click", () => {
+        this.dispatchEvent(new CustomEvent("open-cart", { bubbles: true, detail: { trigger: cartButton } }));
+      });
+      customElements.whenDefined("app-cart-modal").then(() => {
+        if (document.querySelector("app-cart-modal")) cartButton.disabled = false;
+      });
+      document.addEventListener("cart-changed", (event) => {
+        const quantity = event.detail.quantity;
+        this.querySelector("[data-cart-count]").textContent = quantity || "";
+        cartButton.setAttribute("aria-label", quantity ? `Открыть корзину. Количество товаров: ${quantity}` : "Открыть корзину");
+      });
       document.addEventListener("auth-changed", (event) => {
         const user = event.detail.user;
-        this.querySelector("[data-account-label]").textContent = user
-          ? `${user.firstName[0]}${user.surname[0]}`.toUpperCase()
-          : "";
+        this.querySelector("[data-account-label]").textContent = user ? `${user.firstName[0]}${user.surname[0]}`.toUpperCase() : "";
         this.querySelector(".site-header__member-button").title = user?.nickname || "Личный кабинет";
       });
       this.querySelector('[data-profile-action="logout"]').addEventListener("click", () => {
         this.dispatchEvent(new CustomEvent("auth-logout", { bubbles: true }));
         authButton.focus();
       });
-      this.querySelectorAll(
-        '[data-open]:not([data-open="menu"]):not([data-open="auth"]), [data-search-open], [data-profile-action="favorites"], [data-profile-action="settings"]'
-      ).forEach((button) => {
+      this.querySelectorAll('[data-open]:not([data-open="menu"]):not([data-open="auth"]):not([data-open="cart"]), [data-search-open], [data-profile-action="favorites"], [data-profile-action="settings"]').forEach((button) => {
         button.disabled = true;
         button.title = "Будет доступно после подключения соответствующего окна";
       });

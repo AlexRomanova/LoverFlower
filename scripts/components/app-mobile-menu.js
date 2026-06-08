@@ -1,3 +1,4 @@
+// <app-mobile-menu>: мобильная навигация и управление её окном.
 (() => {
   const root = new URL("../../", document.currentScript.src).href;
   const asset = (path) => new URL(path, root).href;
@@ -62,64 +63,35 @@
     bindEvents() {
       const options = { signal: this.controller.signal };
       document.addEventListener("open-mobile-menu", (event) => this.open(event.detail?.trigger), options);
-      document.addEventListener(
-        "auth-changed",
-        (event) => {
-          this.querySelector("[data-mobile-account-name]").textContent = event.detail.user?.nickname || "";
-        },
-        options
-      );
-      this.querySelector("[data-mobile-auth]").addEventListener(
-        "click",
-        () => {
-          const trigger = this.trigger;
-          this.close();
-          this.dispatchEvent(new CustomEvent("open-auth", { bubbles: true, detail: { trigger } }));
-        },
-        options
-      );
-      this.querySelector("[data-mobile-logout]").addEventListener(
-        "click",
-        () => {
-          this.close();
-          this.dispatchEvent(new CustomEvent("auth-logout", { bubbles: true }));
-        },
-        options
-      );
+      document.addEventListener("auth-changed", (event) => {
+        this.querySelector("[data-mobile-account-name]").textContent = event.detail.user?.nickname || "";
+      }, options);
+      this.querySelector("[data-mobile-auth]").addEventListener("click", () => {
+        const trigger = this.trigger;
+        this.close();
+        this.dispatchEvent(new CustomEvent("open-auth", { bubbles: true, detail: { trigger } }));
+      }, options);
+      this.querySelector("[data-mobile-logout]").addEventListener("click", () => {
+        this.close();
+        this.dispatchEvent(new CustomEvent("auth-logout", { bubbles: true }));
+      }, options);
       this.querySelector("[data-menu-close]").addEventListener("click", () => this.close(), options);
-      this.dialog.addEventListener(
-        "click",
-        (event) => {
-          if (event.target.closest("a")) this.close();
-          // У клика по backdrop цель — dialog, поэтому проверяем границы самого окна.
-          if (event.target !== this.dialog) return;
-          const bounds = this.dialog.getBoundingClientRect();
-          if (
-            event.clientX < bounds.left ||
-            event.clientX > bounds.right ||
-            event.clientY < bounds.top ||
-            event.clientY > bounds.bottom
-          )
-            this.close();
-        },
-        options
-      );
+      this.dialog.addEventListener("click", (event) => {
+        if (event.target.closest("a")) this.close();
+        // У клика по backdrop цель — dialog, поэтому проверяем границы самого окна.
+        if (event.target !== this.dialog) return;
+        const bounds = this.dialog.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right ||
+            event.clientY < bounds.top || event.clientY > bounds.bottom) this.close();
+      }, options);
       this.dialog.addEventListener("close", () => this.restorePage(), options);
-      this.dialog.addEventListener(
-        "cancel",
-        (event) => {
-          event.preventDefault();
-          this.close();
-        },
-        options
-      );
-      window.matchMedia("(min-width: 761px)").addEventListener(
-        "change",
-        (event) => {
-          if (event.matches) this.close();
-        },
-        options
-      );
+      this.dialog.addEventListener("cancel", (event) => {
+        event.preventDefault();
+        this.close();
+      }, options);
+      window.matchMedia("(min-width: 761px)").addEventListener("change", (event) => {
+        if (event.matches) this.close();
+      }, options);
     }
 
     open(trigger) {
@@ -137,6 +109,7 @@
     }
 
     restorePage() {
+      // Событие close приходит асинхронно: не трогаем меню, если его уже открыли снова.
       if (this.dialog.open) return;
       document.body.classList.remove("is-menu-open");
       this.trigger?.setAttribute("aria-expanded", "false");
