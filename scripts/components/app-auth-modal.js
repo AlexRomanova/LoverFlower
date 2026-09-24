@@ -6,7 +6,7 @@ class AppAuthModal extends HTMLElement {
   connectedCallback() {
     if (!this.initialized) {
       this.render();
-      this.dialog = this.querySelector("dialog");
+      this.dialog = this.querySelector("#auth-dialog");
       this.registrationForm = this.querySelector("[data-registration-form]");
       this.loginForm = this.querySelector("[data-login-form]");
       this.initialized = true;
@@ -17,10 +17,12 @@ class AppAuthModal extends HTMLElement {
     catch { this.store = null; }
     this.bindEvents();
     this.publishUser(this.store?.currentUser() || null);
+    this.store?.restore().then((user) => { if (this.isConnected) this.publishUser(user); }).catch((error) => this.showStatus(this.loginForm, error.message));
     this.updateButtons();
   }
 
   disconnectedCallback() {
+    this.operation?.abort();
     this.close();
     this.controller.abort();
   }
@@ -40,7 +42,7 @@ class AppAuthModal extends HTMLElement {
           <button type="button" class="site-dialog__close" aria-label="Закрыть окно входа и регистрации">×</button>
           <h2 id="auth-title">Личный кабинет</h2>
           <span class="site-dialog__line" aria-hidden="true"></span>
-          <p class="auth-demo">Учебная версия: аккаунт сохраняется только в этом браузере.</p>
+          <p class="auth-demo">Учебная версия: локально данные сохраняются в JSON Server, на GitHub Pages — в этом браузере.</p>
           <div class="auth-tabs" role="tablist" aria-label="Вход или регистрация">
             <button type="button" role="tab" id="login-tab" data-auth-tab="login" aria-controls="login-panel" aria-selected="true">Войти</button>
             <button type="button" role="tab" id="register-tab" data-auth-tab="register" aria-controls="register-panel" aria-selected="false" tabindex="-1">Регистрация</button>
@@ -105,15 +107,15 @@ class AppAuthModal extends HTMLElement {
                   <h3>Соглашение пользователя</h3>
                   <p><strong>Учебный текст для курсового проекта.</strong> Он не является утверждённым соглашением действующего магазина.</p>
                   <h4>1. Назначение сайта</h4>
-                  <p>Lover Flower демонстрирует каталог цветов и интерфейс личного кабинета. Регистрация создаёт учебный аккаунт в текущем браузере и не отправляет данные в магазин.</p>
+                  <p>Lover Flower демонстрирует каталог цветов и интерфейс личного кабинета. Регистрация создаёт учебный аккаунт и не отправляет данные в настоящий магазин.</p>
                   <h4>2. Условия регистрации</h4>
                   <p>Пользователю должно исполниться 16 лет. Для регистрации указываются фамилия, имя, дата рождения, email и номер телефона Республики Беларусь. Отчество заполняется по желанию.</p>
                   <h4>3. Пароль и доступ</h4>
                   <p>Пароль задаётся самостоятельно или генерируется автоматически. Пользователь сохраняет его и не передаёт другим лицам. Восстановление доступа по SMS или email в учебной версии не реализовано.</p>
                   <h4>4. Хранение данных</h4>
-                  <p>Данные аккаунта и хеш пароля сохраняются локально. После очистки данных сайта аккаунт станет недоступен. На другом устройстве или в другом браузере этот аккаунт не появляется.</p>
+                  <p>При локальном запуске аккаунты, корзины и заявки сохраняются в JSON Server. На GitHub Pages они сохраняются только в этом браузере. Очистка данных браузера удаляет изменения демонстрационной версии, но не меняет локальную базу JSON Server.</p>
                   <h4>5. Использование кабинета</h4>
-                  <p>Вход подтверждает доступ к локальному учебному аккаунту. Корзина и оформление заказа подключаются отдельными этапами разработки. Этот интерфейс не подтверждает оплату или реальный заказ.</p>
+                  <p>Покупатель работает со своей корзиной. Менеджер управляет ценами и наличием товаров. Оформление заказа подключается отдельным этапом. Этот интерфейс не подтверждает оплату или реальный заказ.</p>
                   <h4>6. Подтверждение</h4>
                   <p>Прочитав текст до конца, пользователь может отметить согласие с условиями учебной версии. Для запуска настоящего магазина текст необходимо заменить утверждённым соглашением.</p>
                   <p class="auth-agreement__end">Конец соглашения</p>
@@ -142,8 +144,8 @@ class AppAuthModal extends HTMLElement {
   bindEvents() {
     const options = { signal: this.controller.signal };
     document.addEventListener("open-auth", (event) => this.open(event.detail?.trigger, event.detail?.tab), options);
-    document.addEventListener("auth-logout", () => {
-      try { this.store?.logout(); this.publishUser(null); }
+    document.addEventListener("auth-logout", async () => {
+      try { await this.store?.logout(); this.publishUser(null); }
       catch { this.showStatus(this.loginForm, "Не удалось выйти из аккаунта. Проверьте доступ к хранилищу браузера."); }
     }, options);
     this.querySelector(".site-dialog__close").addEventListener("click", () => this.close(), options);

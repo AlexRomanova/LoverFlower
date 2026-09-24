@@ -84,6 +84,7 @@
               <img src="${asset("media/icons/icon_account.webp")}" alt="" /> <span data-account-label></span>
             </button>
             <nav class="site-header__profile-menu" aria-label="Личный кабинет">
+              <a href="${root}pages/admin.html" data-manager-link hidden>Кабинет менеджера</a>
               <button type="button" data-open="history">История заказов</button>
               <button type="button" data-profile-action="favorites">Избранное</button>
               <button type="button" data-profile-action="settings">Настройки</button>
@@ -186,6 +187,7 @@
       });
       document.addEventListener("auth-changed", (event) => {
         const user = event.detail.user;
+        this.querySelector("[data-manager-link]").hidden = user?.role !== "manager";
         this.querySelector("[data-account-label]").textContent = user ? `${user.firstName[0]}${user.surname[0]}`.toUpperCase() : "";
         this.querySelector(".site-header__member-button").title = user?.nickname || "Личный кабинет";
       });

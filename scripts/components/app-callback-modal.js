@@ -1,7 +1,6 @@
 // <app-callback-modal>: кнопка обратного звонка, форма и её валидация.
 (() => {
   const root = new URL("../../", document.currentScript.src).href;
-  const requestsKey = "loverflower.callbackRequests";
 
   class AppCallbackModal extends HTMLElement {
     connectedCallback() {
@@ -52,7 +51,7 @@
                 <p class="callback-form__error" id="callback-phone-error" hidden></p>
               </div>
               <button class="btn" type="submit" disabled>Заказать звонок</button>
-              <small>Учебная форма: заявки сохраняются в браузере и не передаются оператору.</small>
+              <small>Учебная форма: заявки доступны в кабинете менеджера.</small>
               <p class="site-form-status" role="status" aria-live="polite"></p>
             </form>
           </dialog>
@@ -109,27 +108,26 @@
     }
 
     updateSubmitButton() {
-      this.submitButton.disabled = !this.normalizePhone();
+      this.submitButton.disabled = Boolean(this.busy) || !this.normalizePhone();
     }
 
-    saveRequest() {
+    async saveRequest() {
+      if (this.busy) return;
+      this.busy = true;
+      this.updateSubmitButton();
       try {
-        const saved = JSON.parse(localStorage.getItem(requestsKey) || "[]");
-        const requests = Array.isArray(saved) ? saved : [];
-        requests.push({
+        const { createRequest } = await import(`${root}scripts/features/requests.js`);
+        await createRequest("callback", {
           name: this.form.elements.name.value.trim(),
           phone: this.normalizePhone(),
-          createdAt: new Date().toISOString(),
         });
-        localStorage.setItem(requestsKey, JSON.stringify(requests));
         this.form.reset();
         this.phone.removeAttribute("aria-invalid");
         this.error.hidden = true;
         this.updateSubmitButton();
-        this.status.textContent = "Учебная заявка сохранена.";
-      } catch {
-        this.status.textContent = "Не удалось сохранить заявку в браузере. Попробуйте ещё раз.";
-      }
+        this.status.textContent = "Учебная заявка сохранена и доступна менеджеру.";
+      } catch (error) { this.status.textContent = error.message; }
+      finally { this.busy = false; this.updateSubmitButton(); }
     }
 
     open() {

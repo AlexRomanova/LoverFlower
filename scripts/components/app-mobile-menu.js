@@ -41,6 +41,7 @@
             <button type="button" class="mobile-drawer__account mobile-drawer__account--guest" data-mobile-auth>Войти / Зарегистрироваться</button>
             <div class="mobile-drawer__account mobile-drawer__account--member">
               <span class="mobile-drawer__account-name" data-mobile-account-name></span>
+              <a href="${root}pages/admin.html" data-manager-link hidden>Кабинет менеджера</a>
               <button type="button" data-mobile-logout>Выйти из аккаунта</button>
             </div>
             <address>
@@ -64,6 +65,7 @@
       const options = { signal: this.controller.signal };
       document.addEventListener("open-mobile-menu", (event) => this.open(event.detail?.trigger), options);
       document.addEventListener("auth-changed", (event) => {
+        this.querySelector("[data-manager-link]").hidden = event.detail.user?.role !== "manager";
         this.querySelector("[data-mobile-account-name]").textContent = event.detail.user?.nickname || "";
       }, options);
       this.querySelector("[data-mobile-auth]").addEventListener("click", () => {

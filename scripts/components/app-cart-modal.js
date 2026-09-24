@@ -1,6 +1,7 @@
-import { CART_KEY, MAX_QUANTITY, cartSummary, createCartStore } from "../features/cart-store.js";
-import { productsById, productLabel, formatMoney } from "../features/products.js";
+import { CART_KEY, MAX_QUANTITY, cartSummary } from "../features/cart-store.js";
+import { productsById, productLabel, formatMoney, loadProducts } from "../features/products.js";
 import { createAccountStore } from "../features/account-store.js";
+import { createCustomerCart } from "../features/customer-cart.js";
 
 // <app-cart-modal>: окно корзины, кнопки карточек и переход к входу.
 class AppCartModal extends HTMLElement {
@@ -12,11 +13,11 @@ class AppCartModal extends HTMLElement {
     }
     this.controller = new AbortController();
     try {
-      this.store = createCartStore(localStorage);
       this.accounts = createAccountStore(localStorage, sessionStorage);
+      this.store = createCustomerCart(localStorage, this.accounts);
     } catch { this.store = null; }
     this.bindEvents();
-    this.refresh();
+    this.initialize();
     customElements.whenDefined("app-auth-modal").then(() => {
       if (this.isConnected) this.updateAccount();
     });
@@ -26,6 +27,24 @@ class AppCartModal extends HTMLElement {
     this.returnFromAuth = false;
     this.close();
     this.controller.abort();
+  }
+
+  async initialize() {
+    this.setStatus("Загружаем корзину…");
+    try {
+      await Promise.all([loadProducts(), this.accounts.restore()]);
+      if (!this.isConnected) return;
+      await this.refresh();
+      this.setStatus("");
+      document.querySelectorAll("[data-product-id]").forEach((card) => {
+        const product = productsById.get(card.dataset.productId);
+        if (product) {
+          card.dataset.price = product.priceMinor / 100;
+          const price = card.querySelector(".product__price");
+          if (price) price.textContent = formatMoney(product.priceMinor);
+        }
+      });
+    } catch (error) { this.setStatus(error.message); }
   }
 
   render() {
@@ -61,8 +80,8 @@ class AppCartModal extends HTMLElement {
       if (!button || button.disabled) return;
       const id = button.closest("[data-product-id]")?.dataset.productId;
       if (!productsById.has(id)) return;
-      this.mutate(() => this.store.add(id), `${productLabel(productsById.get(id))} добавлен в корзину.`);
       this.open(button);
+      this.mutate(() => this.store.add(id), `${productLabel(productsById.get(id))} добавлен в корзину.`);
     }, options);
     this.querySelectorAll("[data-cart-close]").forEach((button) => button.addEventListener("click", () => this.close(), options));
     this.querySelector("[data-cart-items]").addEventListener("click", (event) => this.changeItem(event), options);
@@ -79,7 +98,7 @@ class AppCartModal extends HTMLElement {
       this.close();
       this.dispatchEvent(new CustomEvent("open-auth", { bubbles: true, detail: { trigger } }));
     }, options);
-    document.addEventListener("auth-changed", () => this.updateAccount(), options);
+    document.addEventListener("auth-changed", () => { this.updateAccount(); this.refresh(); }, options);
     document.addEventListener("auth-closed", () => {
       if (!this.returnFromAuth) return;
       this.returnFromAuth = false;
@@ -91,14 +110,18 @@ class AppCartModal extends HTMLElement {
     }, options);
   }
 
-  refresh(snapshot) {
+  async refresh(snapshot) {
+    const revision = this.revision = (this.revision || 0) + 1;
     try {
-      this.snapshot = snapshot || this.store.snapshot();
+      const result = snapshot || await this.store.snapshot();
+      if (revision !== this.revision || !this.isConnected) return;
+      this.snapshot = result;
       this.storageAvailable = true;
-    } catch {
+    } catch (error) {
+      if (revision !== this.revision || !this.isConnected) return;
       this.snapshot = cartSummary([]);
       this.storageAvailable = false;
-      this.setStatus("Не удалось открыть корзину. Разрешите сайту сохранять данные в браузере.");
+      this.setStatus(error.message || "Не удалось открыть корзину.");
     }
     this.renderItems();
     this.querySelector("[data-cart-total]").textContent = formatMoney(this.snapshot.totalMinor);
@@ -146,7 +169,7 @@ class AppCartModal extends HTMLElement {
         row.querySelector(`[data-cart-action="${action}"]`).setAttribute("aria-label", `${label}: ${productLabel(item)}`);
       }
       row.querySelector('[data-cart-action="decrease"]').disabled = item.quantity === 1;
-      row.querySelector('[data-cart-action="increase"]').disabled = item.quantity === MAX_QUANTITY;
+      row.querySelector('[data-cart-action="increase"]').disabled = item.quantity >= Math.min(MAX_QUANTITY, item.stock);
       fragment.append(row);
     }
     container.replaceChildren(fragment);
@@ -163,7 +186,7 @@ class AppCartModal extends HTMLElement {
       const product = productsById.get(id);
       if (!product) return;
       const quantity = this.snapshot.items.find((item) => item.id === id)?.quantity || 0;
-      button.disabled = !this.storageAvailable;
+      button.disabled = !this.storageAvailable || this.busy || !product.stock || this.accounts?.currentUser()?.role === "manager";
       button.textContent = quantity ? `В корзине: ${quantity}` : "В корзину";
       button.setAttribute("aria-label", `Добавить ${productLabel(product)} в корзину${quantity ? `. Уже добавлено: ${quantity}` : ""}`);
     });
@@ -183,28 +206,32 @@ class AppCartModal extends HTMLElement {
       : "Чтобы оформить заказ и сохранить его в личном кабинете, войдите в аккаунт.";
   }
 
-  mutate(operation, message) {
+  async mutate(operation, message) {
+    if (this.busy) return;
+    this.busy = true;
+    this.updateProductButtons();
+    this.querySelectorAll("[data-cart-action]").forEach((button) => { button.disabled = true; });
     try {
-      this.refresh(operation());
+      await this.refresh(await operation());
       this.setStatus(`${message} Сумма: ${formatMoney(this.snapshot.totalMinor)}.`);
     } catch (error) {
       this.setStatus(error.name === "QuotaExceededError" || error.name === "SecurityError" || !this.store
         ? "Не удалось сохранить корзину. Проверьте доступ и свободное место в хранилище браузера."
         : error.message);
-    }
+    } finally { this.busy = false; this.updateProductButtons(); this.renderItems(); }
   }
 
   changeItem(event) {
     const button = event.target.closest("[data-cart-action]");
-    if (!button || button.disabled) return;
+    if (!button || button.disabled || this.busy) return;
     const id = button.closest("[data-cart-id]").dataset.cartId;
     const action = button.dataset.cartAction;
     const item = this.snapshot.items.find((entry) => entry.id === id);
     if (!item) return;
     if (action === "remove") this.mutate(() => this.store.remove(id), `${productLabel(item)} удалён.`);
-    else this.mutate(() => {
+    else this.mutate(async () => {
       // Перечитываем количество, если корзина изменилась в другой вкладке.
-      const latest = this.store.snapshot().items.find((entry) => entry.id === id);
+      const latest = (await this.store.snapshot()).items.find((entry) => entry.id === id);
       if (!latest) throw new Error("Товар уже удалён из корзины.");
       return this.store.setQuantity(id, latest.quantity + (action === "increase" ? 1 : -1));
     }, "Количество изменено.");
@@ -215,6 +242,7 @@ class AppCartModal extends HTMLElement {
   open(trigger) {
     if (this.dialog.open) return;
     this.trigger = trigger;
+    this.setStatus("");
     this.refresh();
     this.dialog.showModal();
     document.body.classList.add("is-cart-open");

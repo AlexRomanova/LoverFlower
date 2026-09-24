@@ -1,84 +1,86 @@
-// Учебные аккаунты в этом браузере. Для реального сайта нужен сервер авторизации.
+import { api, SESSION_KEY } from "./api.js";
+import { transferGuestCart } from "./customer-cart.js";
 import { AGREEMENT_VERSION, normalizePhone, registrationErrors } from "./registration-rules.js";
-
+import { createCredential, fromHex, hashPassword } from "./password-crypto.js";
+export { SESSION_KEY } from "./api.js";
 export const ACCOUNTS_KEY = "loverflower.accounts.v1";
-export const SESSION_KEY = "loverflower.session.v1";
-const HASH_ITERATIONS = 600000;
-const toHex = (bytes) => Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
-const fromHex = (hex) => Uint8Array.from(hex.match(/.{2}/g) || [], (byte) => parseInt(byte, 16));
-const publicProfile = ({ credential, ...profile }) => profile;
+const MIGRATION_KEY = "loverflower.accounts.migrated.v3";
+const stores = new WeakMap();
+const publicProfile = ({ credential, ...user }) => user;
 
-async function hashPassword(password, salt, iterations = HASH_ITERATIONS) {
-  if (!crypto.subtle) throw new Error("Для регистрации откройте сайт через localhost или HTTPS.");
-  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveBits"]);
-  const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt, iterations }, key, 256);
-  return toHex(new Uint8Array(bits));
-}
-
-export function createAccountStore(accountsStorage, sessionStorage) {
-  const readAccounts = () => {
-    const parsed = JSON.parse(accountsStorage.getItem(ACCOUNTS_KEY) || "[]");
-    if (!Array.isArray(parsed)) throw new Error("Не удалось прочитать сохранённые аккаунты.");
-    return parsed;
-  };
-  function checkDuplicates(data, accounts) {
-    const field = ["email", "phone", "nickname"].find((key) => accounts.some((account) => account[key].toLowerCase() === data[key].toLowerCase()));
-    if (field) {
-      const error = new Error({ email: "Этот email уже зарегистрирован.", phone: "Этот телефон уже зарегистрирован.", nickname: "Этот никнейм уже занят." }[field]);
-      error.field = field;
-      throw error;
+// Учебная авторизация на клиенте. JSON Server не защищает записи от прямых запросов.
+export function createAccountStore(accountsStorage, sessionStorage, { request = api } = {}) {
+  if (stores.has(sessionStorage)) return stores.get(sessionStorage);
+  let user = null;
+  let restoring;
+  async function migrate(signal) {
+    if (accountsStorage.getItem(MIGRATION_KEY)) return;
+    const old = JSON.parse(accountsStorage.getItem(ACCOUNTS_KEY) || "[]");
+    if (!Array.isArray(old)) throw new Error("Не удалось прочитать старые аккаунты.");
+    if (old.length) {
+      const users = await request("users", { signal });
+      for (const entry of old) {
+        if (!entry.credential || users.some((item) => item.email === entry.email || item.phone === entry.phone || item.nickname === entry.nickname)) continue;
+        const profile = { id: entry.id || crypto.randomUUID(), role: "customer", surname: entry.surname, firstName: entry.firstName, patronymic: entry.patronymic || "", phone: entry.phone, email: entry.email, birthDate: entry.birthDate, nickname: entry.nickname, credential: entry.credential, agreement: entry.agreement, createdAt: entry.createdAt };
+        const added = await request("users", { method: "POST", body: profile, signal });
+        users.push(added);
+      }
     }
+    accountsStorage.setItem(MIGRATION_KEY, "complete");
   }
-  return {
-    currentUser() {
-      try {
-        const id = sessionStorage.getItem(SESSION_KEY);
-        const account = readAccounts().find((item) => item.id === id);
-        return account ? publicProfile(account) : null;
-      } catch { return null; }
+  async function accept(account, signal) {
+    signal?.throwIfAborted();
+    if (account.role === "customer") await transferGuestCart(accountsStorage, account, signal, request);
+    signal?.throwIfAborted();
+    sessionStorage.setItem(SESSION_KEY, account.id);
+    sessionStorage.removeItem("loverflower.session.v1");
+    sessionStorage.removeItem("loverflower.session.v2");
+    user = publicProfile(account);
+    return user;
+  }
+  const store = {
+    currentUser: () => user,
+    restore() {
+      if (restoring) return restoring;
+      restoring = (async () => {
+        await migrate();
+        const id = sessionStorage.getItem(SESSION_KEY) || sessionStorage.getItem("loverflower.session.v1");
+        if (!id) return null;
+        const account = (await request("users")).find((entry) => entry.id === id);
+        user = account ? publicProfile(account) : null;
+        if (!account) sessionStorage.removeItem(SESSION_KEY);
+        else sessionStorage.setItem(SESSION_KEY, account.id);
+        return user;
+      })().finally(() => { restoring = null; });
+      return restoring;
     },
     async register(data, signal) {
       const errors = registrationErrors(data);
-      if (Object.keys(errors).length) {
-        const error = new Error("Проверьте поля регистрации.");
-        error.errors = errors;
-        throw error;
-      }
-      const profile = {
-        surname: data.surname.trim(), firstName: data.firstName.trim(), patronymic: data.patronymic.trim(),
-        phone: normalizePhone(data.phone), email: data.email.trim().toLowerCase(),
-        birthDate: data.birthDate, nickname: data.nickname,
-      };
-      checkDuplicates(profile, readAccounts());
-      const salt = crypto.getRandomValues(new Uint8Array(16));
-      const hash = await hashPassword(data.password, salt);
+      if (Object.keys(errors).length) throw Object.assign(new Error("Проверьте поля регистрации."), { errors });
+      await migrate(signal);
+      const profile = { surname: data.surname.trim(), firstName: data.firstName.trim(), patronymic: (data.patronymic || "").trim(),
+        phone: normalizePhone(data.phone), email: data.email.trim().toLowerCase(), birthDate: data.birthDate, nickname: data.nickname.trim() };
+      const credential = await createCredential(data.password);
       signal?.throwIfAborted();
-      // Перечитываем после асинхронного хеширования, чтобы не потерять новый аккаунт.
-      const accounts = readAccounts();
-      checkDuplicates(profile, accounts);
-      const account = {
-        ...profile, id: crypto.randomUUID(), createdAt: new Date().toISOString(),
-        agreement: { version: AGREEMENT_VERSION, acceptedAt: new Date().toISOString() },
-        credential: { salt: toHex(salt), hash, iterations: HASH_ITERATIONS },
-      };
-      // Проверяем доступность сессии до записи аккаунта.
-      sessionStorage.setItem(SESSION_KEY, account.id);
-      try { accountsStorage.setItem(ACCOUNTS_KEY, JSON.stringify([...accounts, account])); }
-      catch (error) { sessionStorage.removeItem(SESSION_KEY); throw error; }
-      return publicProfile(account);
+      const users = await request("users", { signal });
+      const field = ["email", "phone", "nickname"].find((key) => users.some((entry) => entry[key].toLowerCase() === profile[key].toLowerCase()));
+      if (field) throw Object.assign(new Error({ email: "Этот email уже зарегистрирован.", phone: "Этот телефон уже зарегистрирован.", nickname: "Этот никнейм уже занят." }[field]), { field });
+      const account = await request("users", { method: "POST", signal, body: { ...profile, id: crypto.randomUUID(), role: "customer", credential,
+        createdAt: new Date().toISOString(), agreement: { version: AGREEMENT_VERSION, acceptedAt: new Date().toISOString() } } });
+      return accept(account, signal);
     },
     async login(identifier, password, signal) {
-      const email = identifier.trim().toLowerCase();
-      const phone = normalizePhone(identifier);
-      const account = readAccounts().find((item) => item.email === email || (phone && item.phone === phone));
-      const credential = account?.credential;
-      if (!credential) throw new Error("Неверный email, телефон или пароль.");
-      const hash = await hashPassword(password, fromHex(credential.salt), credential.iterations);
+      await migrate(signal);
+      const account = (await request("users", { signal })).find((entry) => entry.email === identifier.trim().toLowerCase() || entry.phone === normalizePhone(identifier));
+      if (!account?.credential) throw new Error("Неверный email, телефон или пароль.");
+      const hash = await hashPassword(password, fromHex(account.credential.salt), account.credential.iterations);
       signal?.throwIfAborted();
-      if (hash !== credential.hash) throw new Error("Неверный email, телефон или пароль.");
-      sessionStorage.setItem(SESSION_KEY, account.id);
-      return publicProfile(account);
+      if (hash !== account.credential.hash) throw new Error("Неверный email, телефон или пароль.");
+      return accept(account, signal);
     },
-    logout() { sessionStorage.removeItem(SESSION_KEY); },
+    async logout() { sessionStorage.removeItem(SESSION_KEY); sessionStorage.removeItem("loverflower.session.v1"); sessionStorage.removeItem("loverflower.session.v2"); user = null; },
   };
+  stores.set(sessionStorage, store);
+  return store;
 }
+

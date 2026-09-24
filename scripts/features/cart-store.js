@@ -40,6 +40,7 @@ export function createCartStore(storage) {
   }
   function requireProduct(id) {
     if (!productsById.has(id)) throw new Error("Этот товар пока недоступен для добавления.");
+    if (!productsById.get(id).stock) throw new Error("Этот букет закончился.");
   }
   function requireQuantity(quantity) {
     if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY) {
@@ -54,6 +55,7 @@ export function createCartStore(storage) {
       const items = read();
       const existing = items.find((item) => item.id === id);
       if (existing && existing.quantity + quantity > MAX_QUANTITY) throw new Error(`В корзине может быть не больше ${MAX_QUANTITY} одинаковых букетов.`);
+      if ((existing?.quantity || 0) + quantity > productsById.get(id).stock) throw new Error("Недостаточно букетов в наличии.");
       if (existing) existing.quantity += quantity;
       else items.push({ id, quantity });
       return write(items);
@@ -64,6 +66,7 @@ export function createCartStore(storage) {
       const items = read();
       const item = items.find((entry) => entry.id === id);
       if (!item) throw new Error("Товар уже удалён из корзины.");
+      if (quantity > productsById.get(id).stock) throw new Error("Недостаточно букетов в наличии.");
       item.quantity = quantity;
       return write(items);
     },

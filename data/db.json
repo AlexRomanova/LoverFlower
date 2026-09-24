@@ -1,0 +1,631 @@
+{
+  "users": [
+    {
+      "id": "manager-1",
+      "role": "manager",
+      "email": "manager@loverflower.test",
+      "phone": "+375291000000",
+      "surname": "Садовников",
+      "firstName": "Иван",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerManager",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "e5dbdf22268deb5fa348bab781f1b35d",
+        "hash": "832cd176df9f67b4598b1a5550717ca298e6974121a4ae251ab101f278d75f30",
+        "iterations": 600000
+      }
+    },
+    {
+      "id": "customer-1",
+      "role": "customer",
+      "email": "customer1@loverflower.test",
+      "phone": "+375291000001",
+      "surname": "Цветкова",
+      "firstName": "Анна",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerFan1",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "e6834d2db4fd501b1442548a03a9f7aa",
+        "hash": "a2cf2ae254aa1c0822e5756b1573decb27ddb4efca3238d2de08dfb66d83012c",
+        "iterations": 600000
+      }
+    },
+    {
+      "id": "customer-2",
+      "role": "customer",
+      "email": "customer2@loverflower.test",
+      "phone": "+375291000002",
+      "surname": "Цветкова",
+      "firstName": "Мария",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerFan2",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "34e28ec7882278cbb64c9590933a0fb2",
+        "hash": "eb25915b0893ea7fdbdaa63140eb013a5765caa6294d63d6ae549be2eaf783eb",
+        "iterations": 600000
+      }
+    },
+    {
+      "id": "customer-3",
+      "role": "customer",
+      "email": "customer3@loverflower.test",
+      "phone": "+375291000003",
+      "surname": "Цветкова",
+      "firstName": "София",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerFan3",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "ba0551a77f876e8925761e869bf8a7c3",
+        "hash": "24e78065a6775b3c330c9d3257e85d7c72b8da60afcb037bbb435ed8eae6dad3",
+        "iterations": 600000
+      }
+    },
+    {
+      "id": "customer-4",
+      "role": "customer",
+      "email": "customer4@loverflower.test",
+      "phone": "+375291000004",
+      "surname": "Цветкова",
+      "firstName": "Алиса",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerFan4",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "20f61160fdff150c73096bc4a117e196",
+        "hash": "1fb028ac96f97340b176461abfb436264f6041c4e95eb4d0bdd628aa7925fe51",
+        "iterations": 600000
+      }
+    },
+    {
+      "id": "customer-5",
+      "role": "customer",
+      "email": "customer5@loverflower.test",
+      "phone": "+375291000005",
+      "surname": "Цветкова",
+      "firstName": "Ева",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerFan5",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "cf9e16af0b5d24cd88d930c1d3b5fc82",
+        "hash": "e37cc8628d4baeffc0e7e932e8953dd99ccc278d7ea14b9b2374bc6f0afdd1ca",
+        "iterations": 600000
+      }
+    },
+    {
+      "id": "customer-6",
+      "role": "customer",
+      "email": "customer6@loverflower.test",
+      "phone": "+375291000006",
+      "surname": "Цветкова",
+      "firstName": "Полина",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerFan6",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "92d03990e9d84c352fde6efd79edf08c",
+        "hash": "0a001cea7cb3249cdb68003e9832c56293463cc4f0a6cf8b5baa78d02bb060fd",
+        "iterations": 600000
+      }
+    },
+    {
+      "id": "customer-7",
+      "role": "customer",
+      "email": "customer7@loverflower.test",
+      "phone": "+375291000007",
+      "surname": "Цветкова",
+      "firstName": "Дарья",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerFan7",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "e428350746206abd72bf27ae0ab4f9f4",
+        "hash": "cdc12bcd4e4bbf72058ed290fe89bc19ff77de86ef1e677621bdbac7d1b010e5",
+        "iterations": 600000
+      }
+    },
+    {
+      "id": "customer-8",
+      "role": "customer",
+      "email": "customer8@loverflower.test",
+      "phone": "+375291000008",
+      "surname": "Цветкова",
+      "firstName": "Виктория",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerFan8",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "bd38f5fec3f4dd31c4c33582e050dfba",
+        "hash": "328f16d1100e06427f3eace13311b14b130bf5d69258333679345b02da0e5878",
+        "iterations": 600000
+      }
+    },
+    {
+      "id": "customer-9",
+      "role": "customer",
+      "email": "customer9@loverflower.test",
+      "phone": "+375291000009",
+      "surname": "Цветкова",
+      "firstName": "Артём",
+      "patronymic": "",
+      "birthDate": "2000-04-12",
+      "nickname": "FlowerFan9",
+      "createdAt": "2026-09-29T09:00:00Z",
+      "agreement": {
+        "version": "educational-2026-09-29",
+        "acceptedAt": "2026-09-29T09:00:00Z"
+      },
+      "credential": {
+        "salt": "bafd78f1b51ab6a90c4de1628e6fece6",
+        "hash": "027d9bcbcb0d534a4bf07d41d17414c286216e82bced0664fec213fb2cc86b4a",
+        "iterations": 600000
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "home-1",
+      "name": "Лучший день",
+      "variant": "Вариант 1",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 16700,
+      "stock": 99,
+      "popularity": 100,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "home-2",
+      "name": "Лучший день",
+      "variant": "Вариант 2",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 16700,
+      "stock": 99,
+      "popularity": 99,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "home-3",
+      "name": "Лучший день",
+      "variant": "Вариант 3",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 16700,
+      "stock": 99,
+      "popularity": 98,
+      "image": "media/home-mobile/popular-3.webp"
+    },
+    {
+      "id": "bouquet-4",
+      "name": "Розовый рассвет",
+      "variant": "",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 10600,
+      "stock": 13,
+      "popularity": 97,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "bouquet-5",
+      "name": "Нежность",
+      "variant": "",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 11300,
+      "stock": 14,
+      "popularity": 96,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "bouquet-6",
+      "name": "Солнечный сад",
+      "variant": "",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 12000,
+      "stock": 15,
+      "popularity": 95,
+      "image": "media/home-mobile/popular-3.webp"
+    },
+    {
+      "id": "bouquet-7",
+      "name": "Белые облака",
+      "variant": "",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 12700,
+      "stock": 16,
+      "popularity": 94,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "bouquet-8",
+      "name": "Малиновый вечер",
+      "variant": "",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 13400,
+      "stock": 17,
+      "popularity": 93,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "bouquet-9",
+      "name": "Летний ветер",
+      "variant": "",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 14100,
+      "stock": 18,
+      "popularity": 92,
+      "image": "media/home-mobile/popular-3.webp"
+    },
+    {
+      "id": "bouquet-10",
+      "name": "Лавандовая мечта",
+      "variant": "",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 14800,
+      "stock": 19,
+      "popularity": 91,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "bouquet-11",
+      "name": "Тёплая встреча",
+      "variant": "",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 15500,
+      "stock": 20,
+      "popularity": 90,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "bouquet-12",
+      "name": "Первое свидание",
+      "variant": "",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 16200,
+      "stock": 21,
+      "popularity": 89,
+      "image": "media/home-mobile/popular-3.webp"
+    },
+    {
+      "id": "bouquet-13",
+      "name": "Сад пионов",
+      "variant": "",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 16900,
+      "stock": 22,
+      "popularity": 88,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "bouquet-14",
+      "name": "Лунный свет",
+      "variant": "",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 17600,
+      "stock": 23,
+      "popularity": 87,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "bouquet-15",
+      "name": "Цветочный вальс",
+      "variant": "",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 18300,
+      "stock": 24,
+      "popularity": 86,
+      "image": "media/home-mobile/popular-3.webp"
+    },
+    {
+      "id": "bouquet-16",
+      "name": "Персиковый закат",
+      "variant": "",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 19000,
+      "stock": 25,
+      "popularity": 85,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "bouquet-17",
+      "name": "Белая роза",
+      "variant": "",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 19700,
+      "stock": 26,
+      "popularity": 84,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "bouquet-18",
+      "name": "Лиловый дождь",
+      "variant": "",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 20400,
+      "stock": 27,
+      "popularity": 83,
+      "image": "media/home-mobile/popular-3.webp"
+    },
+    {
+      "id": "bouquet-19",
+      "name": "Мамин букет",
+      "variant": "",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 21100,
+      "stock": 28,
+      "popularity": 82,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "bouquet-20",
+      "name": "Счастливый момент",
+      "variant": "",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 21800,
+      "stock": 29,
+      "popularity": 81,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "bouquet-21",
+      "name": "Красный бархат",
+      "variant": "",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 22500,
+      "stock": 30,
+      "popularity": 80,
+      "image": "media/home-mobile/popular-3.webp"
+    },
+    {
+      "id": "bouquet-22",
+      "name": "Весна рядом",
+      "variant": "",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 23200,
+      "stock": 31,
+      "popularity": 79,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "bouquet-23",
+      "name": "Доброе утро",
+      "variant": "",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 23900,
+      "stock": 32,
+      "popularity": 78,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "bouquet-24",
+      "name": "Радуга",
+      "variant": "",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 24600,
+      "stock": 33,
+      "popularity": 77,
+      "image": "media/home-mobile/popular-3.webp"
+    },
+    {
+      "id": "bouquet-25",
+      "name": "Чайная роза",
+      "variant": "",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 25300,
+      "stock": 34,
+      "popularity": 76,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "bouquet-26",
+      "name": "Тихая радость",
+      "variant": "",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 26000,
+      "stock": 35,
+      "popularity": 75,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "bouquet-27",
+      "name": "Полевой букет",
+      "variant": "",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 26700,
+      "stock": 36,
+      "popularity": 74,
+      "image": "media/home-mobile/popular-3.webp"
+    },
+    {
+      "id": "bouquet-28",
+      "name": "Королевский сад",
+      "variant": "",
+      "category": "roses",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 27400,
+      "stock": 37,
+      "popularity": 73,
+      "image": "media/home-mobile/popular-1.webp"
+    },
+    {
+      "id": "bouquet-29",
+      "name": "Букет благодарности",
+      "variant": "",
+      "category": "peonies",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 28100,
+      "stock": 38,
+      "popularity": 72,
+      "image": "media/home-mobile/popular-2.webp"
+    },
+    {
+      "id": "bouquet-30",
+      "name": "Сладкий комплимент",
+      "variant": "",
+      "category": "mixed",
+      "description": "Букет со свежими цветами в декоративной упаковке. Учебный товар.",
+      "priceMinor": 28800,
+      "stock": 39,
+      "popularity": 71,
+      "image": "media/home-mobile/popular-3.webp"
+    }
+  ],
+  "carts": [
+    {
+      "id": "customer-1",
+      "userId": "customer-1",
+      "items": [
+        {
+          "id": "home-1",
+          "quantity": 1
+        },
+        {
+          "id": "home-2",
+          "quantity": 2
+        },
+        {
+          "id": "home-3",
+          "quantity": 3
+        },
+        {
+          "id": "bouquet-4",
+          "quantity": 1
+        },
+        {
+          "id": "bouquet-5",
+          "quantity": 2
+        }
+      ],
+      "importedGuestIds": []
+    },
+    {
+      "id": "customer-2",
+      "userId": "customer-2",
+      "items": [
+        {
+          "id": "bouquet-6",
+          "quantity": 1
+        },
+        {
+          "id": "bouquet-7",
+          "quantity": 2
+        },
+        {
+          "id": "bouquet-8",
+          "quantity": 3
+        },
+        {
+          "id": "bouquet-9",
+          "quantity": 1
+        },
+        {
+          "id": "bouquet-10",
+          "quantity": 2
+        }
+      ],
+      "importedGuestIds": []
+    },
+    {
+      "id": "customer-3",
+      "userId": "customer-3",
+      "items": [
+        {
+          "id": "bouquet-11",
+          "quantity": 1
+        },
+        {
+          "id": "bouquet-12",
+          "quantity": 2
+        },
+        {
+          "id": "bouquet-13",
+          "quantity": 3
+        },
+        {
+          "id": "bouquet-14",
+          "quantity": 1
+        },
+        {
+          "id": "bouquet-15",
+          "quantity": 2
+        }
+      ],
+      "importedGuestIds": []
+    }
+  ],
+  "requests": [],
+  "orders": []
+}
