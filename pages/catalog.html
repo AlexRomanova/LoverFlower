@@ -2,10 +2,10 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <script src="../scripts/settings-init.js"></script>
+    <script src="../scripts/settings-bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Каталог букетов Lover Flower: цветы и композиции для любых событий." />
-    <title>Каталог букетов — Lover Flower</title>
+    <meta name="description" content="Каталог Lover Flower: букеты, композиции, шары, игрушки, открытки и упаковка." />
+    <title>Каталог товаров — Lover Flower</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,7 +32,7 @@
     <script type="module" src="../scripts/components/app-notifications.js"></script>
   </head>
   <body class="catalog-page" >
-    <a class="skip-link" href="#products">Перейти к букетам</a>
+    <a class="skip-link" href="#products">Перейти к товарам</a>
     <div class="catalog-backdrop" aria-hidden="true">
       <img
         src="../media/catalog/catalog-backdrop__flower--left.png"
@@ -82,27 +82,28 @@
         </nav>
         <section class="catalog-intro" aria-labelledby="catalog-title">
           <h1 id="catalog-title">
-            <b data-i18n="catalog.title.first">Каталог</b>
-            <span data-i18n="catalog.title.second">букетов</span>
+            <b data-i18n="catalog.products.title.first">Каталог</b>
+            <span data-i18n="catalog.products.title.second">товаров</span>
           </h1>
-          <p class="catalog-intro__description">В нашем магазине самый большой выбор букетов для любых событий:</p>
-          <nav class="catalog-categories" aria-label="Категории букетов">
-            <a href="catalog.html" data-category="">Все букеты</a>
+          <p class="catalog-intro__description">Букеты, цветочные композиции и подарки для ваших близких.</p>
+          <nav class="catalog-categories" aria-label="Категории товаров">
+            <a href="catalog.html" data-category="">Все товары</a>
             <a href="catalog.html?category=popular" data-category="popular">Популярное</a>
-            <a href="catalog.html?category=roses" data-category="roses">Розы</a>
-            <a href="catalog.html?category=peonies" data-category="peonies">Пионы</a>
-            <a href="catalog.html?category=mixed" data-category="mixed">Сборные букеты</a>
-            <a href="catalog.html?category=mono" data-category="mono">Монобукеты</a>
+            <a href="catalog.html?category=bouquets" data-category="bouquets">Букеты и композиции</a>
+            <a href="catalog.html?category=balloons" data-category="balloons">Шары</a>
+            <a href="catalog.html?category=toys" data-category="toys">Игрушки</a>
+            <a href="catalog.html?category=cards" data-category="cards">Открытки</a>
+            <a href="catalog.html?category=packaging" data-category="packaging">Упаковка</a>
           </nav>
         </section>
         
         <div class="catalog-toolbar">
           <form class="catalog-query" role="search" data-catalog-search>
-            <label class="sr-only" for="catalog-query">Название или состав букета</label>
-            <input id="catalog-query" type="search" name="q" placeholder="Название или состав букета" maxlength="100" />
+            <label class="sr-only" for="catalog-query">Название, состав или описание товара</label>
+            <input id="catalog-query" type="search" name="q" placeholder="Название, состав или описание товара" maxlength="100" />
             <button type="submit">Найти</button>
           </form>
-          <label class="sr-only" for="catalog-sort">Сортировка букетов</label>
+          <label class="sr-only" for="catalog-sort">Сортировка товаров</label>
           <div class="catalog-sort">
             <select id="catalog-sort" name="sort">
               <option value="popular">По популярности</option>
@@ -113,13 +114,37 @@
             <img src="../media/catalog/catalog-sort__down-arrow.svg" class="" alt="" aria-hidden="true" />
           </div>
         </div>
+        <div class="catalog-selection" data-catalog-selection hidden>
+          <p id="catalog-selection-title">Вы выбрали:</p>
+          <ul data-active-filters aria-labelledby="catalog-selection-title"></ul>
+          <button class="catalog-selection__reset" type="button" data-clear-catalog>Сбросить всё</button>
+        </div>
         <div class="catalog-layout">
           <aside class="catalog-filters" aria-label="Фильтры каталога">
             <details class="catalog-filter-details" open>
-              <summary>Фильтры букетов</summary>
+              <summary>Фильтры товаров</summary>
             <form class="catalog-filters__form">
+              <p class="filter-hint">Состав и формат выбираются независимо.</p>
+              <p class="filter-hint" data-floral-filter-hint hidden>Выберите букеты, чтобы настроить состав и формат.</p>
+              <fieldset class="filter-group" data-floral-filter>
+                <legend>По составу</legend>
+                <label class="filter-option"><input type="checkbox" name="bouquetType" value="mono" /><span>Монобукеты</span></label>
+                <label class="filter-option"><input type="checkbox" name="bouquetType" value="mixed" /><span>Сборные букеты</span></label>
+              </fieldset>
+              <fieldset class="filter-group filter-recipients">
+                <legend>Для кого</legend>
+                <label class="filter-option"><input type="checkbox" name="recipients" value="girlfriend" /><span>Для девушки</span></label>
+                <label class="filter-option"><input type="checkbox" name="recipients" value="man" /><span>Для мужчины</span></label>
+                <label class="filter-option"><input type="checkbox" name="recipients" value="wife" /><span>Для жены</span></label>
+                <label class="filter-option"><input type="checkbox" name="recipients" value="mom" /><span>Для мамы</span></label>
+                <label class="filter-option"><input type="checkbox" name="recipients" value="colleague" /><span>Для коллеги</span></label>
+                <label class="filter-option"><input type="checkbox" name="recipients" value="boss" /><span>Для начальника</span></label>
+                <label class="filter-option"><input type="checkbox" name="recipients" value="daughter" /><span>Для дочки</span></label>
+                <label class="filter-option"><input type="checkbox" name="recipients" value="children" /><span>Для детей</span></label>
+                <label class="filter-option"><input type="checkbox" name="recipients" value="woman" /><span>Для женщины</span></label>
+              </fieldset>
               <fieldset class="filter-group">
-                <legend>По свету</legend>
+                <legend>По настроению</legend>
                 <label class="filter-option">
                   <input type="checkbox" name="light" value="soft" />
                   <span>Нежные</span>
@@ -159,12 +184,24 @@
                   <input type="checkbox" name="color" value="blue" />
                   <span>Синий</span>
                 </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="purple" />
+                  <span>Фиолетовый</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="grey" />
+                  <span>Серый</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="color" value="multicolor" />
+                  <span>Разноцветный</span>
+                </label>
               </fieldset>
-              <fieldset class="filter-group">
+              <fieldset class="filter-group" data-floral-filter>
                 <legend>По формату</legend>
                 <label class="filter-option">
                   <input type="checkbox" name="format" value="bouquet" />
-                  <span>Букет</span>
+                  <span>В упаковке</span>
                 </label>
                 <label class="filter-option">
                   <input type="checkbox" name="format" value="vase" />
@@ -180,11 +217,15 @@
                 </label>
                 <label class="filter-option">
                   <input type="checkbox" name="format" value="box" />
-                  <span>В шляпной коробке</span>
+                  <span>В коробке</span>
                 </label>
                 <label class="filter-option">
                   <input type="checkbox" name="format" value="crate" />
                   <span>В ящике</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="format" value="bag" />
+                  <span>В сумке</span>
                 </label>
               </fieldset>
               <fieldset class="filter-group filter-price">
@@ -204,12 +245,25 @@
                   <span>₽</span>
                 </div>
               <p class="catalog-error" data-price-error id="price-error" role="status"></p></fieldset>
-              <fieldset class="filter-group filter-flowers"><legend>По цветку</legend>
-                <label class="filter-option"><input type="checkbox" name="flowers" value="rose" /><span>Роза</span></label>
-                <label class="filter-option"><input type="checkbox" name="flowers" value="peony" /><span>Пион</span></label>
+              <fieldset class="filter-group filter-flowers" data-floral-filter><legend>По цветку</legend>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="rose" /><span>Розы</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="peony" /><span>Пионы</span></label>
                 <label class="filter-option"><input type="checkbox" name="flowers" value="gypsophila" /><span>Гипсофила</span></label>
-                <label class="filter-option"><input type="checkbox" name="flowers" value="chrysanthemum" /><span>Хризантема</span></label>
-                <label class="filter-option"><input type="checkbox" name="flowers" value="daisy" /><span>Ромашка</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="chrysanthemum" /><span>Хризантемы</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="daisy" /><span>Ромашки</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="hydrangea" /><span>Гортензии</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="tulip" /><span>Тюльпаны</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="eustoma" /><span>Эустомы</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="carnation" /><span>Гвоздики</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="orchid" /><span>Орхидеи</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="gerbera" /><span>Герберы</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="alstroemeria" /><span>Альстромерии</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="matthiola" /><span>Маттиола</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="cornflower" /><span>Васильки</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="limonium" /><span>Лимониум</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="eryngium" /><span>Эрингиум</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="brunia" /><span>Бруния</span></label>
+                <label class="filter-option"><input type="checkbox" name="flowers" value="dried" /><span>Сухоцветы</span></label>
               </fieldset>
               <button class="btn btn--outline filter-reset" type="reset">Сбросить фильтр</button>
             </form>
@@ -217,8 +271,8 @@
           </aside>
 
           <section class="catalog-products" id="products" aria-labelledby="products-title">
-            <h2 class="sr-only" id="products-title">Букеты</h2>
-            <p class="catalog-status" data-catalog-status role="status" tabindex="-1">Загружаем букеты…</p>
+            <h2 class="sr-only" id="products-title">Товары</h2>
+            <p class="catalog-status" data-catalog-status role="status" tabindex="-1">Загружаем товары…</p>
             <button class="btn btn--outline" type="button" data-catalog-retry hidden>Повторить загрузку</button>
             <div class="catalog-product-grid" data-catalog-items></div>
             <nav class="catalog-pagination" data-pagination aria-label="Страницы каталога" hidden></nav>

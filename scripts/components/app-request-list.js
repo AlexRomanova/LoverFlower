@@ -1,3 +1,4 @@
+import { notify } from "./app-notifications.js";
 import { api } from "../features/api.js";
 import { createAccountStore } from "../features/account-store.js";
 import { importCallbackRequests } from "../features/requests.js";
@@ -56,8 +57,8 @@ class AppRequestList extends HTMLElement {
     select.disabled = true;
     try {
       await api(`${select.dataset.collection}/${encodeURIComponent(select.dataset.id)}`, { method: "PATCH", body: { status: select.value } });
-      select.dataset.previous = select.value; status.textContent = "Статус сохранён.";
-    } catch (error) { select.value = select.dataset.previous; status.textContent = error.message; }
+      select.dataset.previous = select.value; status.textContent = "Статус сохранён."; notify(status.textContent);
+    } catch (error) { select.value = select.dataset.previous; status.textContent = error.message; notify(error.message, "error"); }
     finally { select.disabled = false; }
   }
 }

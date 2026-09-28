@@ -297,6 +297,41 @@
 .product-info__meta b {
   font-weight: 700;
 }
+.product-info__attributes {
+  display: grid;
+  gap: 12px;
+  margin-top: 25px;
+}
+.product-info__attributes .product-info__meta {
+  max-width: 100%;
+  margin: 0;
+}
+.product-info__meta > a,
+.product-extra article > a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.product-info__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 7px;
+}
+.product-info__tag {
+  padding: 5px 9px;
+  border: 1px solid var(--color-muted);
+  border-radius: 14px;
+}
+.product-info__tag:hover,
+.product-info__tag:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.product-info__attributes [hidden],
+.product-extra__grid [hidden] {
+  display: none;
+}
 .product-info__purchase {
   display: flex;
   gap: 30px;
@@ -341,6 +376,9 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 30px;
   margin-top: 50px;
+}
+.product-extra__grid[data-accessory] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .product-extra article {
   min-height: 237px;
@@ -946,6 +984,21 @@
 }
 
 .product-gallery .product-gallery__main { width: 100%; height: auto; }
+.product-hero > * { min-width: 0; }
+.product-info__prices { flex-wrap: wrap; }
+@media (max-width: 760px) {
+  .product-hero { grid-template-columns: minmax(0, 1fr); }
+  .product-info h1 { overflow-wrap: anywhere; }
+}
 .recommendation > a > img { object-fit: contain; }
 .recommendation h3 a:hover { color: var(--color-accent); }
 .reviews-panel[data-review-state="empty"] { min-height: 0; padding-block: 50px 100px; }
+.reviews-panel[data-review-state="filled"] { min-height: 0; padding-block: 50px 100px; }
+.review { height: auto; padding-block: 20px; border-bottom: 1px solid var(--color-muted); overflow-wrap: anywhere; }
+.review > p[data-user-content] { white-space: pre-wrap; }
+.review-stars { color: var(--color-accent); font-size: 24px; }
+.review-form > select { max-width: 100%; padding: 14px; background: var(--color-page); color: var(--color-text); border: 1px solid var(--color-muted); font: inherit; }
+.review-form > textarea { text-transform: none; }
+.review-form > .auth-error { margin-bottom: 16px; }
+.review-form [disabled] { opacity: .5; cursor: wait; }
+.reviews-panel [hidden] { display: none; }

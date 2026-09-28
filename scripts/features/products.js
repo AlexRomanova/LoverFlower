@@ -9,7 +9,7 @@ export function loadProducts({ force = false, request = api } = {}) {
   if (loading) return loading;
   loading = request("products").then((data) => {
     if (!Array.isArray(data)) throw new Error("Не удалось прочитать каталог.");
-    const products = data.map((product) => ({ ...product, image: new URL(`../../${product.image}`, import.meta.url).href }));
+    const products = data.map((product) => ({ ...product, image: new URL(product.image, new URL("../../", import.meta.url)).href }));
     PRODUCTS.splice(0, PRODUCTS.length, ...products);
     productsById.clear();
     PRODUCTS.forEach((product) => productsById.set(product.id, product));
@@ -17,11 +17,28 @@ export function loadProducts({ force = false, request = api } = {}) {
   }).finally(() => { loading = null; });
   return loading;
 }
-export const productLabel = (product) => `${product.name}${product.variant ? `, ${product.variant.toLowerCase()}` : ""}`;
+export const productLabel = (product) => product.name || "Товар";
 const money = new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB" });
 export const formatMoney = (minor) => money.format(minor / 100);
 
-export const CATEGORY_LABELS = { roses: "Розы", peonies: "Пионы", mixed: "Сборные букеты" };
+export const CATEGORY_LABELS = {
+  bouquets: "Букеты", balloons: "Шары", toys: "Игрушки", cards: "Открытки", packaging: "Упаковка",
+};
+export const BOUQUET_TYPE_LABELS = { mono: "Монобукеты", mixed: "Сборные букеты" };
+export const FORMAT_LABELS = {
+  bouquet: "В упаковке", box: "В коробке", vase: "В вазе", basket: "В корзине",
+  envelope: "В конверте", crate: "В ящике", bag: "В сумке",
+};
+export const RECIPIENT_LABELS = {
+  girlfriend: "Для девушки", man: "Для мужчины", wife: "Для жены", mom: "Для мамы",
+  colleague: "Для коллеги", boss: "Для начальника", daughter: "Для дочки", children: "Для детей", woman: "Для женщины",
+};
+export const FLOWER_LABELS = {
+  rose: "Розы", peony: "Пионы", gypsophila: "Гипсофила", chrysanthemum: "Хризантемы", daisy: "Ромашки",
+  hydrangea: "Гортензии", tulip: "Тюльпаны", eustoma: "Эустомы", carnation: "Гвоздики", orchid: "Орхидеи",
+  gerbera: "Герберы", alstroemeria: "Альстромерии", matthiola: "Маттиола", cornflower: "Васильки",
+  limonium: "Лимониум", eryngium: "Эрингиум", brunia: "Бруния", dried: "Сухоцветы",
+};
 
 // Общая карточка для каталога, рекомендаций и карусели; данные не вставляются в HTML.
 export function createProductCard(product, style = "catalog-product") {

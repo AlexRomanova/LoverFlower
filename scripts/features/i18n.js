@@ -36,6 +36,7 @@ export function createPageTranslator(root = document.documentElement) {
   const originals = new WeakMap();
   const attributes = ["aria-label", "placeholder", "title", "alt", "content"];
   const excluded = "script, style, textarea, [translate='no'], [data-user-content], [data-account-label], [data-mobile-account-name]";
+  const excludedAttributes = "script, style, [translate='no'], [data-user-content], [data-account-label], [data-mobile-account-name]";
   function update(holder, key, read, write, translationKey) {
     const current = read();
     const record = originals.get(holder) || {};
@@ -53,7 +54,7 @@ export function createPageTranslator(root = document.documentElement) {
       update(node, "text", () => node.textContent, (value) => { node.textContent = value; }, node.parentElement?.dataset.i18n);
     }
     for (const element of [root, ...root.querySelectorAll("[aria-label], [placeholder], [title], [alt], meta[name='description']")]) {
-      if (element.closest(excluded)) continue;
+      if (element.closest(excludedAttributes)) continue;
       for (const name of attributes) {
         if (name === "title" && element.hasAttribute("data-user-title")) continue;
         if (!element.hasAttribute(name) || (name === "content" && !element.matches("meta[name='description']"))) continue;

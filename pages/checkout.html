@@ -64,7 +64,7 @@
           <label>Способ получения *<select name="deliveryMethod" required aria-describedby="checkout-method-error"><option value="courier">Доставка по Минску</option><option value="pickup">Самовывоз</option></select></label>
           <p class="checkout-error" data-error="deliveryMethod" id="checkout-method-error" aria-live="polite"></p>
           <p class="checkout-hint" data-pickup-address hidden>Самовывоз: Минск, ул. Тимирязева, 67, комн. 112. Ежедневно с 10:00 до 21:00.</p>
-          <div data-address-field><label>Адрес в Минске *<input name="address" autocomplete="street-address" placeholder="Улица, дом, квартира" maxlength="200" required aria-describedby="checkout-address-error" /></label><p class="checkout-error" data-error="address" id="checkout-address-error" aria-live="polite"></p></div>
+          <div data-address-field><label>Адрес в Минске *<input name="address" autocomplete="address-line1" placeholder="Улица, дом, квартира" maxlength="200" required aria-describedby="checkout-address-error" /></label><p class="checkout-error" data-error="address" id="checkout-address-error" aria-live="polite"></p></div>
           <div class="checkout-form__row">
             <div><label>Дата получения *<input name="deliveryDate" type="date" required aria-describedby="checkout-date-error" /></label><p class="checkout-error" data-error="deliveryDate" id="checkout-date-error" aria-live="polite"></p></div>
             <div><label>Интервал *<select name="timeSlot" required aria-describedby="checkout-time-error"></select></label><p class="checkout-error" data-error="timeSlot" id="checkout-time-error" aria-live="polite"></p></div>
@@ -83,7 +83,7 @@
       <aside class="checkout-summary" aria-labelledby="summary-title">
         <h2 id="summary-title">Ваш заказ</h2>
         <ul class="checkout-items" data-checkout-items></ul>
-        <dl class="checkout-totals"><dt>Букеты</dt><dd data-subtotal></dd><dt>Доставка</dt><dd data-delivery-fee></dd><dt>Итого</dt><dd data-order-total></dd></dl>
+        <dl class="checkout-totals"><dt>Товары</dt><dd data-subtotal></dd><dt>Доставка</dt><dd data-delivery-fee></dd><dt>Итого</dt><dd data-order-total></dd></dl>
         <p class="checkout-hint">Доставка по Минску — 10 ₽, бесплатно от 90 ₽. Самовывоз — бесплатно.</p>
         <button class="text-link" type="button" data-checkout-cart>Изменить корзину</button>
       </aside>

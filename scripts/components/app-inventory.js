@@ -1,3 +1,4 @@
+import { notify } from "./app-notifications.js";
 import { api } from "../features/api.js";
 import { createAccountStore } from "../features/account-store.js";
 import { loadProducts, productLabel } from "../features/products.js";
@@ -72,8 +73,8 @@ class AppInventory extends HTMLElement {
     try {
       const product = await api(`products/${encodeURIComponent(form.dataset.id)}`, { method: "PATCH", body: { priceMinor, stock }, signal: this.controller.signal });
       form.elements.price.value = (product.priceMinor / 100).toFixed(2); form.elements.stock.value = product.stock;
-      status.textContent = "Цена и наличие сохранены.";
-    } catch (error) { if (error.name !== "AbortError") status.textContent = error.message; }
+      status.textContent = "Цена и наличие сохранены."; notify(status.textContent);
+    } catch (error) { if (error.name !== "AbortError") { status.textContent = error.message; notify(error.message, "error"); } }
     finally { delete form.dataset.saving; Array.from(form.elements).forEach((element) => { element.disabled = false; }); }
   }
 }

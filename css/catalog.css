@@ -805,9 +805,28 @@
 .filter-price__values { flex-wrap: wrap; }
 .filter-price__values input { width: 55px; min-height: 32px; border-bottom: 1px solid var(--color-muted); }
 .catalog-sort option { background: var(--color-page); }
+.catalog-intro { min-height: 0; }
+.catalog-selection { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 20px 0 26px; }
+.catalog-selection > p { font-size: 14px; }
+.catalog-selection ul { display: flex; flex: 1; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.catalog-selection__chip { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--color-accent); border-radius: 20px; background: transparent; color: inherit; font: inherit; font-size: 12px; text-align: left; overflow-wrap: anywhere; }
+.catalog-selection__chip > span:first-child { color: var(--color-muted); }
+.catalog-selection__chip > span:last-child { font-size: 20px; line-height: 1; }
+.catalog-selection__chip:hover { background: var(--color-accent); color: var(--color-ink); }
+.catalog-selection__chip:hover > span:first-child { color: inherit; }
+.catalog-selection__reset { min-height: 44px; border: 0; border-bottom: 1px solid var(--color-accent); color: var(--color-accent); background: transparent; font: inherit; font-size: 12px; }
+.catalog-selection[hidden], .filter-hint[hidden] { display: none; }
+.filter-hint { grid-column: 1 / -1; margin-bottom: 18px; font-size: 12px; line-height: 1.6; color: var(--color-muted); }
+.filter-group:disabled { opacity: .55; }
+.filter-option { min-height: 28px; }
+.filter-option input { width: 16px; height: 16px; flex-basis: 16px; }
+.filter-option input:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 @media (max-width: 1000px) { .catalog-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 20px; } }
 @media (max-width: 760px) {
   .catalog-toolbar { flex-wrap: wrap; }
   .catalog-sort, .catalog-query { width: 100%; }
+  .catalog-selection { align-items: start; }
+  .catalog-selection ul { flex-basis: 100%; }
+  .filter-recipients, .filter-flowers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 12px; grid-column: 1 / -1; }
 }
 @media (max-width: 360px) { .catalog-product-grid { grid-template-columns: 1fr; } }

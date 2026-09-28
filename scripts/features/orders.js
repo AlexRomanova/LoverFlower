@@ -40,9 +40,9 @@ export function orderItems(cart, products) {
   const seen = new Set();
   return cart.items.map(({ id, quantity }) => {
     const product = byId.get(id);
-    if (!product || seen.has(id)) throw new Error("Один из букетов больше не доступен. Проверьте корзину.");
-    if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY || !Number.isSafeInteger(product.stock) || quantity > product.stock) throw new Error(`Недостаточно букетов «${product.name}» в наличии. Измените количество в корзине.`);
-    if (!Number.isSafeInteger(product.priceMinor) || product.priceMinor < 1) throw new Error("Не удалось определить цену букета.");
+    if (!product || seen.has(id)) throw new Error("Один из товаров больше не доступен. Проверьте корзину.");
+    if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY || !Number.isSafeInteger(product.stock) || quantity > product.stock) throw new Error(`Недостаточно товаров «${product.name}» в наличии. Измените количество в корзине.`);
+    if (!Number.isSafeInteger(product.priceMinor) || product.priceMinor < 1) throw new Error("Не удалось определить цену товара.");
     seen.add(id);
     return { id, name: product.name, variant: product.variant || "", image: product.image, quantity, priceMinor: product.priceMinor, lineTotalMinor: product.priceMinor * quantity };
   });

@@ -1,3 +1,4 @@
+import { notify } from "./app-notifications.js";
 import { CART_KEY, MAX_QUANTITY, cartSummary } from "../features/cart-store.js";
 import { productsById, productLabel, formatMoney, loadProducts } from "../features/products.js";
 import { createAccountStore } from "../features/account-store.js";
@@ -49,7 +50,7 @@ class AppCartModal extends HTMLElement {
           </div>
           <div class="cart-drawer__items" data-cart-items></div>
           <div class="cart-drawer__empty" data-cart-empty>
-            <p>В корзине пока нет букетов.</p>
+            <p>В корзине пока нет товаров.</p>
             <button type="button" class="btn btn--outline" data-cart-close>Продолжить покупки</button>
           </div>
           <div class="cart-drawer__bottom" data-cart-bottom hidden>
@@ -216,10 +217,12 @@ class AppCartModal extends HTMLElement {
     try {
       await this.refresh(await operation());
       this.setStatus(`${message} Сумма: ${formatMoney(this.snapshot.totalMinor)}.`);
+      notify(message);
     } catch (error) {
       this.setStatus(error.name === "QuotaExceededError" || error.name === "SecurityError" || !this.store
         ? "Не удалось сохранить корзину. Проверьте доступ и свободное место в хранилище браузера."
         : error.message);
+      notify(this.querySelector("[data-cart-status]").textContent, "error");
     } finally { this.busy = false; this.updateAccount(); this.updateProductButtons(); this.renderItems(); }
   }
 

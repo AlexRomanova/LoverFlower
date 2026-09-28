@@ -1,12 +1,11 @@
 {
   "name": "lover-flower-coursework",
-  "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24" },
   "scripts": {
-    "start": "json-server --watch data/db.json --port 3000 --host 127.0.0.1 --static .",
-    "test": "node --test tests/*.test.mjs"
+    "start": "json-server --watch data/db.json --port 3000 --host 127.0.0.1 --static ."
   },
-  "dependencies": { "json-server": "0.17.4" }
+  "devDependencies": {
+    "json-server": "0.17.4"
+  }
 }

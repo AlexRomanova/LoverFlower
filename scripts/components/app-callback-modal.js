@@ -126,7 +126,11 @@
         this.error.hidden = true;
         this.updateSubmitButton();
         this.status.textContent = "Учебная заявка сохранена и доступна менеджеру.";
-      } catch (error) { this.status.textContent = error.message; }
+        this.dispatchEvent(new CustomEvent("site-notification", { bubbles: true, detail: { message: this.status.textContent } }));
+      } catch (error) {
+        this.status.textContent = error.message;
+        this.dispatchEvent(new CustomEvent("site-notification", { bubbles: true, detail: { message: error.message, type: "error" } }));
+      }
       finally { this.busy = false; this.updateSubmitButton(); }
     }
 

@@ -1,3 +1,4 @@
+import { notify } from "./app-notifications.js";
 import { createAccountStore } from "../features/account-store.js";
 import { listOrders, updateOrderStatus, ORDER_STATES, DELIVERY_LABELS, PAYMENT_LABELS, orderNumber } from "../features/orders.js";
 import { formatMoney, productLabel } from "../features/products.js";
@@ -62,7 +63,7 @@ class AppOrderList extends HTMLElement {
       line.textContent = `${productLabel(item)} — ${item.quantity} × ${formatMoney(item.priceMinor)} = ${formatMoney(item.lineTotalMinor)}`;
       card.querySelector("ul").append(line);
     }
-    card.querySelector(".order-card__amount").textContent = `Букеты: ${formatMoney(order.subtotalMinor)}. Доставка: ${formatMoney(order.deliveryMinor)}. Итого: ${formatMoney(order.totalMinor)}.`;
+    card.querySelector(".order-card__amount").textContent = `Товары: ${formatMoney(order.subtotalMinor)}. Доставка: ${formatMoney(order.deliveryMinor)}. Итого: ${formatMoney(order.totalMinor)}.`;
     if (order.comment) {
       const comment = card.querySelector(".order-card__comment"); comment.hidden = false;
       const value = document.createElement("span"); value.setAttribute("translate", "no"); value.textContent = order.comment;
@@ -88,10 +89,10 @@ class AppOrderList extends HTMLElement {
       if (revision !== this.revision || this.accounts.currentUser()?.id !== user?.id) return;
       card.querySelector(".order-state").textContent = ORDER_STATES[order.status];
       select.dataset.previous = order.status;
-      card.querySelector("[role=status]").textContent = "Статус сохранён.";
+      card.querySelector("[role=status]").textContent = "Статус сохранён."; notify("Статус сохранён.");
     } catch (error) {
       select.value = select.dataset.previous;
-      card.querySelector("[role=status]").textContent = error.message;
+      card.querySelector("[role=status]").textContent = error.message; notify(error.message, "error");
     } finally { select.disabled = false; }
   }
 }

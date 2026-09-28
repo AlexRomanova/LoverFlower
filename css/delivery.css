@@ -168,6 +168,7 @@
 }
 .delivery-main {
   position: relative;
+  padding-bottom: 40px;
 }
 .delivery-breadcrumbs {
   display: flex;
@@ -337,9 +338,9 @@
   margin-top: 20px;
 }
 .delivery-signature {
-  position: absolute;
-  left: 5px;
-  bottom: -85px;
+  position: relative;
+  display: block;
+  margin: 32px 0 0 5px;
   pointer-events: none;
 }
 @media (max-width: 1199px) {
@@ -645,10 +646,9 @@
     margin-top: 10px;
   }
   .delivery-signature {
-    left: 10px;
-    bottom: -48px;
+    margin: 24px 0 0 10px;
     font-size: 80px;
-    line-height: 0.38;
+    line-height: 0.65;
   }
   .delivery-page .footer {
     min-height: 672px;

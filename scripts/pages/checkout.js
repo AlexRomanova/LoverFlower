@@ -1,3 +1,4 @@
+import { notify } from "../components/app-notifications.js";
 import { api } from "../features/api.js";
 import { createAccountStore } from "../features/account-store.js";
 import { createCustomerCart } from "../features/customer-cart.js";
@@ -67,7 +68,7 @@ async function finish(order) {
     document.dispatchEvent(new Event("cart-updated"));
   } catch {
     if (accounts.currentUser()?.id !== order.userId) return;
-    document.querySelector("[data-cleanup-status]").textContent = "Заказ уже сохранён. Не удалось обновить корзину — завершите обновление, чтобы убрать заказанные букеты.";
+    document.querySelector("[data-cleanup-status]").textContent = "Заказ уже сохранён. Не удалось обновить корзину — завершите обновление, чтобы убрать заказанные товары.";
     document.querySelector("[data-order-cleanup]").hidden = false;
   }
   document.dispatchEvent(new CustomEvent("order-created", { detail: { id: order.id } }));
@@ -100,7 +101,7 @@ async function refresh() {
     const snapshot = await cart.snapshot();
     if (current !== revision || accounts.currentUser()?.id !== user.id) return;
     quote = snapshot;
-    status.textContent = !snapshot.items.length ? "В корзине нет товаров. Выберите букеты в каталоге." : snapshot.items.some((item) => item.quantity > item.stock || item.stock < 1) ? "Количество некоторых букетов превышает остаток. Измените корзину перед оформлением." : "";
+    status.textContent = !snapshot.items.length ? "В корзине нет товаров. Выберите товары в каталоге." : snapshot.items.some((item) => item.quantity > item.stock || item.stock < 1) ? "Количество некоторых товаров превышает остаток. Измените корзину перед оформлением." : "";
     layout.hidden = !snapshot.items.length; gate.hidden = Boolean(snapshot.items.length);
     document.querySelector("[data-checkout-login]").hidden = true;
     document.querySelector("[data-checkout-retry]").hidden = false;
@@ -138,12 +139,15 @@ form.addEventListener("submit", async (event) => {
     if (!id) { id = crypto.randomUUID(); sessionStorage.setItem(pendingKey(user), id); }
     const order = await createOrder(user, data, submittedQuote, { id });
     await finish(order);
-    if (accounts.currentUser()?.id === user.id) document.querySelector("#success-title").focus({ preventScroll: false });
+    if (accounts.currentUser()?.id === user.id) {
+      document.querySelector("#success-title").focus({ preventScroll: false });
+      notify("Заказ сохранён. Он доступен в истории вашего аккаунта.");
+    }
   } catch (error) {
     if (accounts.currentUser()?.id !== user.id) return;
     if (error.code === "CART_CHANGED") await refresh();
     if (error.errors) Object.entries(error.errors).forEach(([name, message]) => fieldError(name, message));
-    status.textContent = error.message;
+    status.textContent = error.message; notify(error.message, "error");
   } finally { setBusy(false); }
 });
 document.querySelector("[data-checkout-login]").addEventListener("click", (event) => document.dispatchEvent(new CustomEvent("open-auth", { detail: { trigger: event.currentTarget } })));

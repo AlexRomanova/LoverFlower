@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <script src="../scripts/settings-init.js"></script>
+    <script src="../scripts/settings-bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Корпоративные букеты и поздравления сотрудников от Lover Flower" />
     <title>Корпоративным клиентам — Lover Flower</title>
@@ -203,7 +203,7 @@
                   <input
                     id="company-address"
                     name="postalAddress"
-                    autocomplete="street-address"
+                    autocomplete="address-line1"
                     placeholder="Введите почтовый адрес"
                     required />
                 </div>
@@ -269,11 +269,11 @@
                 </div>
               </div>
             </div>
-            <img src="../media/corporate/corporate-signature.png" class="corporate-signature" alt="">
-            <button type="submit">Отправить</button>
+            <span class="corporate-signature brand-script" aria-hidden="true">lover<br />flower</span>
+            <button type="submit" disabled>Отправить</button>
             <p class="corporate-form__notice">
               Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных, в соответствии с
-              <a href="#user-agreement" data-open-agreement>Политикой конфиденциальности</a>
+              <a href="#user-agreement" data-open-agreement>Пользовательским соглашением</a>
               .
             </p>
           </form>

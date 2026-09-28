@@ -1,3 +1,4 @@
+import { notify } from "../components/app-notifications.js";
 import { createRequest } from "./requests.js";
 import { normalizePhone } from "./registration-rules.js";
 
@@ -22,9 +23,12 @@ function connect(form, type) {
     try {
       await createRequest(type, Object.fromEntries(new FormData(form)));
       form.reset(); status.textContent = "Учебная заявка сохранена и доступна менеджеру.";
-    } catch (failure) { status.textContent = failure.message; }
+      notify(status.textContent);
+    } catch (failure) { status.textContent = failure.message; notify(failure.message, "error"); }
     finally { submit.disabled = false; }
   });
+  // Не допускаем обычную GET-отправку формы, пока модуль ещё загружается.
+  submit.disabled = false;
 }
 document.querySelectorAll(".corporate-form").forEach((form) => connect(form, "corporate"));
 document.querySelectorAll(".contact__form").forEach((form) => connect(form, "question"));

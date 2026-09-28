@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <script src="../scripts/settings-init.js"></script>
+    <script src="../scripts/settings-bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Контакты Lover Flower: адрес, часы работы, телефон и форма обратной связи" />
     <title>Контакты — Lover Flower</title>
@@ -107,7 +107,7 @@
             Напишите
             <span>нам</span>
           </h2>
-          <img src="../media/contacts/contacts-feedback__signature.png" class="contacts-feedback__signature" alt="" />
+          <span class="contacts-feedback__signature brand-script" aria-hidden="true">have any<br />questions?</span>
           <div class="contacts-feedback__intro">
             <picture class="contacts-feedback__rule" aria-hidden="true">
               <source media="(max-width: 760px)" srcset="../media/contacts/contacts-feedback__rule.svg" />
@@ -131,10 +131,10 @@
               required />
             <label class="sr-only" for="contacts-message">Ваш комментарий</label>
             <textarea id="contacts-message" name="comment" placeholder="Ваш комментарий" required></textarea>
-            <button type="submit">Отправить</button>
+            <button type="submit" disabled>Отправить</button>
             <p class="contacts-form__notice">
               Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных, в соответствии с
-              <a href="#user-agreement" data-open-agreement>Политикой конфиденциальности</a>
+              <a href="#user-agreement" data-open-agreement>Пользовательским соглашением</a>
               .
             </p>
           </form>

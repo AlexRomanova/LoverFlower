@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <script src="../scripts/settings-bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Букеты и цветочные композиции Lover Flower" />
-    <title>Букет — Lover Flower</title>
+    <meta name="description" content="Букеты, композиции и подарки Lover Flower" />
+    <title>Товар — Lover Flower</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -63,51 +63,55 @@
         alt=""
         aria-hidden="true" />
     </div>
-    <a class="skip-link" href="#main">Перейти к букету</a>
+    <a class="skip-link" href="#main">Перейти к товару</a>
     <app-header></app-header>
     <main id="main">
       <div class="container">
         <nav class="product-breadcrumbs" aria-label="Хлебные крошки">
           <a href="../index.html">Главная</a>
           <span>/</span>
-          <a href="catalog.html">Каталог букетов</a>
+          <a href="catalog.html">Каталог</a>
           <span>/</span>
-          <a href="catalog.html">Популярное</a>
+          <a href="catalog.html" data-product-category-breadcrumb>Товары</a>
           <span>/</span>
-          <span aria-current="page" data-product-breadcrumb>Букет</span>
+          <span aria-current="page" data-product-breadcrumb>Товар</span>
         </nav>
-        <p class="catalog-status" data-product-status role="status">Загружаем букет…</p>
+        <p class="catalog-status" data-product-status role="status">Загружаем товар…</p>
         <button class="btn btn--outline" type="button" data-product-retry hidden>Повторить загрузку</button>
         <div data-product-content hidden>
-        <section class="product-hero" aria-label="Рубиновые искры">
+        <section class="product-hero" aria-labelledby="product-title">
           <div class="product-gallery">
-            <div class="product-gallery__main"><img data-product-image width="350" height="450" alt="" /></div>
+            <div class="product-gallery__main"><img src="../media/home-mobile/popular-1.webp" data-product-image width="350" height="450" alt="" /></div>
           </div>
           <div class="product-info" data-product-id="">
             <a class="product-info__back" href="catalog.html" aria-label="Вернуться в каталог">
               <img src="../media/product/product-gallery__chevron.svg" class="" alt="" aria-hidden="true" />
               Назад
             </a>
-            <h1 id="product-title" data-field="title">Букет</h1>
+            <h1 id="product-title" data-field="title">Товар</h1>
             <div class="product-info__prices">
-              <strong data-field="price" data-price="167">167.00 ₽</strong>
-              <del data-field="old-price" data-price="187">187.00 ₽</del>
+              <strong data-field="price"></strong>
+              <del data-field="old-price" hidden></del>
             </div>
             <p class="product-info__composition">
-              <b>Состав:</b>
-              <span data-field="composition">Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза</span>
+              <b data-composition-label>Состав:</b>
+              <span data-field="composition"></span>
             </p>
-            <p class="product-info__description" data-field="description">
-              Завораживающая глубина ваших чувств передана огненными красками этого букета
-            </p>
-            <p class="product-info__meta"><b>Категория:</b> <span data-field="category"></span></p>
+            <p class="product-info__description" data-field="description"></p>
+            <div class="product-info__attributes">
+              <p class="product-info__meta"><b>Категория:</b> <a data-field="category"></a></p>
+              <p class="product-info__meta" data-floral-metadata><b>Тип букета:</b> <a data-field="bouquet-type"></a></p>
+              <p class="product-info__meta" data-floral-metadata><b>Формат:</b> <a data-field="format"></a></p>
+              <div class="product-info__meta" data-floral-metadata><b>Цветы:</b> <div class="product-info__tags" data-product-flowers></div></div>
+              <div class="product-info__meta" data-floral-metadata><b>Для кого:</b> <div class="product-info__tags" data-product-recipients></div></div>
+            </div>
             <p class="product-info__stock" data-field="stock"></p>
             <div class="product-info__purchase">
               <button class="btn btn--outline" type="button" data-add-to-cart disabled>
                 В корзину
               </button>
               <label class="quantity">
-                <span class="sr-only">Количество букетов</span>
+                <span class="sr-only">Количество товаров</span>
                 <input type="number" name="quantity" data-product-quantity aria-describedby="quantity-error" min="1" step="1" value="1" inputmode="numeric" />
               </label>
             </div><p class="catalog-error" data-quantity-error id="quantity-error" role="status"></p>
@@ -116,7 +120,7 @@
         <section class="product-extra" aria-labelledby="extra-title">
           <h2 id="extra-title">Дополнительно к заказу:</h2>
           <div class="product-extra__grid">
-            <article>
+            <article data-floral-extra>
               <span class="product-extra__dot">
                 <img src="../media/product/product-extra__dot.svg" class="" alt="" aria-hidden="true" />
               </span>
@@ -128,9 +132,10 @@
                 <img src="../media/product/product-extra__dot.svg" class="" alt="" aria-hidden="true" />
               </span>
               <h3>Подпишем открытку</h3>
-              <p>В пожеланиях к букету укажите текст, какой хотите разместить и выберите на сайте саму открытку</p>
+              <p>В комментарии к заказу укажите текст для открытки и добавьте её из каталога.</p>
+              <a href="catalog.html?category=cards">Выбрать открытку</a>
             </article>
-            <article>
+            <article data-floral-extra>
               <span class="product-extra__dot">
                 <img src="../media/product/product-extra__dot.svg" class="" alt="" aria-hidden="true" />
               </span>
@@ -144,7 +149,7 @@
               <span class="product-extra__dot">
                 <img src="../media/product/product-extra__dot.svg" class="" alt="" aria-hidden="true" />
               </span>
-              <h3>Букет-сюрприз</h3>
+              <h3>Подарок-сюрприз</h3>
               <p>
                 Если хотите, чтобы получатель не знал, что ему вручат, а также от кого, то укажите об этом в примечании
                 к заказу
@@ -206,7 +211,34 @@
             </section>
           </div>
         </section>
-        <section class="reviews-panel" id="reviews" aria-labelledby="tab-reviews-label" data-review-state="empty"><p class="reviews-empty">Отзывов пока нет.</p></section>
+        <section class="reviews-panel" id="reviews" aria-labelledby="tab-reviews-label" data-review-state="empty">
+          <p class="reviews-empty" data-reviews-empty hidden>Отзывов пока нет.</p>
+          <p data-reviews-status role="status">Загружаем отзывы…</p>
+          <button class="btn" type="button" data-reviews-retry hidden>Повторить загрузку отзывов</button>
+          <ul class="reviews-list" data-reviews-list></ul>
+          <div class="review-form-wrap">
+            <h3>Оставить отзыв</h3>
+            <p data-review-auth-note>Войдите как покупатель, чтобы оставить отзыв.</p>
+            <button class="btn" type="button" data-review-login>Войти</button>
+            <form class="review-form" data-review-form novalidate hidden>
+              <label for="review-rating">Оценка *</label>
+              <select id="review-rating" name="rating" required aria-describedby="review-rating-error">
+                <option value="">Выберите оценку</option>
+                <option value="5">★★★★★ — 5</option>
+                <option value="4">★★★★☆ — 4</option>
+                <option value="3">★★★☆☆ — 3</option>
+                <option value="2">★★☆☆☆ — 2</option>
+                <option value="1">★☆☆☆☆ — 1</option>
+              </select>
+              <p class="auth-error" id="review-rating-error"></p>
+              <label for="review-text">Ваш отзыв *</label>
+              <textarea id="review-text" name="text" required minlength="10" maxlength="2000" aria-describedby="review-text-error"></textarea>
+              <p class="auth-error" id="review-text-error"></p>
+              <p data-review-submit-status role="status"></p>
+              <button class="btn" type="submit" disabled>Опубликовать отзыв</button>
+            </form>
+          </div>
+        </section>
         <section class="recommendations" aria-labelledby="recommendations-title" data-list="recommendations">
           <h2 id="recommendations-title">Вам может понравиться:</h2>
           <div class="recommendations__grid"></div>

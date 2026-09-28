@@ -32,6 +32,11 @@
             </div>
             <nav aria-label="Мобильная навигация">
               <a href="${root}pages/catalog.html">Каталог</a>
+              <a href="${root}pages/catalog.html?category=bouquets">Букеты</a>
+              <a href="${root}pages/catalog.html?category=balloons">Шары</a>
+              <a href="${root}pages/catalog.html?category=toys">Игрушки</a>
+              <a href="${root}pages/catalog.html?category=cards">Открытки</a>
+              <a href="${root}pages/catalog.html?category=packaging">Упаковка</a>
               <a href="${root}pages/delivery.html">Доставка и оплата</a>
               <a href="${root}pages/about.html">О нас</a>
               <a href="${root}pages/contacts.html">Контакты</a>

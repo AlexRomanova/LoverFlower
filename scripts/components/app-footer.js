@@ -29,30 +29,30 @@
         <div>
           <h3>Каталог</h3>
           <ul>
-            <li><a href="#catalog">Популярное</a></li>
-            <li><a href="#catalog">Сухоцветы</a></li>
-            <li><a href="#catalog">Букеты роз</a></li>
-            <li><a href="#catalog">Композиции из цветов</a></li>
-            <li><a href="#catalog">Индивидуальный букет</a></li>
-            <li><a href="#catalog">Букет на праздник</a></li>
-            <li><a href="#catalog">Упаковка подарков</a></li>
-            <li><a href="#catalog">Шары</a></li>
-            <li><a href="#catalog">Открытки</a></li>
-            <li><a href="#catalog">Конверты</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets">Букеты</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&bouquetType=mixed">Сборные букеты</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&bouquetType=mono">Монобукеты</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&flowers=rose">Букеты роз</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&format=box">В коробке</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&format=vase">В вазе</a></li>
+            <li><a href="${root}pages/catalog.html?category=balloons">Шары</a></li>
+            <li><a href="${root}pages/catalog.html?category=toys">Игрушки</a></li>
+            <li><a href="${root}pages/catalog.html?category=cards">Открытки</a></li>
+            <li><a href="${root}pages/catalog.html?category=packaging">Упаковка</a></li>
           </ul>
         </div>
         <div>
-          <h3>Букет</h3>
+          <h3>Для кого</h3>
           <ul>
-            <li><a href="#catalog">Для девушки</a></li>
-            <li><a href="#catalog">Для мужчины</a></li>
-            <li><a href="#catalog">Для жены</a></li>
-            <li><a href="#catalog">Для мамы</a></li>
-            <li><a href="#catalog">Для коллеги</a></li>
-            <li><a href="#catalog">Для начальника</a></li>
-            <li><a href="#catalog">Для дочки</a></li>
-            <li><a href="#catalog">Для детей</a></li>
-            <li><a href="#catalog">Для женщины</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&recipients=girlfriend">Для девушки</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&recipients=man">Для мужчины</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&recipients=wife">Для жены</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&recipients=mom">Для мамы</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&recipients=colleague">Для коллеги</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&recipients=boss">Для начальника</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&recipients=daughter">Для дочки</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&recipients=children">Для детей</a></li>
+            <li><a href="${root}pages/catalog.html?category=bouquets&recipients=woman">Для женщины</a></li>
           </ul>
         </div>
         <nav class="footer__nav" aria-label="Навигация в подвале">
@@ -66,7 +66,7 @@
         <address class="footer__contacts">
           <a href="mailto:zakaz@loverflower.by">zakaz@loverflower.by</a>
           <small>Доставка 24/7 по договоренности с оператором</small>
-          <a href="#contacts">ул. Тимирязева 67</a>
+          <a href="${root}pages/contacts.html#contacts-map-title">ул. Тимирязева 67</a>
           <small>
             10:00 до 21:00
             <br />

@@ -8,13 +8,14 @@ if (carousel) {
   const next = carousel.querySelector("[data-carousel-next]");
   function update() {
     const max = track.scrollWidth - track.clientWidth;
+    const count = track.children.length;
     previous.disabled = track.scrollLeft <= 1;
     next.disabled = track.scrollLeft >= max - 1;
     const first = track.firstElementChild;
     const stride = first ? first.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap) : 1;
-    const start = Math.round(track.scrollLeft / stride) + 1;
+    const start = Math.min(count, Math.round(track.scrollLeft / stride) + 1);
     const visible = Math.max(1, Math.round((track.clientWidth + parseFloat(getComputedStyle(track).gap)) / stride));
-    status.textContent = `Букеты ${start}–${Math.min(6, start + visible - 1)} из 6`;
+    status.textContent = count ? `Букеты ${start}–${Math.min(count, start + visible - 1)} из ${count}` : "Букеты скоро появятся в каталоге.";
   }
   function move(direction) {
     const card = track.firstElementChild;
@@ -34,7 +35,8 @@ if (carousel) {
   });
   new ResizeObserver(update).observe(track);
   loadProducts().then((products) => {
-    track.replaceChildren(...products.slice(0, 6).map((product) => createProductCard(product, "product")));
+    const bouquets = products.filter((product) => ["bouquets", "roses", "peonies", "mixed"].includes(product.category)).sort((a, b) => Number(Boolean(b.popular)) - Number(Boolean(a.popular)));
+    track.replaceChildren(...bouquets.slice(0, 6).map((product) => createProductCard(product, "product")));
     document.dispatchEvent(new Event("products-rendered"));
     update();
   }).catch((error) => { status.textContent = error.message; });

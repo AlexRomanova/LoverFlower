@@ -35,15 +35,19 @@
             <a href="${root}pages/catalog.html" aria-haspopup="true" aria-expanded="false">Каталог</a>
             <nav class="site-nav__submenu" aria-label="Категории каталога">
               ${[
-                "Популярное",
-                "Сборные букеты",
-                "Монобукеты",
-                "Розы",
-                "Пионы",
+                ["Букеты", "category=bouquets"],
+                ["Сборные букеты", "category=bouquets&bouquetType=mixed"],
+                ["Монобукеты", "category=bouquets&bouquetType=mono"],
+                ["В коробке", "category=bouquets&format=box"],
+                ["В вазе", "category=bouquets&format=vase"],
+                ["Шары", "category=balloons"],
+                ["Игрушки", "category=toys"],
+                ["Открытки", "category=cards"],
+                ["Упаковка", "category=packaging"],
               ]
                 .map(
-                  (name) => `
-              <a href="${root}pages/catalog.html?category=${encodeURIComponent(name)}">${name}</a>
+                  ([name, query]) => `
+              <a href="${root}pages/catalog.html?${query}">${name}</a>
               `
                 )
                 .join("")}
@@ -81,15 +85,14 @@
             <nav class="site-header__profile-menu" aria-label="Личный кабинет">
               <a href="${root}pages/admin.html" data-manager-link hidden>Кабинет менеджера</a>
               <button type="button" data-open="history">История заказов</button>
-              <button type="button" data-profile-action="favorites">Избранное</button>
               <button type="button" data-profile-action="settings">Настройки</button>
               <button type="button" data-profile-action="logout">Выйти</button>
               <p class="site-header__profile-status" role="status"></p>
             </nav>
           </div>
         </div>
-        <form class="site-search" role="search" aria-label="Поиск букетов">
-          <label class="sr-only" for="site-search-input">Найти букет</label>
+        <form class="site-search" role="search" aria-label="Поиск товаров">
+          <label class="sr-only" for="site-search-input">Найти товар</label>
           <img src="${asset("media/icons/icon_magnifying-glass.webp")}" alt="" />
           <input
             id="site-search-input"
@@ -221,10 +224,6 @@
         event.preventDefault();
         const query = searchInput.value.trim();
         if (query) location.href = `${root}pages/catalog.html?q=${encodeURIComponent(query)}`;
-      });
-      this.querySelectorAll('[data-open]:not([data-open="menu"]):not([data-open="auth"]):not([data-open="cart"]):not([data-open="history"]), [data-profile-action="favorites"]').forEach((button) => {
-        button.disabled = true;
-        button.title = "Будет доступно после подключения соответствующего окна";
       });
       historyButton.disabled = !document.querySelector("app-history-modal") || !customElements.get("app-history-modal");
     }
