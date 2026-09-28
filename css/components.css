@@ -273,6 +273,9 @@ body.is-cart-open .site-header__cart {
 .home-page .hero {
   padding-top: var(--size-header);
 }
+body.is-searching .site-header__nav { visibility: hidden; }
+.site-search { left: 170px; right: 25px; background: var(--color-page); }
+.site-header__profile-menu > a { display: block; padding: 10px 12px; color: var(--color-accent); font-size: 13px; }
 .footer__nav .footer__catalog-link {
   display: none;
 }
@@ -1072,3 +1075,4 @@ h2 {
     animation: none;
   }
 }
+:where([hidden]) { display: none !important; }

@@ -36,14 +36,6 @@ class AppCartModal extends HTMLElement {
       if (!this.isConnected) return;
       await this.refresh();
       this.setStatus("");
-      document.querySelectorAll("[data-product-id]").forEach((card) => {
-        const product = productsById.get(card.dataset.productId);
-        if (product) {
-          card.dataset.price = product.priceMinor / 100;
-          const price = card.querySelector(".product__price");
-          if (price) price.textContent = formatMoney(product.priceMinor);
-        }
-      });
     } catch (error) { this.setStatus(error.message); }
   }
 
@@ -81,7 +73,9 @@ class AppCartModal extends HTMLElement {
       const id = button.closest("[data-product-id]")?.dataset.productId;
       if (!productsById.has(id)) return;
       this.open(button);
-      this.mutate(() => this.store.add(id), `${productLabel(productsById.get(id))} добавлен в корзину.`);
+      const quantityInput = button.closest("[data-product-id]").querySelector("[data-product-quantity]");
+      const quantity = quantityInput ? Number(quantityInput.value) : 1;
+      this.mutate(() => this.store.add(id, quantity), `${productLabel(productsById.get(id))} добавлен в корзину.`);
     }, options);
     this.querySelectorAll("[data-cart-close]").forEach((button) => button.addEventListener("click", () => this.close(), options));
     this.querySelector("[data-cart-items]").addEventListener("click", (event) => this.changeItem(event), options);
@@ -98,7 +92,13 @@ class AppCartModal extends HTMLElement {
       this.close();
       this.dispatchEvent(new CustomEvent("open-auth", { bubbles: true, detail: { trigger } }));
     }, options);
+    this.querySelector("[data-cart-checkout]").addEventListener("click", () => {
+      if (this.busy || !this.storageAvailable || !this.snapshot?.quantity || this.accounts.currentUser()?.role !== "customer") return;
+      location.href = new URL("../../pages/checkout.html", import.meta.url).href;
+    }, options);
     document.addEventListener("auth-changed", () => { this.updateAccount(); this.refresh(); }, options);
+    document.addEventListener("cart-updated", () => this.refresh(), options);
+    document.addEventListener("products-rendered", () => { if (this.snapshot) this.updateProductButtons(); }, options);
     document.addEventListener("auth-closed", () => {
       if (!this.returnFromAuth) return;
       this.returnFromAuth = false;
@@ -186,8 +186,8 @@ class AppCartModal extends HTMLElement {
       const product = productsById.get(id);
       if (!product) return;
       const quantity = this.snapshot.items.find((item) => item.id === id)?.quantity || 0;
-      button.disabled = !this.storageAvailable || this.busy || !product.stock || this.accounts?.currentUser()?.role === "manager";
-      button.textContent = quantity ? `В корзине: ${quantity}` : "В корзину";
+        button.disabled = !this.storageAvailable || this.busy || !product.stock || button.dataset.invalidQuantity === "true" || this.accounts?.currentUser()?.role === "manager";
+        button.textContent = !product.stock ? "Нет в наличии" : quantity ? `В корзине: ${quantity}` : "В корзину";
       button.setAttribute("aria-label", `Добавить ${productLabel(product)} в корзину${quantity ? `. Уже добавлено: ${quantity}` : ""}`);
     });
   }
@@ -199,16 +199,18 @@ class AppCartModal extends HTMLElement {
     const checkout = this.querySelector("[data-cart-checkout]");
     login.hidden = Boolean(user);
     login.disabled = !document.querySelector("app-auth-modal") || !customElements.get("app-auth-modal");
-    checkout.hidden = !user;
-    // Страница оформления подключается следующим этапом. Неработающий переход не показываем активным.
-    note.textContent = user
-      ? "Вы вошли в аккаунт. Оформление заказа пока недоступно."
+    checkout.hidden = user?.role !== "customer";
+    checkout.disabled = this.busy || !this.storageAvailable || !this.snapshot?.quantity;
+    note.textContent = user?.role === "customer"
+      ? "Заказ будет сохранён в истории вашего аккаунта."
+      : user ? "Для менеджера заказы доступны в его кабинете."
       : "Чтобы оформить заказ и сохранить его в личном кабинете, войдите в аккаунт.";
   }
 
   async mutate(operation, message) {
     if (this.busy) return;
     this.busy = true;
+    this.updateAccount();
     this.updateProductButtons();
     this.querySelectorAll("[data-cart-action]").forEach((button) => { button.disabled = true; });
     try {
@@ -218,7 +220,7 @@ class AppCartModal extends HTMLElement {
       this.setStatus(error.name === "QuotaExceededError" || error.name === "SecurityError" || !this.store
         ? "Не удалось сохранить корзину. Проверьте доступ и свободное место в хранилище браузера."
         : error.message);
-    } finally { this.busy = false; this.updateProductButtons(); this.renderItems(); }
+    } finally { this.busy = false; this.updateAccount(); this.updateProductButtons(); this.renderItems(); }
   }
 
   changeItem(event) {

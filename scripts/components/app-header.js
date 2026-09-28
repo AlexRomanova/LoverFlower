@@ -17,6 +17,7 @@
         <button class="site-header__burger" type="button" data-open="menu"
           aria-label="Открыть меню" aria-controls="mobile-menu-dialog" aria-expanded="false" disabled>
           <span></span>
+          <span class="sr-only" data-vision-label>Меню</span>
           <span></span>
           <span></span>
         </button>
@@ -38,14 +39,7 @@
                 "Сборные букеты",
                 "Монобукеты",
                 "Розы",
-                "Свадебные",
-                "Композиции из цветов в коробке",
-                "Интерьерные композиции",
-                "Осенние",
-                "Индивидуальный букет",
-                "Сухоцветы",
-                "Горшечные",
-                "Дополнительно",
+                "Пионы",
               ]
                 .map(
                   (name) => `
@@ -70,6 +64,7 @@
           </a>
           <button type="button" class="site-header__cart" data-open="cart" aria-label="Открыть корзину">
             <img src="${asset("media/icons/icon_cart_handbag.webp")}" alt="" />
+            <span class="sr-only" data-vision-label>Корзина</span>
             <span data-cart-count class="site-header__count"></span>
           </button>
           <button type="button" class="site-header__guest" data-open="auth">
@@ -190,15 +185,48 @@
         this.querySelector("[data-manager-link]").hidden = user?.role !== "manager";
         this.querySelector("[data-account-label]").textContent = user ? `${user.firstName[0]}${user.surname[0]}`.toUpperCase() : "";
         this.querySelector(".site-header__member-button").title = user?.nickname || "Личный кабинет";
+        this.querySelector(".site-header__member-button").toggleAttribute("data-user-title", Boolean(user));
+        const history = this.querySelector('[data-open="history"]');
+        history.hidden = user?.role !== "customer";
+        history.disabled = !document.querySelector("app-history-modal") || !customElements.get("app-history-modal");
       });
+      const historyButton = this.querySelector('[data-open="history"]');
+      historyButton.setAttribute("aria-controls", "history-dialog");
+      historyButton.setAttribute("aria-expanded", "false");
+      historyButton.addEventListener("click", () => this.dispatchEvent(new CustomEvent("open-history", { bubbles: true, detail: { trigger: historyButton } })));
+      customElements.whenDefined("app-history-modal").then(() => { if (document.querySelector("app-history-modal")) historyButton.disabled = false; });
       this.querySelector('[data-profile-action="logout"]').addEventListener("click", () => {
         this.dispatchEvent(new CustomEvent("auth-logout", { bubbles: true }));
         authButton.focus();
       });
-      this.querySelectorAll('[data-open]:not([data-open="menu"]):not([data-open="auth"]):not([data-open="cart"]), [data-search-open], [data-profile-action="favorites"], [data-profile-action="settings"]').forEach((button) => {
+      const settingsButton = this.querySelector('[data-profile-action="settings"]');
+      settingsButton.addEventListener("click", () => this.dispatchEvent(new CustomEvent("open-settings", { bubbles: true, detail: { trigger: settingsButton } })));
+      const searchButton = this.querySelector("[data-search-open]");
+      const searchForm = this.querySelector(".site-search");
+      const searchInput = searchForm.elements.q;
+      searchButton.setAttribute("aria-expanded", "false");
+      const closeSearch = () => {
+        document.body.classList.remove("is-searching");
+        searchButton.setAttribute("aria-expanded", "false");
+        searchButton.focus();
+      };
+      searchButton.addEventListener("click", () => {
+        document.body.classList.add("is-searching");
+        searchButton.setAttribute("aria-expanded", "true");
+        searchInput.focus();
+      });
+      this.querySelector("[data-search-close]").addEventListener("click", closeSearch);
+      searchForm.addEventListener("keydown", (event) => { if (event.key === "Escape") closeSearch(); });
+      searchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = searchInput.value.trim();
+        if (query) location.href = `${root}pages/catalog.html?q=${encodeURIComponent(query)}`;
+      });
+      this.querySelectorAll('[data-open]:not([data-open="menu"]):not([data-open="auth"]):not([data-open="cart"]):not([data-open="history"]), [data-profile-action="favorites"]').forEach((button) => {
         button.disabled = true;
         button.title = "Будет доступно после подключения соответствующего окна";
       });
+      historyButton.disabled = !document.querySelector("app-history-modal") || !customElements.get("app-history-modal");
     }
   }
   customElements.define("app-header", AppHeader);

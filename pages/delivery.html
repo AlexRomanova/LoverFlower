@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
+    <script src="../scripts/settings-init.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Способы оплаты и условия доставки цветов Lover Flower" />
     <title>Доставка и оплата — Lover Flower</title>
@@ -10,77 +11,83 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/delivery.css" />
-    <link rel="stylesheet" href="/css/components.css" />
-    <link rel="stylesheet" href="/css/auth.css" />
-    <link rel="stylesheet" href="/css/cart.css" />
-    <script src="/scripts/components/app-header.js" defer></script>
-    <script src="/scripts/components/app-footer.js" defer></script>
-    <script src="/scripts/components/app-mobile-menu.js" defer></script>
-    <script src="/scripts/components/app-callback-modal.js" defer></script>
-    <script type="module" src="/scripts/components/app-auth-modal.js"></script>
-    <script type="module" src="/scripts/components/app-cart-modal.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/delivery.css" />
+      <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <link rel="stylesheet" href="../css/orders.css" />
+    <script src="../scripts/components/app-header.js" defer></script>
+    <script src="../scripts/components/app-footer.js" defer></script>
+    <script src="../scripts/components/app-mobile-menu.js" defer></script>
+    <script src="../scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="../scripts/components/app-history-modal.js"></script>
+      <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
   </head>
   <body class="delivery-page" data-figma-desktop="14:2343" data-figma-mobile="14:4457">
     <a class="skip-link" href="#main">Перейти к условиям доставки</a>
-    <app-header id="site-header"></app-header>
+    <app-header></app-header>
 
     <div class="delivery-backdrop" aria-hidden="true">
       <span class="delivery-backdrop__glow delivery-backdrop__glow--upper-right">
-        <img src="/media/delivery/delivery-backdrop__glow--upper-right.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--upper-right.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--upper-left">
-        <img src="/media/delivery/delivery-backdrop__glow--upper-left.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--upper-left.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--payment-left">
-        <img src="/media/delivery/delivery-backdrop__glow--payment-left.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--payment-left.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--payment-right">
-        <img src="/media/delivery/delivery-backdrop__glow--payment-right.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--payment-right.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--middle-left">
-        <img src="/media/delivery/delivery-backdrop__glow--middle-left.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--middle-left.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--middle-right">
-        <img src="/media/delivery/delivery-backdrop__glow--middle-right.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--middle-right.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--lower-right">
-        <img src="/media/delivery/delivery-backdrop__glow--lower-right.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--lower-right.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--lower-left">
-        <img src="/media/delivery/delivery-backdrop__glow--lower-left.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--lower-left.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-top-left">
-        <img src="/media/delivery/delivery-backdrop__glow--mobile-top-left.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-top-left.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-payment">
-        <img src="/media/delivery/delivery-backdrop__glow--mobile-payment.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-payment.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-middle">
-        <img src="/media/delivery/delivery-backdrop__glow--mobile-middle.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-middle.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-bottom">
-        <img src="/media/delivery/delivery-backdrop__glow--mobile-bottom.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-bottom.svg" alt="" />
       </span>
       <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-bottom-right">
-        <img src="/media/delivery/delivery-backdrop__glow--mobile-bottom-right.svg" alt="" />
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-bottom-right.svg" alt="" />
       </span>
       <div class="delivery-backdrop__flower delivery-backdrop__flower--hero">
-        <img src="/media/delivery/delivery-backdrop__flower--hero.png" alt="" />
+        <img src="../media/delivery/delivery-backdrop__flower--hero.png" alt="" />
       </div>
       <div class="delivery-backdrop__flower delivery-backdrop__flower--left">
-        <img src="/media/delivery/delivery-backdrop__flower--left.png" alt="" />
+        <img src="../media/delivery/delivery-backdrop__flower--left.png" alt="" />
       </div>
       <div class="delivery-backdrop__flower delivery-backdrop__flower--bottom">
-        <img src="/media/delivery/delivery-backdrop__flower--bottom.png" alt="" />
+        <img src="../media/delivery/delivery-backdrop__flower--bottom.png" alt="" />
       </div>
     </div>
 
     <main id="main" class="delivery-main">
       <div class="container">
         <nav class="delivery-breadcrumbs" aria-label="Хлебные крошки">
-          <a href="index.html">Главная</a>
+          <a href="../index.html">Главная</a>
           <span aria-hidden="true">/</span>
           <span aria-current="page">Доставка и оплата</span>
         </nav>
@@ -107,19 +114,19 @@
           <h2 id="payment-title">Способы оплаты:</h2>
           <ul class="delivery-payment__cards">
             <li>
-              <img src="/media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
+              <img src="../media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
               <p>Банковской картой при оформлении заказа через сайт или по ссылке</p>
             </li>
             <li>
-              <img src="/media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
+              <img src="../media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
               <p>Наличными, банковской картой при самовывозе или с расчётного счёта организации</p>
             </li>
             <li>
-              <img src="/media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
+              <img src="../media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
               <p>Наличными при доставке курьером</p>
             </li>
             <li>
-              <img src="/media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
+              <img src="../media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
               <p>Криптовалютой</p>
             </li>
           </ul>
@@ -204,13 +211,16 @@
             </p>
           </section>
         </div>
-        <img src="/media/delivery/delivery-signature.png" alt="" />
+        <img src="../media/delivery/delivery-signature.png" alt="">
       </div>
     </main>
-
-    <app-footer id="site-footer"></app-footer>
-    <app-mobile-menu></app-mobile-menu>
+    <app-footer></app-footer>
+      <app-mobile-menu></app-mobile-menu>
     <app-callback-modal></app-callback-modal>
     <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+    <app-history-modal></app-history-modal>
+      <app-settings></app-settings>
+    <app-notifications></app-notifications>
   </body>
 </html>

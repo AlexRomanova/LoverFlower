@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
+    <script src="../scripts/settings-init.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="О Lover Flower: наша команда, гарантии и преимущества заказа цветов" />
     <title>О нас — Lover Flower</title>
@@ -10,22 +11,28 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/about.css" />
-    <link rel="stylesheet" href="/css/components.css" />
-    <link rel="stylesheet" href="/css/auth.css" />
-    <link rel="stylesheet" href="/css/cart.css" />
-    <script src="/scripts/components/app-header.js" defer></script>
-    <script src="/scripts/components/app-footer.js" defer></script>
-    <script src="/scripts/components/app-mobile-menu.js" defer></script>
-    <script src="/scripts/components/app-callback-modal.js" defer></script>
-    <script type="module" src="/scripts/components/app-auth-modal.js"></script>
-    <script type="module" src="/scripts/components/app-cart-modal.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/about.css" />
+    <link rel="stylesheet" href="../css/content-pages.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <link rel="stylesheet" href="../css/orders.css" />
+    <script src="../scripts/components/app-header.js" defer></script>
+    <script src="../scripts/components/app-footer.js" defer></script>
+    <script src="../scripts/components/app-mobile-menu.js" defer></script>
+    <script src="../scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="../scripts/components/app-history-modal.js"></script>
+    <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
   </head>
   <body class="about-page" data-figma-desktop="14:2388" data-figma-mobile="14:4595">
     <a class="skip-link" href="#main">Перейти к содержимому</a>
-    <app-header id="site-header"></app-header>
-
+    <app-header></app-header>
     <main id="main" class="about-main">
       <div class="about-stage">
         <div class="about-art" aria-hidden="true">
@@ -43,7 +50,7 @@
           <img class="about-flower about-flower--right" src="../media/about/about-flower--right.png" alt="" />
         </div>
         <nav class="about-breadcrumbs" aria-label="Хлебные крошки">
-          <a href="index.html">Главная</a>
+          <a href="../index.html">Главная</a>
           <span aria-hidden="true">/</span>
           <span aria-current="page">О нас</span>
         </nav>
@@ -100,10 +107,13 @@
         </section>
       </div>
     </main>
-
-    <app-footer id="site-footer"></app-footer>
+    <app-footer></app-footer>
     <app-mobile-menu></app-mobile-menu>
     <app-callback-modal></app-callback-modal>
     <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+    <app-history-modal></app-history-modal>
+    <app-settings></app-settings>
+    <app-notifications></app-notifications>
   </body>
 </html>

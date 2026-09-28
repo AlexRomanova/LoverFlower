@@ -1,0 +1,29 @@
+/* Кабинет менеджера: список товаров остаётся читаемым на 320px. */
+.admin-page { padding-top: 50px; padding-bottom: 70px; min-height: 65vh; }
+.admin-page h1 { font-family: var(--font-body); font-size: clamp(32px, 5vw, 60px); margin-bottom: 20px; }
+app-inventory { display: block; }
+.admin-section { margin-top: 40px; }
+.admin-section > h2 { font-family: var(--font-display); font-size: 32px; margin-bottom: 20px; }
+.manager-requests { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
+.manager-request { padding: 20px; border: 1px solid #405450; min-width: 0; }
+.manager-request h3 { font-size: 24px; margin-bottom: 12px; }
+.manager-request time { color: var(--color-old-price); font-size: 14px; }
+.manager-request dl { display: grid; grid-template-columns: minmax(80px, 1fr) minmax(0, 2fr); gap: 8px 16px; margin: 20px 0; }
+.manager-request dt { color: var(--color-old-price); }
+.manager-request dd { margin: 0; overflow-wrap: anywhere; }
+.manager-request select { padding: 8px; background: var(--color-surface); color: var(--color-text); border: 1px solid #728582; }
+.manager-request [role=status] { margin-top: 12px; }
+@media (max-width: 600px) { .manager-requests { grid-template-columns: minmax(0, 1fr); } .manager-request { padding: 14px; } }
+[data-inventory-status] { line-height: 1.6; margin-bottom: 24px; }
+[data-inventory-items] { display: grid; gap: 18px; }
+.inventory-item { display: grid; grid-template-columns: 80px minmax(120px, 1fr) 130px 110px 150px; gap: 18px; align-items: center; padding: 20px; border: 1px solid #405450; }
+.inventory-item img { width: 80px; height: 100px; object-fit: contain; }
+.inventory-item h3 { font-size: 18px; font-weight: 400; overflow-wrap: anywhere; }
+.inventory-item label { display: grid; gap: 8px; font-size: 14px; }
+.inventory-item input { width: 100%; min-width: 0; padding: 10px; background: var(--color-surface); color: var(--color-text); border: 1px solid #728582; color-scheme: dark; }
+.inventory-item input:focus { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.inventory-item .btn { width: 100%; margin: 0; }
+.inventory-item__status { grid-column: 2 / -1; font-size: 14px; line-height: 1.5; }
+.inventory-item__status:empty { display: none; }
+@media (max-width: 900px) { .inventory-item { grid-template-columns: 80px minmax(0, 1fr) minmax(100px, 1fr); } .inventory-item h3 { grid-column: 2 / -1; } .inventory-item__status { grid-column: 1 / -1; } }
+@media (max-width: 425px) { .admin-page { padding-top: 24px; } .inventory-item { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: 14px; } .inventory-item h3 { grid-column: 2; } .inventory-item .btn { grid-column: 1 / -1; } }

@@ -24,10 +24,10 @@ class AppRequestList extends HTMLElement {
     this.status("Загружаем заявки…");
     try {
       await importCallbackRequests(localStorage);
-      const [requests, orders] = await Promise.all([api("requests"), api("orders")]);
+      const requests = await api("requests");
       if (revision !== this.revision || !this.isConnected) return;
-      const entries = [...requests.map((item) => ({ ...item, collection: "requests" })), ...orders.map((item) => ({ ...item, type: "order", collection: "orders" }))].sort((left, right) => String(right.createdAt).localeCompare(String(left.createdAt)));
-      this.status(entries.length ? `Заявок и заказов: ${entries.length}.` : "Заявок и заказов пока нет.");
+      const entries = requests.map((item) => ({ ...item, collection: "requests" })).sort((left, right) => String(right.createdAt).localeCompare(String(left.createdAt)));
+      this.status(entries.length ? `Заявок: ${entries.length}.` : "Заявок пока нет.");
       for (const entry of entries) {
         const card = document.createElement("article"); card.className = "manager-request";
         const heading = document.createElement("h3"); heading.textContent = types[entry.type] || "Заявка"; card.append(heading);
@@ -37,7 +37,7 @@ class AppRequestList extends HTMLElement {
         for (const [key, value] of Object.entries(entry.fields || {})) {
           if (!value || (key === "contactPhone" && entry.fields.phone === value)) continue;
           const label = document.createElement("dt"); label.textContent = labels[key] || key;
-          const text = document.createElement("dd"); text.textContent = String(value); list.append(label, text);
+          const text = document.createElement("dd"); text.setAttribute("translate", "no"); text.textContent = String(value); list.append(label, text);
         }
         card.append(list);
         const label = document.createElement("label"); label.textContent = "Статус ";

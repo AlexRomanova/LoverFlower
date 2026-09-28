@@ -18,7 +18,7 @@ app-cart-modal .cart-item { grid-template-columns: 55px minmax(0, 1fr) auto; ali
 app-cart-modal .cart-item > img { width: 55px; height: 78px; object-fit: cover; }
 app-cart-modal .cart-item h3 { font-size: 14px; line-height: 1.4; }
 .cart-item__info { min-width: 0; }
-.cart-item__info small { display: block; margin-top: 4px; font-size: 11px; color: #bac9c6; }
+.cart-item__info small { display: block; margin-top: 4px; font-size: 11px; color: var(--color-old-price); }
 app-cart-modal .cart-item__quantity { margin-top: 10px; gap: 0; }
 app-cart-modal .cart-item__quantity button { width: 32px; height: 36px; padding: 0; font: 400 20px var(--font-body); }
 app-cart-modal .cart-item__quantity span { min-width: 22px; text-align: center; font-size: 13px; }
@@ -31,7 +31,7 @@ app-cart-modal .cart-drawer__empty p { line-height: 1.6; }
 app-cart-modal .cart-drawer__empty .btn { width: 100%; font-family: var(--font-body); }
 app-cart-modal .cart-drawer__bottom { flex-shrink: 0; padding-top: 16px; }
 app-cart-modal .cart-drawer__total { margin: 0 0 10px; padding: 12px 0 0; font-size: 15px; line-height: 1.5; }
-.cart-drawer__note { margin: 8px 0; font-size: 12px; line-height: 1.5; color: #bac9c6; text-transform: none; }
+.cart-drawer__note { margin: 8px 0; font-size: 12px; line-height: 1.5; color: var(--color-old-price); text-transform: none; }
 app-cart-modal .cart-drawer__bottom > .btn { width: 100%; margin-top: 14px; font-family: var(--font-body); }
 .cart-drawer__status { flex-shrink: 0; margin: 12px 0 0; font-size: 12px; line-height: 1.5; color: var(--color-accent); }
 .cart-drawer__status:empty { display: none; }

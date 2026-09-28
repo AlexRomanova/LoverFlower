@@ -13,7 +13,7 @@ body.is-auth-open { overflow: hidden; }
 .auth-dialog .site-dialog__close { width: 44px; height: 44px; top: 4px; right: 4px; }
 .auth-dialog h2 { padding-right: 30px; }
 .auth-dialog button, .auth-dialog input { font-family: var(--font-body); }
-.auth-demo, .auth-hint { font-size: 13px; line-height: 1.5; color: #bac9c6; }
+.auth-demo, .auth-hint { font-size: 13px; line-height: 1.5; color: var(--color-old-price); }
 .auth-demo { margin: 15px 0 0; }
 .auth-dialog .auth-form { gap: 18px; margin-top: 18px; }
 .auth-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; }
@@ -22,11 +22,11 @@ body.is-auth-open { overflow: hidden; }
 .auth-dialog .auth-field input { height: 50px; padding: 12px; border-color: #728582; min-width: 0; border-radius: 0; color-scheme: dark; }
 .auth-dialog input[readonly] { color: var(--color-accent); }
 .auth-dialog input:focus { border-color: var(--color-accent); }
-.auth-dialog input[aria-invalid="true"] { border-color: #ff9dbd; }
+.auth-dialog input[aria-invalid="true"] { border-color: var(--color-accent-soft); }
 .auth-required { color: var(--color-accent); }
 .auth-hint { display: block; margin-top: 6px; text-transform: none; }
 .auth-error, .auth-status { margin: 6px 0 0; font-size: 13px; line-height: 1.5; }
-.auth-error { color: #ff9dbd; }
+.auth-error { color: var(--color-accent-soft); }
 .auth-error:empty, .auth-status:empty { display: none; }
 .auth-inline { display: flex; align-items: center; gap: 14px; }
 .auth-inline input { flex: 1; }
@@ -38,7 +38,7 @@ body.is-auth-open { overflow: hidden; }
 .auth-dialog .auth-password-mode label { display: inline-flex; align-items: center; gap: 8px; margin: 0 22px 4px 0; text-transform: none; }
 .auth-dialog input[type="radio"], .auth-dialog input[type="checkbox"] { width: 18px; height: 18px; min-width: 18px; padding: 0; margin: 0; accent-color: var(--color-accent); }
 .auth-agreement { border-top: 1px solid #405450; padding-top: 12px; }
-.auth-agreement__text { max-height: 190px; overflow: auto; overscroll-behavior: contain; margin: 10px 0; padding: 16px; border: 1px solid #728582; background: #071512; font-size: 14px; line-height: 1.65; }
+.auth-agreement__text { max-height: 190px; overflow: auto; overscroll-behavior: contain; margin: 10px 0; padding: 16px; border: 1px solid #728582; background: var(--color-surface); font-size: 14px; line-height: 1.65; }
 .auth-agreement__text h3 { font-size: 20px; margin: 0 0 12px; }
 .auth-agreement__text h4 { font-size: 15px; margin: 14px 0 6px; }
 .auth-agreement__text p { margin: 8px 0; }

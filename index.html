@@ -21,6 +21,8 @@
     <script src="scripts/components/app-callback-modal.js" defer></script>
     <script type="module" src="scripts/components/app-auth-modal.js"></script>
     <script type="module" src="scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="scripts/components/app-settings.js"></script>
+    <script type="module" src="scripts/settings-init.js"></script>
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -168,60 +170,60 @@
                   <picture>
                     <source media="(max-width: 760px)" srcset="media/home-mobile/popular-1.webp" />
                     <img src="media/img/product__image1.svg" class="" alt="Букет «Лучший день» — вариант 1" />
-                    </picture>
-                    <span class="product__badge product__badge--mobile">
+                  </picture>
+                  <span class="product__badge product__badge--mobile">
                     <img src="media/home-mobile/popular-sale.svg" width="60" height="60" alt="" aria-hidden="true" />
                     <span>SALE</span>
-                    </span>
-                    <span class="product__badge">
+                  </span>
+                  <span class="product__badge">
                     <img src="media/img/product__badge-new.svg" alt="" aria-hidden="true" />
                     <span>NEW</span>
-                    </span>
-                    </div>
-                    <h3>Лучший день</h3>
-                    <p class="product__price">167.00 ₽</p>
-                    <button class="btn btn--outline" type="button" data-add-to-cart disabled>В корзину</button>
-                    </article>
-                    <article class="product" id="product-2" data-product-id="home-2" data-price="167">
-                    <div class="product__image">
-                    <picture>
+                  </span>
+                </div>
+                <h3>Лучший день</h3>
+                <p class="product__price">167.00 ₽</p>
+                <button class="btn btn--outline" type="button" data-add-to-cart disabled>В корзину</button>
+              </article>
+              <article class="product" id="product-2" data-product-id="home-2" data-price="167">
+                <div class="product__image">
+                  <picture>
                     <source media="(max-width: 760px)" srcset="media/home-mobile/popular-2.webp" />
                     <img src="media/img/product__image2.svg" class="" alt="Букет «Лучший день» — вариант 2" />
-                    </picture>
-                    </div>
-                    <h3>Лучший день</h3>
-                    <p class="product__price">167.00 ₽</p>
-                    <button class="btn btn--outline" type="button" data-add-to-cart disabled>В корзину</button>
-                    </article>
-                    <article class="product" id="product-3" data-product-id="home-3" data-price="167">
-                    <div class="product__image">
-                    <picture>
+                  </picture>
+                </div>
+                <h3>Лучший день</h3>
+                <p class="product__price">167.00 ₽</p>
+                <button class="btn btn--outline" type="button" data-add-to-cart disabled>В корзину</button>
+              </article>
+              <article class="product" id="product-3" data-product-id="home-3" data-price="167">
+                <div class="product__image">
+                  <picture>
                     <source media="(max-width: 760px)" srcset="media/home-mobile/popular-3.webp" />
                     <img src="media/img/product__image3.svg" class="" alt="Букет «Лучший день» — вариант 3" />
-                    </picture>
-                    <span class="product__badge">
+                  </picture>
+                  <span class="product__badge">
                     <img src="media/img/product__badge-sale.svg" alt="" aria-hidden="true" />
                     <span>SALE</span>
-                    </span>
-                    </div>
-                    <h3>Лучший день</h3>
-                    <p class="product__price">
-                    167.00 ₽
-                    <del>187.00 ₽</del>
-                    </p>
-                    <button class="btn btn--outline" type="button" data-add-to-cart disabled>В корзину</button>
-                    </article>
-                    </div>
-                    <a class="products-arrow products-arrow--next" href="#product-3">
-                    <img src="media/img/products-arrow--next.svg" alt="" aria-hidden="true" />
-                    </a>
-                    </div>
-                    <a class="text-link popular__all" href="pages/catalog.html">
-                    Смотреть весь каталог
-                    <picture>
-                    <source media="(max-width: 760px)" srcset="media/home-mobile/popular-arrow.svg" />
-                    <img src="media/img/popular__all-arrow.svg" alt="" aria-hidden="true" />
-                  </picture>
+                  </span>
+                </div>
+                <h3>Лучший день</h3>
+                <p class="product__price">
+                  167.00 ₽
+                  <del>187.00 ₽</del>
+                </p>
+                <button class="btn btn--outline" type="button" data-add-to-cart disabled>В корзину</button>
+              </article>
+            </div>
+            <a class="products-arrow products-arrow--next" href="#product-3">
+              <img src="media/img/products-arrow--next.svg" alt="" aria-hidden="true" />
+            </a>
+          </div>
+          <a class="text-link popular__all" href="pages/catalog.html">
+            Смотреть весь каталог
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/popular-arrow.svg" />
+              <img src="media/img/popular__all-arrow.svg" alt="" aria-hidden="true" />
+            </picture>
           </a>
         </div>
       </section>
@@ -396,19 +398,31 @@
           <div class="social-section__gallery">
             <picture>
               <source media="(max-width: 760px)" srcset="media/home-mobile/social-1.webp" />
-              <img src="media/img/social-section__gallery1.webp" class="" alt="Цветочная композиция из нашей коллекции" />
+              <img
+                src="media/img/social-section__gallery1.webp"
+                class=""
+                alt="Цветочная композиция из нашей коллекции" />
             </picture>
             <picture>
               <source media="(max-width: 760px)" srcset="media/home-mobile/social-2.webp" />
-              <img src="media/img/social-section__gallery2.webp" class="" alt="Цветочная композиция из нашей коллекции" />
+              <img
+                src="media/img/social-section__gallery2.webp"
+                class=""
+                alt="Цветочная композиция из нашей коллекции" />
             </picture>
             <picture>
               <source media="(max-width: 760px)" srcset="media/home-mobile/social-3.webp" />
-              <img src="media/img/social-section__gallery3.webp" class="" alt="Цветочная композиция из нашей коллекции" />
+              <img
+                src="media/img/social-section__gallery3.webp"
+                class=""
+                alt="Цветочная композиция из нашей коллекции" />
             </picture>
             <picture>
               <source media="(max-width: 760px)" srcset="media/home-mobile/social-4.webp" />
-              <img src="media/img/social-section__gallery4.webp" class="" alt="Цветочная композиция из нашей коллекции" />
+              <img
+                src="media/img/social-section__gallery4.webp"
+                class=""
+                alt="Цветочная композиция из нашей коллекции" />
             </picture>
           </div>
           <div class="social-section__links">

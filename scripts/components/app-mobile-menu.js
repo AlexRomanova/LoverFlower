@@ -39,9 +39,11 @@
               <a href="${root}pages/corporate.html">Для корпоративных клиентов</a>
             </nav>
             <button type="button" class="mobile-drawer__account mobile-drawer__account--guest" data-mobile-auth>Войти / Зарегистрироваться</button>
+            <button type="button" class="mobile-drawer__settings" data-mobile-settings>Настройки сайта</button>
             <div class="mobile-drawer__account mobile-drawer__account--member">
               <span class="mobile-drawer__account-name" data-mobile-account-name></span>
               <a href="${root}pages/admin.html" data-manager-link hidden>Кабинет менеджера</a>
+              <button type="button" data-mobile-history hidden disabled>История заказов</button>
               <button type="button" data-mobile-logout>Выйти из аккаунта</button>
             </div>
             <address>
@@ -67,11 +69,25 @@
       document.addEventListener("auth-changed", (event) => {
         this.querySelector("[data-manager-link]").hidden = event.detail.user?.role !== "manager";
         this.querySelector("[data-mobile-account-name]").textContent = event.detail.user?.nickname || "";
+        const history = this.querySelector("[data-mobile-history]");
+        history.hidden = event.detail.user?.role !== "customer";
+        history.disabled = !document.querySelector("app-history-modal") || !customElements.get("app-history-modal");
+      }, options);
+      customElements.whenDefined("app-history-modal").then(() => { if (this.isConnected && document.querySelector("app-history-modal")) this.querySelector("[data-mobile-history]").disabled = false; });
+      this.querySelector("[data-mobile-history]").addEventListener("click", () => {
+        const trigger = this.trigger;
+        this.close();
+        this.dispatchEvent(new CustomEvent("open-history", { bubbles: true, detail: { trigger } }));
       }, options);
       this.querySelector("[data-mobile-auth]").addEventListener("click", () => {
         const trigger = this.trigger;
         this.close();
         this.dispatchEvent(new CustomEvent("open-auth", { bubbles: true, detail: { trigger } }));
+      }, options);
+      this.querySelector("[data-mobile-settings]").addEventListener("click", () => {
+        const trigger = this.trigger;
+        this.close();
+        this.dispatchEvent(new CustomEvent("open-settings", { bubbles: true, detail: { trigger } }));
       }, options);
       this.querySelector("[data-mobile-logout]").addEventListener("click", () => {
         this.close();

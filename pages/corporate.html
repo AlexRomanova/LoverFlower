@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
+    <script src="../scripts/settings-init.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Корпоративные букеты и поздравления сотрудников от Lover Flower" />
     <title>Корпоративным клиентам — Lover Flower</title>
@@ -10,22 +11,29 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&family=Roboto+Condensed:wght@400&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/corporate.css" />
-        <link rel="stylesheet" href="/css/components.css" />
-        <link rel="stylesheet" href="/css/auth.css" />
-        <link rel="stylesheet" href="/css/cart.css" />
-      <script src="/scripts/components/app-header.js" defer></script>
-    <script src="/scripts/components/app-footer.js" defer></script>
-    <script src="/scripts/components/app-mobile-menu.js" defer></script>
-    <script src="/scripts/components/app-callback-modal.js" defer></script>
-    <script type="module" src="/scripts/components/app-auth-modal.js"></script>
-    <script type="module" src="/scripts/components/app-cart-modal.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/corporate.css" />
+    <script type="module" src="../scripts/features/request-forms.js"></script>
+    <link rel="stylesheet" href="../css/orders.css" />
+  <script type="module" src="../scripts/components/app-history-modal.js"></script>
+    <link rel="stylesheet" href="../css/content-pages.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <script src="../scripts/components/app-header.js" defer></script>
+    <script src="../scripts/components/app-footer.js" defer></script>
+    <script src="../scripts/components/app-mobile-menu.js" defer></script>
+    <script src="../scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+    <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
   </head>
   <body class="corporate-page" data-figma-desktop="14:2412" data-figma-mobile="14:4512">
     <a class="skip-link" href="#main">Перейти к содержимому</a>
-        <app-header id="site-header"></app-header>
-
+    <app-header></app-header>
 
     <main id="main" class="corporate-main">
       <div class="corporate-stage">
@@ -84,7 +92,7 @@
             alt="" />
         </div>
         <nav class="corporate-breadcrumbs" aria-label="Хлебные крошки">
-          <a href="index.html">Главная</a>
+          <a href="../index.html">Главная</a>
           <span aria-hidden="true">/</span>
           <span aria-current="page">Корпоративным клиентам</span>
         </nav>
@@ -160,7 +168,7 @@
         <section class="corporate-steps" aria-labelledby="corporate-steps-title">
           <h2 id="corporate-steps-title">Этапы работы:</h2>
           <picture class="corporate-steps__line" aria-hidden="true">
-            <source media="(max-width: 760px)" srcset="../media/corporate/8c19d.svg" />
+            <source media="(max-width: 760px)" srcset="../media/corporate/corporate-steps__line.svg" />
             <img src="../media/corporate/corporate-steps__line.svg" alt="" />
           </picture>
           <ol>
@@ -215,7 +223,7 @@
                     name="contactPhone"
                     type="tel"
                     autocomplete="tel"
-                    placeholder="+7 (977) 777-77-77"
+                    placeholder="+375 (29) 123-45-67"
                     required />
                 </div>
                 <div class="corporate-field">
@@ -265,17 +273,20 @@
             <button type="submit">Отправить</button>
             <p class="corporate-form__notice">
               Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных, в соответствии с
-              <a href="privacy.html">Политикой конфиденциальности</a>
+              <a href="#user-agreement" data-open-agreement>Политикой конфиденциальности</a>
               .
             </p>
           </form>
         </section>
       </div>
     </main>
-
-    <app-footer id="site-footer"></app-footer>
-     <app-mobile-menu></app-mobile-menu>
-     <app-callback-modal></app-callback-modal>
-     <app-auth-modal></app-auth-modal>
-  </body>
+    <app-footer></app-footer>
+    <app-history-modal></app-history-modal>
+    <app-settings></app-settings>
+    <app-notifications></app-notifications>
+      <app-mobile-menu></app-mobile-menu>
+    <app-callback-modal></app-callback-modal>
+    <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+</body>
 </html>

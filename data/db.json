@@ -221,7 +221,16 @@
       "priceMinor": 16700,
       "stock": 99,
       "popularity": 100,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/home-mobile/popular-1.webp",
+      "light": "soft",
+      "color": "white",
+      "format": "bouquet",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-01T09:00:00Z",
+      "oldPriceMinor": 18700
     },
     {
       "id": "home-2",
@@ -232,7 +241,16 @@
       "priceMinor": 16700,
       "stock": 99,
       "popularity": 99,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/home-mobile/popular-2.webp",
+      "light": "bright",
+      "color": "yellow",
+      "format": "vase",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-02T09:00:00Z",
+      "oldPriceMinor": 18700
     },
     {
       "id": "home-3",
@@ -243,7 +261,17 @@
       "priceMinor": 16700,
       "stock": 99,
       "popularity": 98,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/home-mobile/popular-3.webp",
+      "light": "soft",
+      "color": "green",
+      "format": "envelope",
+      "flowers": [
+        "rose",
+        "gypsophila"
+      ],
+      "composition": "Роза, Гипсофила",
+      "createdAt": "2026-09-03T09:00:00Z",
+      "oldPriceMinor": 18700
     },
     {
       "id": "bouquet-4",
@@ -254,7 +282,15 @@
       "priceMinor": 10600,
       "stock": 13,
       "popularity": 97,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/catalog/catalog-product__image4.png",
+      "light": "bright",
+      "color": "red",
+      "format": "basket",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-04T09:00:00Z"
     },
     {
       "id": "bouquet-5",
@@ -265,7 +301,15 @@
       "priceMinor": 11300,
       "stock": 14,
       "popularity": 96,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/catalog/catalog-product__image5.png",
+      "light": "soft",
+      "color": "orange",
+      "format": "box",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-05T09:00:00Z"
     },
     {
       "id": "bouquet-6",
@@ -276,7 +320,16 @@
       "priceMinor": 12000,
       "stock": 15,
       "popularity": 95,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/catalog/catalog-product__image6.png",
+      "light": "bright",
+      "color": "pink",
+      "format": "crate",
+      "flowers": [
+        "chrysanthemum",
+        "daisy"
+      ],
+      "composition": "Хризантема, Ромашка",
+      "createdAt": "2026-09-06T09:00:00Z"
     },
     {
       "id": "bouquet-7",
@@ -287,7 +340,15 @@
       "priceMinor": 12700,
       "stock": 16,
       "popularity": 94,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/catalog/catalog-product__image7.png",
+      "light": "soft",
+      "color": "blue",
+      "format": "bouquet",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-07T09:00:00Z"
     },
     {
       "id": "bouquet-8",
@@ -298,7 +359,15 @@
       "priceMinor": 13400,
       "stock": 17,
       "popularity": 93,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/catalog/catalog-product__image8.png",
+      "light": "bright",
+      "color": "white",
+      "format": "vase",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-08T09:00:00Z"
     },
     {
       "id": "bouquet-9",
@@ -309,7 +378,16 @@
       "priceMinor": 14100,
       "stock": 18,
       "popularity": 92,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/catalog/catalog-product__image9.png",
+      "light": "soft",
+      "color": "yellow",
+      "format": "envelope",
+      "flowers": [
+        "gypsophila",
+        "daisy"
+      ],
+      "composition": "Гипсофила, Ромашка",
+      "createdAt": "2026-09-09T09:00:00Z"
     },
     {
       "id": "bouquet-10",
@@ -320,7 +398,15 @@
       "priceMinor": 14800,
       "stock": 19,
       "popularity": 91,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/catalog/catalog-product__image10.png",
+      "light": "bright",
+      "color": "green",
+      "format": "basket",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-10T09:00:00Z"
     },
     {
       "id": "bouquet-11",
@@ -331,7 +417,15 @@
       "priceMinor": 15500,
       "stock": 20,
       "popularity": 90,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/catalog/catalog-product__image11.png",
+      "light": "soft",
+      "color": "red",
+      "format": "box",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-11T09:00:00Z"
     },
     {
       "id": "bouquet-12",
@@ -342,7 +436,16 @@
       "priceMinor": 16200,
       "stock": 21,
       "popularity": 89,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/catalog/catalog-product__image12.png",
+      "light": "bright",
+      "color": "orange",
+      "format": "crate",
+      "flowers": [
+        "rose",
+        "gypsophila"
+      ],
+      "composition": "Роза, Гипсофила",
+      "createdAt": "2026-09-12T09:00:00Z"
     },
     {
       "id": "bouquet-13",
@@ -353,7 +456,15 @@
       "priceMinor": 16900,
       "stock": 22,
       "popularity": 88,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/catalog/catalog-product__image1.png",
+      "light": "soft",
+      "color": "pink",
+      "format": "bouquet",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-13T09:00:00Z"
     },
     {
       "id": "bouquet-14",
@@ -364,7 +475,15 @@
       "priceMinor": 17600,
       "stock": 23,
       "popularity": 87,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/catalog/catalog-product__image2.png",
+      "light": "bright",
+      "color": "blue",
+      "format": "vase",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-14T09:00:00Z"
     },
     {
       "id": "bouquet-15",
@@ -375,7 +494,16 @@
       "priceMinor": 18300,
       "stock": 24,
       "popularity": 86,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/catalog/catalog-product__image3.png",
+      "light": "soft",
+      "color": "white",
+      "format": "envelope",
+      "flowers": [
+        "chrysanthemum",
+        "daisy"
+      ],
+      "composition": "Хризантема, Ромашка",
+      "createdAt": "2026-09-15T09:00:00Z"
     },
     {
       "id": "bouquet-16",
@@ -386,7 +514,15 @@
       "priceMinor": 19000,
       "stock": 25,
       "popularity": 85,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/catalog/catalog-product__image4.png",
+      "light": "bright",
+      "color": "yellow",
+      "format": "basket",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-16T09:00:00Z"
     },
     {
       "id": "bouquet-17",
@@ -397,7 +533,15 @@
       "priceMinor": 19700,
       "stock": 26,
       "popularity": 84,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/catalog/catalog-product__image5.png",
+      "light": "soft",
+      "color": "green",
+      "format": "box",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-17T09:00:00Z"
     },
     {
       "id": "bouquet-18",
@@ -408,7 +552,16 @@
       "priceMinor": 20400,
       "stock": 27,
       "popularity": 83,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/catalog/catalog-product__image6.png",
+      "light": "bright",
+      "color": "red",
+      "format": "crate",
+      "flowers": [
+        "gypsophila",
+        "daisy"
+      ],
+      "composition": "Гипсофила, Ромашка",
+      "createdAt": "2026-09-18T09:00:00Z"
     },
     {
       "id": "bouquet-19",
@@ -419,7 +572,15 @@
       "priceMinor": 21100,
       "stock": 28,
       "popularity": 82,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/catalog/catalog-product__image7.png",
+      "light": "soft",
+      "color": "orange",
+      "format": "bouquet",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-19T09:00:00Z"
     },
     {
       "id": "bouquet-20",
@@ -430,7 +591,15 @@
       "priceMinor": 21800,
       "stock": 29,
       "popularity": 81,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/catalog/catalog-product__image8.png",
+      "light": "bright",
+      "color": "pink",
+      "format": "vase",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-20T09:00:00Z"
     },
     {
       "id": "bouquet-21",
@@ -441,7 +610,16 @@
       "priceMinor": 22500,
       "stock": 30,
       "popularity": 80,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/catalog/catalog-product__image9.png",
+      "light": "soft",
+      "color": "blue",
+      "format": "envelope",
+      "flowers": [
+        "rose",
+        "gypsophila"
+      ],
+      "composition": "Роза, Гипсофила",
+      "createdAt": "2026-09-21T09:00:00Z"
     },
     {
       "id": "bouquet-22",
@@ -452,7 +630,15 @@
       "priceMinor": 23200,
       "stock": 31,
       "popularity": 79,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/catalog/catalog-product__image10.png",
+      "light": "bright",
+      "color": "white",
+      "format": "basket",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-22T09:00:00Z"
     },
     {
       "id": "bouquet-23",
@@ -463,7 +649,15 @@
       "priceMinor": 23900,
       "stock": 32,
       "popularity": 78,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/catalog/catalog-product__image11.png",
+      "light": "soft",
+      "color": "yellow",
+      "format": "box",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-23T09:00:00Z"
     },
     {
       "id": "bouquet-24",
@@ -474,7 +668,16 @@
       "priceMinor": 24600,
       "stock": 33,
       "popularity": 77,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/catalog/catalog-product__image12.png",
+      "light": "bright",
+      "color": "green",
+      "format": "crate",
+      "flowers": [
+        "chrysanthemum",
+        "daisy"
+      ],
+      "composition": "Хризантема, Ромашка",
+      "createdAt": "2026-09-24T09:00:00Z"
     },
     {
       "id": "bouquet-25",
@@ -485,7 +688,15 @@
       "priceMinor": 25300,
       "stock": 34,
       "popularity": 76,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/catalog/catalog-product__image1.png",
+      "light": "soft",
+      "color": "red",
+      "format": "bouquet",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-25T09:00:00Z"
     },
     {
       "id": "bouquet-26",
@@ -496,7 +707,15 @@
       "priceMinor": 26000,
       "stock": 35,
       "popularity": 75,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/catalog/catalog-product__image2.png",
+      "light": "bright",
+      "color": "orange",
+      "format": "vase",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-26T09:00:00Z"
     },
     {
       "id": "bouquet-27",
@@ -507,7 +726,16 @@
       "priceMinor": 26700,
       "stock": 36,
       "popularity": 74,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/catalog/catalog-product__image3.png",
+      "light": "soft",
+      "color": "pink",
+      "format": "envelope",
+      "flowers": [
+        "gypsophila",
+        "daisy"
+      ],
+      "composition": "Гипсофила, Ромашка",
+      "createdAt": "2026-09-27T09:00:00Z"
     },
     {
       "id": "bouquet-28",
@@ -518,7 +746,15 @@
       "priceMinor": 27400,
       "stock": 37,
       "popularity": 73,
-      "image": "media/home-mobile/popular-1.webp"
+      "image": "media/catalog/catalog-product__image4.png",
+      "light": "bright",
+      "color": "blue",
+      "format": "basket",
+      "flowers": [
+        "rose"
+      ],
+      "composition": "Роза",
+      "createdAt": "2026-09-28T09:00:00Z"
     },
     {
       "id": "bouquet-29",
@@ -529,7 +765,15 @@
       "priceMinor": 28100,
       "stock": 38,
       "popularity": 72,
-      "image": "media/home-mobile/popular-2.webp"
+      "image": "media/catalog/catalog-product__image5.png",
+      "light": "soft",
+      "color": "white",
+      "format": "box",
+      "flowers": [
+        "peony"
+      ],
+      "composition": "Пион",
+      "createdAt": "2026-09-01T09:00:00Z"
     },
     {
       "id": "bouquet-30",
@@ -540,7 +784,16 @@
       "priceMinor": 28800,
       "stock": 39,
       "popularity": 71,
-      "image": "media/home-mobile/popular-3.webp"
+      "image": "media/catalog/catalog-product__image6.png",
+      "light": "bright",
+      "color": "yellow",
+      "format": "crate",
+      "flowers": [
+        "rose",
+        "gypsophila"
+      ],
+      "composition": "Роза, Гипсофила",
+      "createdAt": "2026-09-02T09:00:00Z"
     }
   ],
   "carts": [

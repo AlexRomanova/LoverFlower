@@ -2,25 +2,34 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
+    <script src="../scripts/settings-bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Букет Рубиновые искры — Lover Flower" />
-    <title>Рубиновые искры — Lover Flower</title>
+    <meta name="description" content="Букеты и цветочные композиции Lover Flower" />
+    <title>Букет — Lover Flower</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Cormorant:wght@300;400&family=Roboto+Condensed&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/productCard.css" />
-    <link rel="stylesheet" href="/css/components.css" />
-    <link rel="stylesheet" href="/css/auth.css" />
-    <link rel="stylesheet" href="/css/cart.css" />
-    <script src="/scripts/components/app-header.js" defer></script>
-    <script src="/scripts/components/app-footer.js" defer></script>
-    <script src="/scripts/components/app-mobile-menu.js" defer></script>
-    <script src="/scripts/components/app-callback-modal.js" defer></script>
-    <script type="module" src="/scripts/components/app-auth-modal.js"></script>
-    <script type="module" src="/scripts/components/app-cart-modal.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/productCard.css" />
+  
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <script src="../scripts/components/app-header.js" defer></script>
+    <script src="../scripts/components/app-footer.js" defer></script>
+    <script src="../scripts/components/app-mobile-menu.js" defer></script>
+    <script src="../scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="../scripts/pages/product.js"></script>
+    <link rel="stylesheet" href="../css/orders.css" />
+  <script type="module" src="../scripts/components/app-history-modal.js"></script>
+    <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
   </head>
   <body class="product-page" data-figma-nodes="14:2094 14:2907 14:3016">
     <div class="product-backdrop" aria-hidden="true">
@@ -54,66 +63,32 @@
         alt=""
         aria-hidden="true" />
     </div>
-    <a class="skip-link" href="#product-title">Перейти к товару</a>
-
-    <app-header id="site-header"></app-header>
-
-    <main>
+    <a class="skip-link" href="#main">Перейти к букету</a>
+    <app-header></app-header>
+    <main id="main">
       <div class="container">
         <nav class="product-breadcrumbs" aria-label="Хлебные крошки">
-          <a href="index.html">Главная</a>
+          <a href="../index.html">Главная</a>
           <span>/</span>
           <a href="catalog.html">Каталог букетов</a>
           <span>/</span>
           <a href="catalog.html">Популярное</a>
           <span>/</span>
-          <span aria-current="page">Рубиновые искры</span>
+          <span aria-current="page" data-product-breadcrumb>Букет</span>
         </nav>
+        <p class="catalog-status" data-product-status role="status">Загружаем букет…</p>
+        <button class="btn btn--outline" type="button" data-product-retry hidden>Повторить загрузку</button>
+        <div data-product-content hidden>
         <section class="product-hero" aria-label="Рубиновые искры">
-          <div class="product-gallery" data-gallery-for="ruby-sparks">
-            <input class="sr-only gallery-radio" type="radio" name="view" id="view-main" checked />
-            <input class="sr-only gallery-radio" type="radio" name="view" id="view-detail-1" />
-            <input class="sr-only gallery-radio" type="radio" name="view" id="view-detail-2" />
-            <div class="product-gallery__thumbs">
-              <span class="product-gallery__chevron product-gallery__chevron--top" aria-hidden="true">
-                <img src="../media/product/product-gallery__chevron.svg" class="" alt="" aria-hidden="true" />
-              </span>
-              <label for="view-detail-1" aria-label="Показать вид букета сверху">
-                <img
-                  src="../media/product/product-gallery__image--detail-1.png"
-                  class=""
-                  alt="Рубиновые искры: деталь 1" />
-              </label>
-              <label for="view-detail-2" aria-label="Показать детали цветочной композиции">
-                <img
-                  src="../media/product/product-gallery__image--detail-2.png"
-                  class=""
-                  alt="Рубиновые искры: деталь 2" />
-              </label>
-              <span class="product-gallery__chevron product-gallery__chevron--bottom" aria-hidden="true">
-                <img src="../media/product/product-gallery__chevron.svg" class="" alt="" aria-hidden="true" />
-              </span>
-            </div>
-            <div class="product-gallery__main">
-              <label for="view-main" aria-label="Показать основной вид">
-                <img src="../media/product/product-gallery__image--main.png" class="" alt="Букет «Рубиновые искры»" />
-                <img
-                  src="../media/product/product-gallery__image--detail-1.png"
-                  class=""
-                  alt="Рубиновые искры: деталь 1" />
-                <img
-                  src="../media/product/product-gallery__image--detail-2.png"
-                  class=""
-                  alt="Рубиновые искры: деталь 2" />
-              </label>
-            </div>
+          <div class="product-gallery">
+            <div class="product-gallery__main"><img data-product-image width="350" height="450" alt="" /></div>
           </div>
-          <div class="product-info" data-product-id="ruby-sparks">
+          <div class="product-info" data-product-id="">
             <a class="product-info__back" href="catalog.html" aria-label="Вернуться в каталог">
               <img src="../media/product/product-gallery__chevron.svg" class="" alt="" aria-hidden="true" />
               Назад
             </a>
-            <h1 id="product-title" data-field="title">Рубиновые искры</h1>
+            <h1 id="product-title" data-field="title">Букет</h1>
             <div class="product-info__prices">
               <strong data-field="price" data-price="167">167.00 ₽</strong>
               <del data-field="old-price" data-price="187">187.00 ₽</del>
@@ -125,23 +100,17 @@
             <p class="product-info__description" data-field="description">
               Завораживающая глубина ваших чувств передана огненными красками этого букета
             </p>
-            <p class="product-info__meta">
-              <b>Категории:</b>
-              8 марта, Букет на 14 февраля, Букет на праздник, Букеты цветов на День рождения, Композиции из цветов,
-              Композиции из цветов в коробке
-              <br />
-              <b>Метки:</b>
-              Для начальника, Мужские букеты
-            </p>
+            <p class="product-info__meta"><b>Категория:</b> <span data-field="category"></span></p>
+            <p class="product-info__stock" data-field="stock"></p>
             <div class="product-info__purchase">
-              <button class="btn btn--outline" type="button" disabled title="Подключение корзины — следующий этап">
+              <button class="btn btn--outline" type="button" data-add-to-cart disabled>
                 В корзину
               </button>
               <label class="quantity">
                 <span class="sr-only">Количество букетов</span>
-                <input type="number" name="quantity" min="1" value="1" inputmode="numeric" />
+                <input type="number" name="quantity" data-product-quantity aria-describedby="quantity-error" min="1" step="1" value="1" inputmode="numeric" />
               </label>
-            </div>
+            </div><p class="catalog-error" data-quantity-error id="quantity-error" role="status"></p>
           </div>
         </section>
         <section class="product-extra" aria-labelledby="extra-title">
@@ -189,7 +158,7 @@
           <input class="sr-only product-tabs__radio" type="radio" name="product-details" id="tab-reviews" />
           <label for="tab-reviews" id="tab-reviews-label">
             Отзывы (
-            <span data-review-count>4</span>
+            <span data-review-count>0</span>
             )
           </label>
         </div>
@@ -237,200 +206,24 @@
             </section>
           </div>
         </section>
-        <section class="reviews-panel" id="reviews" aria-labelledby="tab-reviews-label" data-review-state="filled">
-          <p class="reviews-empty">Отзывов пока нет</p>
-          <ol class="reviews-list" data-state="filled">
-            <li class="review" data-review-id="demo-1">
-              <span class="review__quote">“</span>
-              <p>
-                Лучшая доставка цветов в городе! Быстро доставили, привезли к нужному времени, а сам букет превзошел все
-                ожидания!
-              </p>
-              <div class="review-stars" aria-label="5 из 5">
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-              </div>
-              <p class="review__author">
-                Иван,
-                <time datetime="2021-10-10">10/10/2021</time>
-              </p>
-            </li>
-            <li class="review" data-review-id="demo-2">
-              <span class="review__quote">“</span>
-              <p>
-                Лучшая доставка цветов в городе! Быстро доставили, привезли к нужному времени, а сам букет превзошел все
-                ожидания!
-              </p>
-              <div class="review-stars" aria-label="4 из 5">
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars.svg" class="" alt="" aria-hidden="true" />
-              </div>
-              <p class="review__author">
-                Иван,
-                <time datetime="2021-10-10">10/10/2021</time>
-              </p>
-            </li>
-            <li class="review" data-review-id="demo-3">
-              <span class="review__quote">“</span>
-              <p>
-                Лучшая доставка цветов в городе! Быстро доставили, привезли к нужному времени, а сам букет превзошел все
-                ожидания!
-              </p>
-              <div class="review-stars" aria-label="4 из 5">
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars.svg" class="" alt="" aria-hidden="true" />
-              </div>
-              <p class="review__author">
-                Иван,
-                <time datetime="2021-10-10">10/10/2021</time>
-              </p>
-            </li>
-            <li class="review" data-review-id="demo-4">
-              <span class="review__quote">“</span>
-              <p>
-                Лучшая доставка цветов в городе! Быстро доставили, привезли к нужному времени, а сам букет превзошел все
-                ожидания!
-              </p>
-              <div class="review-stars" aria-label="5 из 5">
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-                <img src="../media/product/review-stars--yellow.svg" class="" alt="" aria-hidden="true" />
-              </div>
-              <p class="review__author">
-                Иван,
-                <time datetime="2021-10-10">10/10/2021</time>
-              </p>
-            </li>
-          </ol>
-          <div class="review-form-wrap">
-            <h3>
-              <span class="review-form__title--filled">Оставьте свой отзыв на «Рубиновые искры»</span>
-              <span class="review-form__title--empty">Будьте первым, кто оставил отзыв на «Рубиновые искры»</span>
-            </h3>
-            <p>Ваш адрес email не будет опубликован. Обязательные поля помечены *</p>
-            <form class="review-form" data-product-id="ruby-sparks" aria-label="Оставить отзыв" action="#" method="get">
-              <fieldset class="rating">
-                <legend>Ваша оценка:</legend>
-                <label>
-                  <input type="radio" name="rating" value="1" required />
-                  <span class="sr-only">1 из 5</span>
-                  <img src="../media/product/review-stars.svg" class="star-icon" alt="" aria-hidden="true" />
-                </label>
-                <label>
-                  <input type="radio" name="rating" value="2" required />
-                  <span class="sr-only">2 из 5</span>
-                  <img src="../media/product/review-stars.svg" class="star-icon" alt="" aria-hidden="true" />
-                </label>
-                <label>
-                  <input type="radio" name="rating" value="3" required />
-                  <span class="sr-only">3 из 5</span>
-                  <img src="../media/product/review-stars.svg" class="star-icon" alt="" aria-hidden="true" />
-                </label>
-                <label>
-                  <input type="radio" name="rating" value="4" required />
-                  <span class="sr-only">4 из 5</span>
-                  <img src="../media/product/review-stars.svg" class="star-icon" alt="" aria-hidden="true" />
-                </label>
-                <label>
-                  <input type="radio" name="rating" value="5" required />
-                  <span class="sr-only">5 из 5</span>
-                  <img src="../media/product/review-stars.svg" class="star-icon" alt="" aria-hidden="true" />
-                </label>
-              </fieldset>
-              <label for="review-text">Ваш отзыв*</label>
-              <textarea id="review-text" name="review" placeholder="Введите комментарий" rows="8" required></textarea>
-              <label for="review-name">Имя*</label>
-              <input
-                id="review-name"
-                type="text"
-                name="name"
-                placeholder="Введите ваше имя"
-                autocomplete="name"
-                required />
-              <label for="review-email">E-mail*</label>
-              <input
-                id="review-email"
-                type="email"
-                name="email"
-                placeholder="Введите вашу почту"
-                autocomplete="email"
-                required />
-              <button class="btn" type="button" disabled title="Отправка будет подключена вместе с сервером">
-                Отправить
-              </button>
-              <p class="review-form__consent">
-                Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных в соответствии с
-                <span>Политикой конфиденциальности</span>
-              </p>
-            </form>
-          </div>
-        </section>
+        <section class="reviews-panel" id="reviews" aria-labelledby="tab-reviews-label" data-review-state="empty"><p class="reviews-empty">Отзывов пока нет.</p></section>
         <section class="recommendations" aria-labelledby="recommendations-title" data-list="recommendations">
           <h2 id="recommendations-title">Вам может понравиться:</h2>
-          <div class="recommendations__grid">
-            <article class="recommendation" data-product-id="recommended-1">
-              <a href="product.html">
-                <img src="media/catalog/cc39d.png" class="" alt="Цветочная композиция «Лучший день», вариант 1" />
-              </a>
-              <h3>Лучший день</h3>
-              <p>167.00 ₽</p>
-              <button class="btn btn--outline" type="button" disabled>В корзину</button>
-            </article>
-            <article class="recommendation" data-product-id="recommended-2">
-              <a href="product.html">
-                <img src="media/catalog/d461b.png" class="" alt="Цветочная композиция «Лучший день», вариант 2" />
-              </a>
-              <h3>Лучший день</h3>
-              <p>167.00 ₽</p>
-              <button class="btn btn--outline" type="button" disabled>В корзину</button>
-            </article>
-            <article class="recommendation" data-product-id="recommended-3">
-              <a href="product.html">
-                <img src="media/catalog/d356b.png" class="" alt="Цветочная композиция «Лучший день», вариант 3" />
-              </a>
-              <span class="recommendation__badge">
-                <img src="../media/product/b6706.svg" class="" alt="" aria-hidden="true" />
-                SALE
-              </span>
-              <h3>Лучший день</h3>
-              <p>
-                167.00 ₽
-                <del>187.00 ₽</del>
-              </p>
-              <button class="btn btn--outline" type="button" disabled>В корзину</button>
-            </article>
-            <article class="recommendation" data-product-id="recommended-4">
-              <a href="product.html">
-                <img src="media/catalog/08813.png" class="" alt="Цветочная композиция «Лучший день», вариант 4" />
-              </a>
-              <h3>Лучший день</h3>
-              <p>167.00 ₽</p>
-              <button class="btn btn--outline" type="button" disabled>В корзину</button>
-            </article>
-          </div>
-          <span class="recommendations__arrow recommendations__arrow--prev" aria-hidden="true">
-            <img src="../media/product/5e09e.svg" class="" alt="" aria-hidden="true" />
-          </span>
-          <span class="recommendations__arrow recommendations__arrow--next" aria-hidden="true">
-            <img src="../media/product/27e41.svg" class="" alt="" aria-hidden="true" />
-          </span>
+          <div class="recommendations__grid"></div>
+          
+          
         </section>
       </div>
+    </div>
     </main>
-    <app-footer id="site-footer"></app-footer>
+    
+    <app-footer></app-footer>
     <app-mobile-menu></app-mobile-menu>
     <app-callback-modal></app-callback-modal>
     <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+    <app-history-modal></app-history-modal>
+    <app-settings></app-settings>
+    <app-notifications></app-notifications>
   </body>
 </html>

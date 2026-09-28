@@ -1,7 +1,7 @@
 /* «О нас»: Figma 14:2388 (1440 px) и 14:4595 (320 px). */
 .about-page {
   overflow-x: clip;
-  background: #040a0a;
+  background: var(--color-page);
 }
 .about-header {
   height: 80px;
@@ -42,7 +42,7 @@
   width: min(350px, 90vw);
   padding: 20px;
   border: 1px solid var(--turquoise_ui_kit);
-  background: #0f2222;
+  background: var(--color-surface);
 }
 .about-search__panel label {
   display: block;
@@ -53,7 +53,7 @@
   padding: 9px;
   border: 1px solid var(--turquoise_ui_kit);
   background: transparent;
-  color: white;
+  color: var(--color-text);
 }
 .about-header__phone {
   display: flex;
@@ -73,7 +73,7 @@
   padding: 0;
   border: 0;
   background: none;
-  color: white;
+  color: var(--color-text);
   font-size: 14px;
   letter-spacing: 0.56px;
   text-transform: uppercase;
@@ -245,7 +245,7 @@
   top: 1732px;
   left: 165px;
   width: 1166px;
-  color: white;
+  color: var(--color-text);
   font: 400 60px/64px Cormorant, Georgia, serif;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -325,7 +325,7 @@
     gap: 14px;
     width: min(320px, 100vw);
     padding: 22px;
-    background: #0f2222;
+    background: var(--color-surface);
     box-shadow: 0 10px 30px #000a;
     font-size: 14px;
     text-transform: uppercase;
@@ -360,7 +360,7 @@
   .about-mobile-cart__badge > span {
     position: absolute;
     inset: -1px 0 0;
-    color: #142b2b;
+    color: var(--color-surface-raised);
     font-size: 8px;
     text-align: center;
   }
@@ -371,7 +371,7 @@
     z-index: 30;
     width: min(260px, 100vw);
     padding: 20px;
-    background: #0f2222;
+    background: var(--color-surface);
     font-size: 14px;
   }
   .about-main {

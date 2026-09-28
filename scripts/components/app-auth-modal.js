@@ -115,7 +115,7 @@ class AppAuthModal extends HTMLElement {
                   <h4>4. Хранение данных</h4>
                   <p>При локальном запуске аккаунты, корзины и заявки сохраняются в JSON Server. На GitHub Pages они сохраняются только в этом браузере. Очистка данных браузера удаляет изменения демонстрационной версии, но не меняет локальную базу JSON Server.</p>
                   <h4>5. Использование кабинета</h4>
-                  <p>Покупатель работает со своей корзиной. Менеджер управляет ценами и наличием товаров. Оформление заказа подключается отдельным этапом. Этот интерфейс не подтверждает оплату или реальный заказ.</p>
+                  <p>Покупатель оформляет заказы из своей корзины и проверяет их историю. Менеджер управляет товарами, заявками и статусами заказов. Этот интерфейс не подтверждает оплату или реальный заказ.</p>
                   <h4>6. Подтверждение</h4>
                   <p>Прочитав текст до конца, пользователь может отметить согласие с условиями учебной версии. Для запуска настоящего магазина текст необходимо заменить утверждённым соглашением.</p>
                   <p class="auth-agreement__end">Конец соглашения</p>
@@ -144,6 +144,14 @@ class AppAuthModal extends HTMLElement {
   bindEvents() {
     const options = { signal: this.controller.signal };
     document.addEventListener("open-auth", (event) => this.open(event.detail?.trigger, event.detail?.tab), options);
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest("[data-open-agreement]");
+      if (!link) return;
+      event.preventDefault(); this.open(link, "register");
+      const text = this.querySelector("#user-agreement"); text.hidden = false;
+      this.querySelector("[data-read-agreement]").setAttribute("aria-expanded", "true");
+      text.focus();
+    }, options);
     document.addEventListener("auth-logout", async () => {
       try { await this.store?.logout(); this.publishUser(null); }
       catch { this.showStatus(this.loginForm, "Не удалось выйти из аккаунта. Проверьте доступ к хранилищу браузера."); }
@@ -384,7 +392,8 @@ class AppAuthModal extends HTMLElement {
     this.querySelector("[data-auth-success]").hidden = false;
     this.dialog.classList.remove("auth-dialog--register");
     this.querySelector("[data-success-title]").textContent = registered ? "Аккаунт создан" : "Вы вошли";
-    this.querySelector("[data-success-message]").textContent = `Добро пожаловать, ${user.nickname}!`;
+    const nickname = document.createElement("span"); nickname.setAttribute("translate", "no"); nickname.textContent = user.nickname;
+    this.querySelector("[data-success-message]").replaceChildren("Добро пожаловать, ", nickname, "!");
     this.querySelector("[data-success-password]").hidden = !generatedPassword;
     this.querySelector("#success-password").value = generatedPassword;
     this.querySelector("[data-auth-continue]").focus();

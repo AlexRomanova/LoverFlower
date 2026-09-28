@@ -28,3 +28,4 @@ function connect(form, type) {
 }
 document.querySelectorAll(".corporate-form").forEach((form) => connect(form, "corporate"));
 document.querySelectorAll(".contact__form").forEach((form) => connect(form, "question"));
+document.querySelectorAll(".contacts-form").forEach((form) => connect(form, "question"));

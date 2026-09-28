@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+    <script src="../scripts/settings-bootstrap.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Оформление заказа Lover Flower: доставка по Минску и самовывоз." />
+  <title>Оформление заказа — Lover Flower</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+  <link rel="stylesheet" href="../css/cart.css" />
+  <link rel="stylesheet" href="../css/orders.css" />
+  <script src="../scripts/components/app-header.js" defer></script>
+  <script src="../scripts/components/app-footer.js" defer></script>
+  <script src="../scripts/components/app-mobile-menu.js" defer></script>
+  <script src="../scripts/components/app-callback-modal.js" defer></script>
+  <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+  <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+  <script type="module" src="../scripts/components/app-history-modal.js"></script>
+  <script type="module" src="../scripts/pages/checkout.js"></script>
+    <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
+  </head>
+<body>
+  <a class="skip-link" href="#main">Перейти к оформлению</a>
+  <app-header></app-header>
+  <main class="checkout-page container" id="main">
+    <nav class="checkout-breadcrumbs" aria-label="Хлебные крошки"><a href="../index.html">Главная</a><span>/</span><a href="catalog.html">Каталог</a><span>/</span><span aria-current="page">Оформление</span></nav>
+    <h1>Оформление заказа</h1>
+    <p class="checkout-status" data-checkout-status role="status" aria-live="polite">Загружаем корзину…</p>
+    <div class="checkout-gate" data-checkout-gate hidden>
+      <button class="btn" type="button" data-checkout-login>Войти / Зарегистрироваться</button>
+      <button class="btn btn--outline" type="button" data-checkout-retry>Обновить корзину</button>
+      <a class="text-link" href="catalog.html">Перейти в каталог</a>
+    </div>
+    <section class="checkout-success" data-checkout-success aria-labelledby="success-title" hidden>
+      <h2 id="success-title" tabindex="-1">Заказ сохранён</h2>
+      <p data-order-confirmation></p>
+      <p>Менеджер увидит заказ в своём кабинете. Статус можно проверить в истории заказов.</p>
+      <p data-cleanup-status role="status"></p>
+      <button class="btn btn--outline" type="button" data-order-cleanup hidden>Завершить обновление корзины</button>
+      <div class="checkout-success__actions"><button class="btn" type="button" data-checkout-history>История заказов</button><a class="text-link" href="catalog.html">Продолжить покупки</a></div>
+    </section>
+    <div class="checkout-layout" data-checkout-layout hidden>
+      <form class="checkout-form" data-checkout-form novalidate>
+        <p class="checkout-required">Обязательные поля помечены *</p>
+        <fieldset data-checkout-fields>
+          <legend>Контактные данные</legend>
+          <label>Имя и фамилия *<input name="name" autocomplete="name" maxlength="120" required aria-describedby="checkout-name-error" /></label>
+          <p class="checkout-error" data-error="name" id="checkout-name-error" aria-live="polite"></p>
+          <label>Телефон *<input name="phone" type="tel" autocomplete="tel" placeholder="+375 (29) 123-45-67" maxlength="30" required aria-describedby="checkout-phone-error" /></label>
+          <p class="checkout-error" data-error="phone" id="checkout-phone-error" aria-live="polite"></p>
+          <label>Email *<input name="email" type="email" autocomplete="email" maxlength="120" required aria-describedby="checkout-email-error" /></label>
+          <p class="checkout-error" data-error="email" id="checkout-email-error" aria-live="polite"></p>
+        </fieldset>
+        <fieldset data-checkout-fields>
+          <legend>Получение заказа</legend>
+          <label>Способ получения *<select name="deliveryMethod" required aria-describedby="checkout-method-error"><option value="courier">Доставка по Минску</option><option value="pickup">Самовывоз</option></select></label>
+          <p class="checkout-error" data-error="deliveryMethod" id="checkout-method-error" aria-live="polite"></p>
+          <p class="checkout-hint" data-pickup-address hidden>Самовывоз: Минск, ул. Тимирязева, 67, комн. 112. Ежедневно с 10:00 до 21:00.</p>
+          <div data-address-field><label>Адрес в Минске *<input name="address" autocomplete="street-address" placeholder="Улица, дом, квартира" maxlength="200" required aria-describedby="checkout-address-error" /></label><p class="checkout-error" data-error="address" id="checkout-address-error" aria-live="polite"></p></div>
+          <div class="checkout-form__row">
+            <div><label>Дата получения *<input name="deliveryDate" type="date" required aria-describedby="checkout-date-error" /></label><p class="checkout-error" data-error="deliveryDate" id="checkout-date-error" aria-live="polite"></p></div>
+            <div><label>Интервал *<select name="timeSlot" required aria-describedby="checkout-time-error"></select></label><p class="checkout-error" data-error="timeSlot" id="checkout-time-error" aria-live="polite"></p></div>
+          </div>
+        </fieldset>
+        <fieldset data-checkout-fields>
+          <legend>Оплата и пожелания</legend>
+          <label>Способ оплаты *<select name="paymentMethod" required aria-describedby="checkout-payment-error"><option value="cash">Наличными при получении</option><option value="card">Картой при получении</option></select></label>
+          <p class="checkout-error" data-error="paymentMethod" id="checkout-payment-error" aria-live="polite"></p>
+          <label>Пожелания к заказу<textarea name="comment" rows="4" maxlength="1000" placeholder="Текст открытки, фото букета, сюрприз для получателя…" aria-describedby="checkout-comment-error"></textarea></label>
+          <p class="checkout-error" data-error="comment" id="checkout-comment-error" aria-live="polite"></p>
+        </fieldset>
+        <p class="checkout-hint">Учебный заказ. Онлайн-оплата и отправка писем не выполняются.</p>
+        <button class="btn" type="submit" data-place-order disabled>Подтвердить заказ</button>
+      </form>
+      <aside class="checkout-summary" aria-labelledby="summary-title">
+        <h2 id="summary-title">Ваш заказ</h2>
+        <ul class="checkout-items" data-checkout-items></ul>
+        <dl class="checkout-totals"><dt>Букеты</dt><dd data-subtotal></dd><dt>Доставка</dt><dd data-delivery-fee></dd><dt>Итого</dt><dd data-order-total></dd></dl>
+        <p class="checkout-hint">Доставка по Минску — 10 ₽, бесплатно от 90 ₽. Самовывоз — бесплатно.</p>
+        <button class="text-link" type="button" data-checkout-cart>Изменить корзину</button>
+      </aside>
+    </div>
+  </main>
+  <app-footer></app-footer>
+  <app-mobile-menu></app-mobile-menu>
+  <app-callback-modal></app-callback-modal>
+  <app-auth-modal></app-auth-modal>
+  <app-cart-modal></app-cart-modal>
+  <app-history-modal></app-history-modal>
+    <app-settings></app-settings>
+    <app-notifications></app-notifications>
+  </body>
+</html>

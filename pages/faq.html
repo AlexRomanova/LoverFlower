@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
+    <script src="../scripts/settings-init.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Ответы на частые вопросы о букетах и доставке цветов Lover Flower" />
     <title>FAQ — Lover Flower</title>
@@ -10,22 +11,28 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400&family=Oswald:wght@200;300;400;700&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/faq.css" />
-    <link rel="stylesheet" href="/css/components.css" />
-    <link rel="stylesheet" href="/css/auth.css" />
-    <link rel="stylesheet" href="/css/cart.css" />
-    <script src="/scripts/components/app-header.js" defer></script>
-    <script src="/scripts/components/app-footer.js" defer></script>
-    <script src="/scripts/components/app-mobile-menu.js" defer></script>
-    <script src="/scripts/components/app-callback-modal.js" defer></script>
-    <script type="module" src="/scripts/components/app-auth-modal.js"></script>
-    <script type="module" src="/scripts/components/app-cart-modal.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/faq.css" />
+      <link rel="stylesheet" href="../css/content-pages.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <link rel="stylesheet" href="../css/orders.css" />
+    <script src="../scripts/components/app-header.js" defer></script>
+    <script src="../scripts/components/app-footer.js" defer></script>
+    <script src="../scripts/components/app-mobile-menu.js" defer></script>
+    <script src="../scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="../scripts/components/app-history-modal.js"></script>
+      <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
   </head>
   <body class="faq-page" data-figma-desktop="14:2529" data-figma-mobile="14:4673">
     <a class="skip-link" href="#main">Перейти к вопросам</a>
-    <app-header id="site-header"></app-header>
-
+    <app-header></app-header>
     <main id="main" class="faq-main">
       <div class="faq-stage">
         <div class="faq-art" aria-hidden="true">
@@ -43,12 +50,12 @@
           </span>
         </div>
         <nav class="faq-breadcrumbs" aria-label="Хлебные крошки">
-          <a href="index.html">Главная</a>
+          <a href="../index.html">Главная</a>
           <span aria-hidden="true">/</span>
           <span class="faq-breadcrumbs__desktop" aria-current="page">FAQ</span>
-          <span class="faq-breadcrumbs__mobile" aria-current="page">Контакты</span>
+          <span class="faq-breadcrumbs__mobile" aria-current="page">FAQ</span>
         </nav>
-        <picture class="faq-title-line" aria-hidden="true"><img src="../media/faq/9fec9.svg" alt="" /></picture>
+        <span class="faq-title-line" aria-hidden="true"></span>
         <h1 class="faq-title">FAQ</h1>
         <section class="faq-questions" aria-label="Частые вопросы">
           <details name="faq" open>
@@ -122,9 +129,13 @@
       </div>
     </main>
 
-    <app-footer id="site-footer"></app-footer>
-     <app-mobile-menu></app-mobile-menu>
-     <app-callback-modal></app-callback-modal>
-     <app-auth-modal></app-auth-modal>
+    <app-footer></app-footer>
+      <app-mobile-menu></app-mobile-menu>
+    <app-callback-modal></app-callback-modal>
+    <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+    <app-history-modal></app-history-modal>
+      <app-settings></app-settings>
+    <app-notifications></app-notifications>
   </body>
 </html>

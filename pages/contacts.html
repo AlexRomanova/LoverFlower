@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
+    <script src="../scripts/settings-init.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Контакты Lover Flower: адрес, часы работы, телефон и форма обратной связи" />
     <title>Контакты — Lover Flower</title>
@@ -10,21 +11,30 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&family=Roboto+Condensed:wght@400&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/contacts.css" />
-    <link rel="stylesheet" href="/css/components.css" />
-    <link rel="stylesheet" href="/css/auth.css" />
-    <link rel="stylesheet" href="/css/cart.css" />
-    <script src="/scripts/components/app-header.js" defer></script>
-    <script src="/scripts/components/app-footer.js" defer></script>
-    <script src="/scripts/components/app-mobile-menu.js" defer></script>
-    <script src="/scripts/components/app-callback-modal.js" defer></script>
-    <script type="module" src="/scripts/components/app-auth-modal.js"></script>
-    <script type="module" src="/scripts/components/app-cart-modal.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/contacts.css" />
+      <link rel="stylesheet" href="../css/content-pages.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <link rel="stylesheet" href="../css/orders.css" />
+    <script src="../scripts/components/app-header.js" defer></script>
+    <script src="../scripts/components/app-footer.js" defer></script>
+    <script src="../scripts/components/app-mobile-menu.js" defer></script>
+    <script src="../scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="../scripts/components/app-history-modal.js"></script>
+      <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
+      <script type="module" src="../scripts/features/request-forms.js"></script>
+    <script type="module" src="../scripts/features/contact-map.js"></script>
   </head>
   <body class="contacts-page" data-figma-desktop="14:2488" data-figma-mobile="14:4629">
     <a class="skip-link" href="#main">Перейти к контактам</a>
-    <app-header id="site-header"></app-header>
+    <app-header></app-header>
 
     <main id="main" class="contacts-main">
       <div class="contacts-stage">
@@ -65,7 +75,7 @@
             alt="" />
         </div>
         <nav class="contacts-breadcrumbs" aria-label="Хлебные крошки">
-          <a href="index.html">Главная</a>
+          <a href="../index.html">Главная</a>
           <span aria-hidden="true">/</span>
           <span aria-current="page">Контакты</span>
         </nav>
@@ -97,10 +107,10 @@
             Напишите
             <span>нам</span>
           </h2>
-          <img src="../media/contacts/contacts-feedback__signature" class="contacts-feedback__signature" alt="" />
+          <img src="../media/contacts/contacts-feedback__signature.png" class="contacts-feedback__signature" alt="" />
           <div class="contacts-feedback__intro">
             <picture class="contacts-feedback__rule" aria-hidden="true">
-              <source media="(max-width: 760px)" srcset="../media/contacts/10b4d.svg" />
+              <source media="(max-width: 760px)" srcset="../media/contacts/contacts-feedback__rule.svg" />
               <img src="../media/contacts/contacts-feedback__rule.svg" alt="" />
             </picture>
             <p>
@@ -108,7 +118,7 @@
               с вами в течение 15 минут.
             </p>
           </div>
-          <form class="contacts-form" method="post">
+          <form class="contacts-form" novalidate>
             <label class="sr-only" for="contacts-name">Ваше имя</label>
             <input id="contacts-name" name="name" type="text" autocomplete="name" placeholder="Ваше имя" required />
             <label class="sr-only" for="contacts-phone">Номер телефона</label>
@@ -117,31 +127,39 @@
               name="phone"
               type="tel"
               autocomplete="tel"
-              placeholder="+7 (977) 777-77-77"
+              placeholder="+375 (29) 123-45-67"
               required />
             <label class="sr-only" for="contacts-message">Ваш комментарий</label>
-            <textarea id="contacts-message" name="message" placeholder="Ваш комментарий" required></textarea>
+            <textarea id="contacts-message" name="comment" placeholder="Ваш комментарий" required></textarea>
             <button type="submit">Отправить</button>
             <p class="contacts-form__notice">
               Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных, в соответствии с
-              <a href="privacy.html">Политикой конфиденциальности</a>
+              <a href="#user-agreement" data-open-agreement>Политикой конфиденциальности</a>
               .
             </p>
           </form>
         </section>
         <section class="contacts-map" aria-labelledby="contacts-map-title">
           <h2 id="contacts-map-title">Мы на карте</h2>
-          <img
-            src="../media/contacts/contacts-map.png"
-            alt="Фрагмент карты с адресом: Минск, улица Тимирязева, 67"
-            loading="lazy" />
+          <iframe
+            data-contact-map
+            src="https://api-maps.yandex.ru/frame/v1/-/CDR-vM5J?lang=ru_RU"
+            title="Яндекс Карта: Минск, улица Тимирязева, 67"
+            width="1108" height="427" allowfullscreen></iframe>
+          <p class="contacts-map__description">Минск, улица Тимирязева, 67, комната 112.</p>
+          <p class="contacts-map__image-note">Карта скрыта. Адрес и ссылка доступны ниже.</p>
+          <a class="contacts-map__link" href="https://yandex.by/maps/157/minsk/house/Zk4YcwdoSEICQFtpfXVzdH5lbQ%3D%3D/"
+            target="_blank" rel="noopener noreferrer">Открыть в Яндекс Картах (новая вкладка)</a>
         </section>
       </div>
     </main>
-
-    <app-footer id="site-footer"></app-footer>
-    <app-mobile-menu></app-mobile-menu>
+    <app-footer></app-footer>
+      <app-mobile-menu></app-mobile-menu>
     <app-callback-modal></app-callback-modal>
     <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+    <app-history-modal></app-history-modal>
+      <app-settings></app-settings>
+    <app-notifications></app-notifications>
   </body>
 </html>

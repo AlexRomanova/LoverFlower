@@ -109,7 +109,7 @@
   width: 100%;
   border: 1px solid var(--white);
   background: transparent;
-  color: white;
+  color: var(--color-text);
   padding: 10px;
 }
 .catalog-header__contacts {
@@ -783,3 +783,31 @@
     column-gap: 12px;
   }
 }
+
+/* Данные и управление каталогом. Старые декоративные блоки не задают размеры карточек. */
+.catalog-products { display: block; min-width: 0; }
+.catalog-product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 45px 30px; }
+.catalog-product__image { display: block; }
+.catalog-product__image img { width: 100%; height: auto; aspect-ratio: 255 / 335; object-fit: contain; }
+.catalog-product h3 a:hover { color: var(--color-accent); }
+.catalog-status { margin: 10px 0 24px; font-size: 14px; line-height: 1.5; scroll-margin-top: 100px; }
+.catalog-toolbar { gap: 20px; align-items: center; justify-content: space-between; }
+.catalog-query { display: flex; min-width: 0; width: min(100%, 500px); border-bottom: 1px solid var(--color-accent); }
+.catalog-query input { background: transparent; border: 0; color: inherit; min-width: 0; flex: 1; padding: 10px; font-size: 14px; }
+.catalog-query button { background: transparent; color: var(--color-accent); border: 0; padding: 10px; }
+.catalog-categories { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; }
+.catalog-categories a[aria-current] { background: var(--color-accent); color: var(--color-ink); }
+.catalog-pagination { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
+.catalog-pagination button { min-width: 44px; min-height: 44px; border: 1px solid var(--color-accent); color: inherit; background: transparent; }
+.catalog-pagination button[aria-current], .catalog-pagination button:hover { color: var(--color-ink); background: var(--color-accent); }
+.catalog-error { font-size: 12px; color: var(--color-accent-soft); margin-top: 8px; line-height: 1.5; }
+.catalog-filter-details > summary { color: var(--color-accent); padding-block: 4px 20px; }
+.filter-price__values { flex-wrap: wrap; }
+.filter-price__values input { width: 55px; min-height: 32px; border-bottom: 1px solid var(--color-muted); }
+.catalog-sort option { background: var(--color-page); }
+@media (max-width: 1000px) { .catalog-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 20px; } }
+@media (max-width: 760px) {
+  .catalog-toolbar { flex-wrap: wrap; }
+  .catalog-sort, .catalog-query { width: 100%; }
+}
+@media (max-width: 360px) { .catalog-product-grid { grid-template-columns: 1fr; } }

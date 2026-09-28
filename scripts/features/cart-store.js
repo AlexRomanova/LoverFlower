@@ -71,7 +71,8 @@ export function createCartStore(storage) {
       return write(items);
     },
     remove(id) {
-      requireProduct(id);
+      // Закончившийся букет тоже можно убрать из корзины перед оформлением.
+      if (!productsById.has(id)) throw new Error("Этот товар пока недоступен для добавления.");
       return write(read().filter((item) => item.id !== id));
     },
   };
