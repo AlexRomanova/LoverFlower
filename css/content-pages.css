@@ -1,0 +1,45 @@
+/* Статические страницы: на промежуточных ширинах текст идёт потоком,
+   поэтому переводы не обрезаются координатами макета шириной 1440px. */
+@media (max-width: 1439px) {
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main { height: auto; min-height: 0; }
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main > [class$="stage"] {
+    position: static; transform: none; width: min(1110px, calc(100% - 24px)); height: auto; min-height: 0; margin-inline: auto; padding: 24px 0 70px;
+  }
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main :not([class$="stage"], .sr-only, img, [aria-hidden="true"], [aria-hidden="true"] *, [class*="signature"]) {
+    position: static; transform: none; min-width: 0; max-width: 100%; width: auto; height: auto;
+    margin-left: 0; margin-right: 0;
+  }
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main > [class$="stage"] > :is(section, nav, h1) { position: relative; inset: auto; z-index: 1; }
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main > [class$="stage"] > section { margin-block: 32px; }
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main h1 { margin-block: 28px; font-size: clamp(40px, 8vw, 90px); }
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main h2 { margin-bottom: 20px; font-size: clamp(24px, 4vw, 48px); line-height: 1.2; }
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main p,
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main li { line-height: 1.6; }
+  :is(.about-page, .contacts-page, .faq-page, .corporate-page) main img { max-width: 100%; object-fit: contain; }
+  .about-intro__copy { min-height: 0; padding: 24px; }
+  .about-benefits ul { padding-left: 24px; }
+  .contacts-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .contacts-fact { padding: 24px; border: 1px solid var(--color-muted); }
+  .contacts-fact h2 { font-size: 20px !important; }
+  .contacts-fact p { margin-top: 12px; }
+  .contacts-feedback { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .contacts-feedback > h2 { grid-column: 1 / -1; }
+  .contacts-feedback__signature { display: none; }
+  .contacts-feedback__intro p { margin-top: 0; }
+  .contacts-map img { width: 100%; height: auto; }
+  .contacts-form :is(input, textarea) { width: 100%; }
+  .corporate-about__copy { padding: 24px; }
+  .corporate-form { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .corporate-form :is(input, textarea, select) { width: 100%; }
+  .corporate-signature { display: none; }
+  .faq-questions details[open] { min-height: 0; }
+  .faq-questions details summary { padding-right: 44px; }
+  .faq-questions .faq-sign { position: absolute !important; right: 12px; }
+  .faq-breadcrumbs__mobile { display: none; }
+  .faq-breadcrumbs__desktop { display: inline; }
+}
+html[data-theme="light"] :is(.about-art, .contacts-art, .faq-art, .corporate-art) { opacity: .15; }
+@media (max-width: 620px) {
+  .contacts-facts, .contacts-feedback, .corporate-form { grid-template-columns: minmax(0, 1fr); }
+  .contacts-feedback > h2 { grid-column: auto; }
+}

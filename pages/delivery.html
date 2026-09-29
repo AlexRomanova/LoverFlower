@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <script src="../scripts/settings-bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Способы оплаты и условия доставки цветов Lover Flower" />
+    <title>Доставка и оплата — Lover Flower</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/delivery.css" />
+      <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <link rel="stylesheet" href="../css/orders.css" />
+    <script src="../scripts/components/app-header.js" defer></script>
+    <script src="../scripts/components/app-footer.js" defer></script>
+    <script src="../scripts/components/app-mobile-menu.js" defer></script>
+    <script src="../scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="../scripts/components/app-history-modal.js"></script>
+      <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
+  </head>
+  <body class="delivery-page" data-figma-desktop="14:2343" data-figma-mobile="14:4457">
+    <a class="skip-link" href="#main">Перейти к условиям доставки</a>
+    <app-header></app-header>
+
+    <div class="delivery-backdrop" aria-hidden="true">
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--upper-right">
+        <img src="../media/delivery/delivery-backdrop__glow--upper-right.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--upper-left">
+        <img src="../media/delivery/delivery-backdrop__glow--upper-left.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--payment-left">
+        <img src="../media/delivery/delivery-backdrop__glow--payment-left.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--payment-right">
+        <img src="../media/delivery/delivery-backdrop__glow--payment-right.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--middle-left">
+        <img src="../media/delivery/delivery-backdrop__glow--middle-left.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--middle-right">
+        <img src="../media/delivery/delivery-backdrop__glow--middle-right.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--lower-right">
+        <img src="../media/delivery/delivery-backdrop__glow--lower-right.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--lower-left">
+        <img src="../media/delivery/delivery-backdrop__glow--lower-left.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-top-left">
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-top-left.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-payment">
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-payment.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-middle">
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-middle.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-bottom">
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-bottom.svg" alt="" />
+      </span>
+      <span class="delivery-backdrop__glow delivery-backdrop__glow--mobile-bottom-right">
+        <img src="../media/delivery/delivery-backdrop__glow--mobile-bottom-right.svg" alt="" />
+      </span>
+      <div class="delivery-backdrop__flower delivery-backdrop__flower--hero">
+        <img src="../media/delivery/delivery-backdrop__flower--hero.png" alt="" />
+      </div>
+      <div class="delivery-backdrop__flower delivery-backdrop__flower--left">
+        <img src="../media/delivery/delivery-backdrop__flower--left.png" alt="" />
+      </div>
+      <div class="delivery-backdrop__flower delivery-backdrop__flower--bottom">
+        <img src="../media/delivery/delivery-backdrop__flower--bottom.png" alt="" />
+      </div>
+    </div>
+
+    <main id="main" class="delivery-main">
+      <div class="container">
+        <nav class="delivery-breadcrumbs" aria-label="Хлебные крошки">
+          <a href="../index.html">Главная</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Доставка и оплата</span>
+        </nav>
+        <section class="delivery-hero" aria-labelledby="delivery-title">
+          <h1 id="delivery-title">
+            <span>Доставка</span>
+            <span>и оплата</span>
+          </h1>
+          <div class="delivery-notice">
+            <span class="delivery-notice__mark" aria-hidden="true">!</span>
+            <div>
+              <h2>Дорогие клиенты!</h2>
+              <p>
+                По вашему желанию курьер передаст заказ без личного контакта. Сообщите об этом в комментарии при оформлении заказа.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="delivery-payment" aria-labelledby="payment-title">
+          <h2 id="payment-title">Способы оплаты:</h2>
+          <ul class="delivery-payment__cards">
+            <li>
+              <img src="../media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
+              <p>Банковской картой при доставке курьером</p>
+            </li>
+            <li>
+              <img src="../media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
+              <p>Банковской картой при самовывозе</p>
+            </li>
+            <li>
+              <img src="../media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
+              <p>Наличными при доставке курьером</p>
+            </li>
+            <li>
+              <img src="../media/delivery/delivery-payment__cards-flag.svg" alt="" aria-hidden="true" />
+              <p>Наличными при самовывозе</p>
+            </li>
+          </ul>
+        </section>
+
+        <section class="delivery-cost" aria-labelledby="cost-title">
+          <h2 id="cost-title">Стоимость доставки:</h2>
+          <ul>
+            <li>
+              <b>Бесплатно</b>
+              — при заказе на сумму
+              <em>от 90 рублей</em>
+            </li>
+            <li>
+              <b>10 рублей</b>
+              — при заказе на сумму
+              <em>менее 90 рублей</em>
+            </li>
+            <li>
+              Также вы можете забрать ваш заказ самостоятельно по адресу:
+              <br />
+              <em>г. Минск, ул. Тимирязева д. 67, комн. 112 ежедневно с 10.00 до 21.00</em>
+            </li>
+          </ul>
+        </section>
+
+        <section class="delivery-conditions" aria-labelledby="conditions-title">
+          <h2 id="conditions-title">Условия доставки:</h2>
+          <ul>
+            <li>
+              Доставка осуществляется по городу Минску в пределах МКАД
+              <em>в любой день</em>
+              .
+            </li>
+            <li>
+              Возможность, сроки и стоимость доставки за пределы МКАД, доставки в ночное время, праздники
+              <em>оговариваются с менеджером</em>
+              .
+            </li>
+          </ul>
+        </section>
+
+        <div class="delivery-details">
+          <section aria-labelledby="extra-title">
+            <h2 id="extra-title">Дополнительно:</h2>
+            <p>
+              Доставка иному лицу возможна только в случае оплаты заказа заказчиком. Доставка осуществляется не ранее
+              чем через 2 часа после оплаты заказа, но может быть ранее, если букет есть в наличии либо по
+              договорённости с менеджером.
+            </p>
+            <p>Время ожидания курьера составляет 15 минут.</p>
+            <p>
+              В случае если на момент доставки цветов получателя нет либо нет возможности по иным причинам произвести
+              доставку (указан неточный адрес, закрытая входная дверь, контрольно-пропускная система и др.), мы
+              оставляем за собой право по собственному выбору:
+            </p>
+            <ul>
+              <li>оставить цветы тому, кто открыл дверь;</li>
+              <li>с заказчиком согласовать повторную доставку, которая дополнительно оплачивается;</li>
+              <li>отказаться от передачи цветов без возврата денежных средств.</li>
+            </ul>
+            <p>
+              Если вы либо иной получатель не получили заказ, вам необходимо сообщить об этом менеджеру по телефону
+              <a href="tel:+375291136969">+375 29 113 69 69</a>
+              .
+            </p>
+          </section>
+          <section class="delivery-details__refund" aria-labelledby="refund-title">
+            <h2 id="refund-title">Возврат денег:</h2>
+            <p>
+              При отказе заказчика от заказа в течение двух часов, если заказ ещё не начал готовиться, средства
+              возвращаются в полном объёме. Если же флорист начал подготовку, то заказчик имеет право на возврат 50%
+              стоимости, либо, если ещё не был оплачен, то обязан оплатить 50%.
+            </p>
+            <p>
+              Цветы надлежащего качества возврату и обмену не подлежат, а если имеются какие-либо недостатки в цветах —
+              возврат производится лишь если эти недостатки не являются природными и естественными изъянами растения.
+            </p>
+            <p>
+              Возврат денежных средств производится незамедлительно на тот счёт, с которого произошла оплата, их же
+              поступление на счёт зависит от платёжной системы.
+            </p>
+          </section>
+        </div>
+        <span class="delivery-signature brand-script" aria-hidden="true">lover<br />flower</span>
+      </div>
+    </main>
+    <app-footer></app-footer>
+      <app-mobile-menu></app-mobile-menu>
+    <app-callback-modal></app-callback-modal>
+    <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+    <app-history-modal></app-history-modal>
+      <app-settings></app-settings>
+    <app-notifications></app-notifications>
+  </body>
+</html>

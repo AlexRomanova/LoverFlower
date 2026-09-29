@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <script src="../scripts/settings-bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Контакты Lover Flower: адрес, часы работы, телефон и форма обратной связи" />
+    <title>Контакты — Lover Flower</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&family=Roboto+Condensed:wght@400&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/contacts.css" />
+      <link rel="stylesheet" href="../css/content-pages.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <link rel="stylesheet" href="../css/orders.css" />
+    <script src="../scripts/components/app-header.js" defer></script>
+    <script src="../scripts/components/app-footer.js" defer></script>
+    <script src="../scripts/components/app-mobile-menu.js" defer></script>
+    <script src="../scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="../scripts/components/app-history-modal.js"></script>
+      <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
+      <script type="module" src="../scripts/features/request-forms.js"></script>
+    <script type="module" src="../scripts/features/contact-map.js"></script>
+  </head>
+  <body class="contacts-page" data-figma-desktop="14:2488" data-figma-mobile="14:4629">
+    <a class="skip-link" href="#main">Перейти к контактам</a>
+    <app-header></app-header>
+
+    <main id="main" class="contacts-main">
+      <div class="contacts-stage">
+        <div class="contacts-art" aria-hidden="true">
+          <img
+            class="contacts-glow contacts-glow--upper-left"
+            src="../media/contacts/contacts-glow--upper-left.svg"
+            alt="" />
+          <img
+            class="contacts-glow contacts-glow--upper-right"
+            src="../media/contacts/contacts-glow--upper-right.svg"
+            alt="" />
+          <img class="contacts-glow contacts-glow--middle" src="../media/contacts/contacts-glow--middle.svg" alt="" />
+          <img
+            class="contacts-glow contacts-glow--lower-right"
+            src="../media/contacts/contacts-glow--lower-right.svg"
+            alt="" />
+          <img
+            class="contacts-glow contacts-glow--lower-left"
+            src="../media/contacts/contacts-glow--lower-left.svg"
+            alt="" />
+          <img
+            class="contacts-glow contacts-glow--mobile-top"
+            src="../media/contacts/contacts-glow--mobile-top.svg"
+            alt="" />
+          <img
+            class="contacts-glow contacts-glow--mobile-middle"
+            src="../media/contacts/contacts-glow--mobile-middle.svg"
+            alt="" />
+          <img
+            class="contacts-glow contacts-glow--mobile-bottom"
+            src="../media/contacts/contacts-glow--mobile-bottom.svg"
+            alt="" />
+          <img class="contacts-flower contacts-flower--left" src="../media/contacts/contacts-flower--left.png" alt="" />
+          <img
+            class="contacts-flower contacts-flower--right"
+            src="../media/contacts/contacts-flower--right.png"
+            alt="" />
+        </div>
+        <nav class="contacts-breadcrumbs" aria-label="Хлебные крошки">
+          <a href="../index.html">Главная</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Контакты</span>
+        </nav>
+        <h1 class="contacts-title">Контакты</h1>
+        <section class="contacts-facts" aria-label="Контактная информация">
+          <div class="contacts-fact">
+            <h2>Время работы</h2>
+            <p>
+              с 10:00 до 21:00
+              <br />
+              без выходных
+            </p>
+          </div>
+          <div class="contacts-fact">
+            <h2>Адрес</h2>
+            <p>г. Минск, ул. Тимирязева 67, комн. 112</p>
+          </div>
+          <div class="contacts-fact">
+            <h2>Телефон</h2>
+            <p><a href="tel:+375291136969">+375 (29) 113-69-69</a></p>
+          </div>
+          <div class="contacts-fact">
+            <h2>E-mail</h2>
+            <p><a href="mailto:zakaz@loverflower.by">zakaz@loverflower.by</a></p>
+          </div>
+        </section>
+        <section class="contacts-feedback" aria-labelledby="contacts-feedback-title">
+          <h2 id="contacts-feedback-title">
+            Напишите
+            <span>нам</span>
+          </h2>
+          <span class="contacts-feedback__signature brand-script" aria-hidden="true">have any<br />questions?</span>
+          <div class="contacts-feedback__intro">
+            <picture class="contacts-feedback__rule" aria-hidden="true">
+              <source media="(max-width: 760px)" srcset="../media/contacts/contacts-feedback__rule.svg" />
+              <img src="../media/contacts/contacts-feedback__rule.svg" alt="" />
+            </picture>
+            <p>
+              Отправьте ваш вопрос, заказ, предложение или жалобу через форму обратной связи, и наш специалист свяжется
+              с вами в течение 15 минут.
+            </p>
+          </div>
+          <form class="contacts-form" novalidate>
+            <label class="sr-only" for="contacts-name">Ваше имя</label>
+            <input id="contacts-name" name="name" type="text" autocomplete="name" placeholder="Ваше имя" required />
+            <label class="sr-only" for="contacts-phone">Номер телефона</label>
+            <input
+              id="contacts-phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              placeholder="+375 (29) 123-45-67"
+              required />
+            <label class="sr-only" for="contacts-message">Ваш комментарий</label>
+            <textarea id="contacts-message" name="comment" placeholder="Ваш комментарий" required></textarea>
+            <button type="submit" disabled>Отправить</button>
+            <p class="contacts-form__notice">
+              Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных, в соответствии с
+              <a href="#user-agreement" data-open-agreement>Пользовательским соглашением</a>
+              .
+            </p>
+          </form>
+        </section>
+        <section class="contacts-map" aria-labelledby="contacts-map-title">
+          <h2 id="contacts-map-title">Мы на карте</h2>
+          <iframe
+            data-contact-map
+            src="https://api-maps.yandex.ru/frame/v1/-/CDR-vM5J?lang=ru_RU"
+            title="Яндекс Карта: Минск, улица Тимирязева, 67"
+            width="1108" height="427" allowfullscreen></iframe>
+          <p class="contacts-map__description">Минск, улица Тимирязева, 67, комната 112.</p>
+          <p class="contacts-map__image-note">Карта скрыта. Адрес и ссылка доступны ниже.</p>
+          <a class="contacts-map__link" href="https://yandex.by/maps/157/minsk/house/Zk4YcwdoSEICQFtpfXVzdH5lbQ%3D%3D/"
+            target="_blank" rel="noopener noreferrer">Открыть в Яндекс Картах (новая вкладка)</a>
+        </section>
+      </div>
+    </main>
+    <app-footer></app-footer>
+      <app-mobile-menu></app-mobile-menu>
+    <app-callback-modal></app-callback-modal>
+    <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+    <app-history-modal></app-history-modal>
+      <app-settings></app-settings>
+    <app-notifications></app-notifications>
+  </body>
+</html>

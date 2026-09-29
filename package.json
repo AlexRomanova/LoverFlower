@@ -1,0 +1,11 @@
+{
+  "name": "lover-flower-coursework",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "json-server --watch data/db.json --port 3000 --host 127.0.0.1 --static ."
+  },
+  "devDependencies": {
+    "json-server": "0.17.4"
+  }
+}

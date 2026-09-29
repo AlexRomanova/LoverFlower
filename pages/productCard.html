@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <script src="../scripts/settings-bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Букеты, композиции и подарки Lover Flower" />
+    <title>Товар — Lover Flower</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Cormorant:wght@300;400&family=Roboto+Condensed&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/productCard.css" />
+  
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <script src="../scripts/components/app-header.js" defer></script>
+    <script src="../scripts/components/app-footer.js" defer></script>
+    <script src="../scripts/components/app-mobile-menu.js" defer></script>
+    <script src="../scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="../scripts/pages/product.js"></script>
+    <link rel="stylesheet" href="../css/orders.css" />
+  <script type="module" src="../scripts/components/app-history-modal.js"></script>
+    <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
+  </head>
+  <body class="product-page" data-figma-nodes="14:2094 14:2907 14:3016">
+    <div class="product-backdrop" aria-hidden="true">
+      <div class="product-glow product-glow--upper-right">
+        <img src="../media/product/product-glow--upper-right.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="product-glow product-glow--upper-left">
+        <img src="../media/product/product-glow--upper-left.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="product-glow product-glow--middle-left">
+        <img src="../media/product/product-glow--middle-left.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="product-glow product-glow--middle">
+        <img src="../media/product/product-glow--middle.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="product-glow product-glow--middle-right">
+        <img src="../media/product/product-glow--middle-right.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="product-glow product-glow--bottom-right">
+        <img src="../media/product/product-glow--bottom-right.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="product-glow product-glow--bottom">
+        <img src="../media/product/product-glow--bottom.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <div class="product-glow product-glow--bottom-left">
+        <img src="../media/product/product-glow--bottom-left.svg" class="" alt="" aria-hidden="true" />
+      </div>
+      <img
+        src="../media/product/product-backdrop__leaves.png"
+        class="product-backdrop__leaves"
+        alt=""
+        aria-hidden="true" />
+    </div>
+    <a class="skip-link" href="#main">Перейти к товару</a>
+    <app-header></app-header>
+    <main id="main">
+      <div class="container">
+        <nav class="product-breadcrumbs" aria-label="Хлебные крошки">
+          <a href="../index.html">Главная</a>
+          <span>/</span>
+          <a href="catalog.html">Каталог</a>
+          <span>/</span>
+          <a href="catalog.html" data-product-category-breadcrumb>Товары</a>
+          <span>/</span>
+          <span aria-current="page" data-product-breadcrumb>Товар</span>
+        </nav>
+        <p class="catalog-status" data-product-status role="status">Загружаем товар…</p>
+        <button class="btn btn--outline" type="button" data-product-retry hidden>Повторить загрузку</button>
+        <div data-product-content hidden>
+        <section class="product-hero" aria-labelledby="product-title">
+          <div class="product-gallery">
+            <div class="product-gallery__main"><img src="../media/home-mobile/popular-1.webp" data-product-image width="350" height="450" alt="" /></div>
+          </div>
+          <div class="product-info" data-product-id="">
+            <a class="product-info__back" href="catalog.html" aria-label="Вернуться в каталог">
+              <img src="../media/product/product-gallery__chevron.svg" class="" alt="" aria-hidden="true" />
+              Назад
+            </a>
+            <h1 id="product-title" data-field="title">Товар</h1>
+            <div class="product-info__prices">
+              <strong data-field="price"></strong>
+              <del data-field="old-price" hidden></del>
+            </div>
+            <p class="product-info__composition">
+              <b data-composition-label>Состав:</b>
+              <span data-field="composition"></span>
+            </p>
+            <p class="product-info__description" data-field="description"></p>
+            <div class="product-info__attributes">
+              <p class="product-info__meta"><b>Категория:</b> <a data-field="category"></a></p>
+              <p class="product-info__meta" data-floral-metadata><b>Тип букета:</b> <a data-field="bouquet-type"></a></p>
+              <p class="product-info__meta" data-floral-metadata><b>Формат:</b> <a data-field="format"></a></p>
+              <div class="product-info__meta" data-floral-metadata><b>Цветы:</b> <div class="product-info__tags" data-product-flowers></div></div>
+              <div class="product-info__meta" data-floral-metadata><b>Для кого:</b> <div class="product-info__tags" data-product-recipients></div></div>
+            </div>
+            <p class="product-info__stock" data-field="stock"></p>
+            <div class="product-info__purchase">
+              <button class="btn btn--outline" type="button" data-add-to-cart disabled>
+                В корзину
+              </button>
+              <label class="quantity">
+                <span class="sr-only">Количество товаров</span>
+                <input type="number" name="quantity" data-product-quantity aria-describedby="quantity-error" min="1" step="1" value="1" inputmode="numeric" />
+              </label>
+            </div><p class="catalog-error" data-quantity-error id="quantity-error" role="status"></p>
+          </div>
+        </section>
+        <section class="product-extra" aria-labelledby="extra-title">
+          <h2 id="extra-title">Дополнительно к заказу:</h2>
+          <div class="product-extra__grid">
+            <article data-floral-extra>
+              <span class="product-extra__dot">
+                <img src="../media/product/product-extra__dot.svg" class="" alt="" aria-hidden="true" />
+              </span>
+              <h3>Удобрения для срезанных цветов</h3>
+              <p>При указании об этом в пожеланиях к букету, мы приложим пакетик удобрения для вас</p>
+            </article>
+            <article>
+              <span class="product-extra__dot">
+                <img src="../media/product/product-extra__dot.svg" class="" alt="" aria-hidden="true" />
+              </span>
+              <h3>Подпишем открытку</h3>
+              <p>В комментарии к заказу укажите текст для открытки и добавьте её из каталога.</p>
+              <a href="catalog.html?category=cards">Выбрать открытку</a>
+            </article>
+            <article data-floral-extra>
+              <span class="product-extra__dot">
+                <img src="../media/product/product-extra__dot.svg" class="" alt="" aria-hidden="true" />
+              </span>
+              <h3>Фото букета перед отправкой</h3>
+              <p>
+                В примечании к заказу укажите об этом и мы отправим фото готового букета перед доставкой. В праздничные
+                дни в связи с большой загруженностью такой возможности нет
+              </p>
+            </article>
+            <article>
+              <span class="product-extra__dot">
+                <img src="../media/product/product-extra__dot.svg" class="" alt="" aria-hidden="true" />
+              </span>
+              <h3>Подарок-сюрприз</h3>
+              <p>
+                Если хотите, чтобы получатель не знал, что ему вручат, а также от кого, то укажите об этом в примечании
+                к заказу
+              </p>
+            </article>
+          </div>
+        </section>
+        <div class="product-tabs" role="group" aria-label="Информация о товаре">
+          <input class="sr-only product-tabs__radio" type="radio" name="product-details" id="tab-delivery" checked />
+          <label for="tab-delivery" id="tab-delivery-label">Доставка и оплата</label>
+          <input class="sr-only product-tabs__radio" type="radio" name="product-details" id="tab-reviews" />
+          <label for="tab-reviews" id="tab-reviews-label">
+            Отзывы (
+            <span data-review-count>0</span>
+            )
+          </label>
+        </div>
+        <section class="delivery-panel" id="delivery" aria-labelledby="tab-delivery-label">
+          <div class="delivery-panel__copy">
+            <section>
+              <h3>Способы оплаты:</h3>
+              <ul>
+                <li>Банковской картой при оформлении заказа через сайт</li>
+                <li>Наличными или банковской картой при самовывозе</li>
+                <li>Наличными при доставке курьером</li>
+                <li>Криптовалютой онлайн</li>
+              </ul>
+            </section>
+            <section>
+              <h3>Стоимость доставки:</h3>
+              <ul>
+                <li>
+                  <strong>Бесплатно</strong>
+                  — при заказе на сумму
+                  <em>от 90 рублей</em>
+                </li>
+                <li>
+                  <strong>10 рублей</strong>
+                  — при заказе на сумму
+                  <em>менее 90 рублей</em>
+                </li>
+                <li>
+                  Возможность, сроки и стоимость доставки за пределы МКАД, доставки в ночное время, праздники
+                  <em>оговариваются с менеджером</em>
+                </li>
+                <li>
+                  Также вы можете забрать ваш заказ самостоятельно по адресу:
+                  <em>г. Минск, ул. Тимирязева д. 67, комн. 112 ежедневно с 10.00 до 21.00</em>
+                </li>
+              </ul>
+            </section>
+            <section>
+              <h3>Условия доставки:</h3>
+              <p>
+                Доставка осуществляется по городу Минску в пределах МКАД
+                <em>в любой день с 09.00 до 22.00.</em>
+                Доставка в ночное время осуществляется по договоренности с оператором
+              </p>
+            </section>
+          </div>
+        </section>
+        <section class="reviews-panel" id="reviews" aria-labelledby="tab-reviews-label" data-review-state="empty">
+          <p class="reviews-empty" data-reviews-empty hidden>Отзывов пока нет.</p>
+          <p data-reviews-status role="status">Загружаем отзывы…</p>
+          <button class="btn" type="button" data-reviews-retry hidden>Повторить загрузку отзывов</button>
+          <ul class="reviews-list" data-reviews-list></ul>
+          <div class="review-form-wrap">
+            <h3>Оставить отзыв</h3>
+            <p data-review-auth-note>Войдите как покупатель, чтобы оставить отзыв.</p>
+            <button class="btn" type="button" data-review-login>Войти</button>
+            <form class="review-form" data-review-form novalidate hidden>
+              <label for="review-rating">Оценка *</label>
+              <select id="review-rating" name="rating" required aria-describedby="review-rating-error">
+                <option value="">Выберите оценку</option>
+                <option value="5">★★★★★ — 5</option>
+                <option value="4">★★★★☆ — 4</option>
+                <option value="3">★★★☆☆ — 3</option>
+                <option value="2">★★☆☆☆ — 2</option>
+                <option value="1">★☆☆☆☆ — 1</option>
+              </select>
+              <p class="auth-error" id="review-rating-error"></p>
+              <label for="review-text">Ваш отзыв *</label>
+              <textarea id="review-text" name="text" required minlength="10" maxlength="2000" aria-describedby="review-text-error"></textarea>
+              <p class="auth-error" id="review-text-error"></p>
+              <p data-review-submit-status role="status"></p>
+              <button class="btn" type="submit" disabled>Опубликовать отзыв</button>
+            </form>
+          </div>
+        </section>
+        <section class="recommendations" aria-labelledby="recommendations-title" data-list="recommendations">
+          <h2 id="recommendations-title">Вам может понравиться:</h2>
+          <div class="recommendations__grid"></div>
+          
+          
+        </section>
+      </div>
+    </div>
+    </main>
+    
+    <app-footer></app-footer>
+    <app-mobile-menu></app-mobile-menu>
+    <app-callback-modal></app-callback-modal>
+    <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+    <app-history-modal></app-history-modal>
+    <app-settings></app-settings>
+    <app-notifications></app-notifications>
+  </body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="scripts/settings-bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Lover Flower — цветы, букеты и композиции в Минске." />
+    <title>Lover Flower</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&family=Roboto+Condensed&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+    <script src="scripts/components/app-header.js" defer></script>
+    <script src="scripts/components/app-footer.js" defer></script>
+    <script src="scripts/components/app-mobile-menu.js" defer></script>
+    <script src="scripts/components/app-callback-modal.js" defer></script>
+    <script type="module" src="scripts/components/app-auth-modal.js"></script>
+    <script type="module" src="scripts/components/app-cart-modal.js"></script>
+    <script type="module" src="scripts/features/request-forms.js"></script>
+      <script type="module" src="scripts/features/carousel.js"></script>
+    <link rel="stylesheet" href="css/orders.css" />
+  <script type="module" src="scripts/components/app-history-modal.js"></script>
+    <link rel="stylesheet" href="css/settings.css" />
+    <script type="module" src="scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="css/notifications.css" />
+    <script type="module" src="scripts/components/app-notifications.js"></script>
+  </head>
+  <body class="home-page">
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <app-header id="site-header"></app-header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <picture>
+          <source media="(max-width: 760px)" srcset="media/home-mobile/hero-back.webp" />
+          <img src="media/img/hero__bg-global.svg" class="hero__bg-global" alt="" aria-hidden="true" />
+        </picture>
+        <div class="hero__glow hero__glow--left">
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/hero-glow-left.svg" />
+            <img src="media/img/hero__glow--left.svg" alt="" aria-hidden="true" />
+          </picture>
+        </div>
+        <div class="hero__glow hero__glow--right">
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/hero-glow-right.svg" />
+            <img src="media/img/hero__glow--right.svg" alt="" aria-hidden="true" />
+          </picture>
+        </div>
+        <div class="hero__bg-local">
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/hero-front.webp" />
+            <img src="media/img/hero__bg-local.svg" alt="" aria-hidden="true" />
+          </picture>
+        </div>
+        <div class="hero__gradient"></div>
+        <div class="container hero__inner">
+          <h1 id="hero-title" class="hero__title">
+            <span>LOVER</span>
+            <span>FLOWER</span>
+          </h1>
+          <div class="hero__bottom">
+            <p class="hero__subtitle">Создаём для тех, кто ценит свежесть и изящество цветка</p>
+            <a class="btn" href="pages/catalog.html">Смотреть каталог</a>
+          </div>
+          <div class="hero__socials">
+            <div class="socials">
+              <span title="Instagram"><img src="media/icons/icon_instagram.svg" class="" alt="Instagram" /></span>
+              <span title="WhatsApp"><img src="media/icons/icon_whatsapp.svg" class="" alt="WhatsApp" /></span>
+              <span title="Viber"><img src="media/icons/icon_viber.svg" class="" alt="Viber" /></span>
+            </div>
+          </div>
+          <div class="hero__contacts">
+            <address>
+              <a href="pages/contacts.html#contacts-map-title">ул. Тимирязева 67</a>
+              <small>
+                10:00 до 21:00
+                <br />
+                без выходных
+              </small>
+              <a href="mailto:zakaz@loverflower.by">zakaz@loverflower.by</a>
+              <small>Доставка 24/7 по договоренности с оператором</small>
+            </address>
+          </div>
+          <span class="hero__signature brand-script" aria-hidden="true">lover<br />flower</span>
+        </div>
+      </section>
+      <section class="catalog" id="catalog" aria-labelledby="catalog-title">
+        <div class="decoration catalog__glow--left">
+          <img src="media/img/catalog__glow--left.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="decoration catalog__glow--right">
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/catalog-glow.svg" />
+            <img src="media/img/catalog__glow--right.svg" alt="" aria-hidden="true" />
+          </picture>
+        </div>
+        <div class="container">
+          <h2 id="catalog-title">Каталог</h2>
+          <div class="catalog__grid">
+            <div class="catalog__intro">
+              <p>
+                У нас самый большой выбор цветов, букетов, открыток и подарков.
+                <br />
+                Мы всегда поможем вам подобрать букет для вашего события, наш менеджер вас проконсультирует и поможет
+                определиться с выбором
+              </p>
+              <p>Ознакомьтесь с нашими разделами каталога</p>
+            </div>
+            <article class="catalog__card catalog__card--flowers">
+              <h3>Цветы</h3>
+              <ul>
+                <li><a href="pages/catalog.html?category=bouquets&bouquetType=mixed">Сборные букеты</a></li>
+                <li><a href="pages/catalog.html?category=bouquets&bouquetType=mono">Монобукеты</a></li>
+                <li><a href="pages/catalog.html?category=bouquets&flowers=rose">Розы</a></li>
+                <li><a href="pages/catalog.html?category=bouquets&flowers=peony">Пионы</a></li>
+                <li><a href="pages/catalog.html?category=bouquets&flowers=dried">Сухоцветы</a></li>
+              </ul>
+              <a class="text-link" href="pages/catalog.html?category=bouquets">Смотреть каталог</a>
+            </article>
+            <article class="catalog__card catalog__card--dried">
+              <h3>Формат букета</h3>
+              <ul>
+                <li><a href="pages/catalog.html?category=bouquets&format=box">В коробке</a></li>
+                <li><a href="pages/catalog.html?category=bouquets&format=vase">В вазе</a></li>
+                <li><a href="pages/catalog.html?category=bouquets&format=basket">В корзине</a></li>
+                <li><a href="pages/catalog.html?category=bouquets&format=envelope">В конверте</a></li>
+              </ul>
+              <a class="text-link" href="pages/catalog.html?category=bouquets">Смотреть каталог</a>
+            </article>
+            <article class="catalog__card catalog__card--extra">
+              <h3>Дополнительно</h3>
+              <ul>
+                <li><a href="pages/catalog.html?category=balloons">Шары</a></li>
+                <li><a href="pages/catalog.html?category=toys">Игрушки</a></li>
+                <li><a href="pages/catalog.html?category=cards">Открытки</a></li>
+                <li><a href="pages/catalog.html?category=packaging">Упаковка</a></li>
+              </ul>
+              <a class="text-link" href="pages/catalog.html">Смотреть каталог</a>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="popular" id="popular" aria-labelledby="popular-title">
+        <img src="media/img/popular__background.webp" class="popular__background" alt="" aria-hidden="true" />
+        <div class="decoration popular__glow--left">
+          <img src="media/img/popular__glow--left.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="decoration popular__glow--right">
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/popular-glow.svg" />
+            <img src="media/img/popular__glow--right.svg" alt="" aria-hidden="true" />
+          </picture>
+        </div>
+        <div class="container">
+          <h2 id="popular-title">
+            Популярные
+            <span>букеты</span>
+          </h2>
+          <p class="popular__subtitle">Самые любимые композиции наших клиентов</p>
+          <div class="products-wrap" data-products-carousel role="region" aria-roledescription="карусель" aria-label="Популярные букеты">
+            <div class="products" tabindex="0" aria-label="Букеты; используйте стрелки влево и вправо"></div>
+            <div class="products-controls">
+              <button type="button" data-carousel-prev aria-label="Предыдущий букет" disabled>←</button>
+              <p data-carousel-status role="status">Загружаем букеты…</p>
+              <button type="button" data-carousel-next aria-label="Следующий букет" disabled>→</button>
+            </div>
+          </div>
+          <a class="text-link popular__all" href="pages/catalog.html?category=bouquets">
+                    Смотреть все букеты
+                    <picture>
+                    <source media="(max-width: 760px)" srcset="media/home-mobile/popular-arrow.svg" />
+                    <img src="media/img/popular__all-arrow.svg" alt="" aria-hidden="true" />
+                  </picture>
+          </a>
+        </div>
+      </section>
+      <section class="order" id="order" aria-labelledby="order-title">
+        <picture>
+          <source media="(max-width: 760px)" srcset="media/home-mobile/order-flowers.webp" />
+          <img src="media/img/order__flowers.svg" class="order__flowers" alt="" aria-hidden="true" />
+        </picture>
+        <div class="container">
+          <h2 id="order-title">
+            Как сделать
+            <br />
+            заказ
+          </h2>
+          <div class="steps">
+            <div class="steps__column">
+              <article class="step">
+                <h3>1 шаг</h3>
+                <p>Выберите какие цветы или подарки вы хотите купить</p>
+              </article>
+              <article class="step">
+                <h3>2 шаг</h3>
+                <p>
+                  Оформите заказ в личном кабинете. Подтверждение и статус заказа доступны в истории заказов.
+                </p>
+              </article>
+              <article class="step">
+                <h3>3 шаг</h3>
+                <p>Наши флористы бережно подойдут к созданию букета цветов в самом начале дня или накануне</p>
+              </article>
+            </div>
+            <div class="steps__column">
+              <article class="step">
+                <h3>4 шаг</h3>
+                <p>
+                  Курьер доставит заказ по указанному адресу. Следите за его статусом в личном кабинете.
+                </p>
+              </article>
+              <article class="step">
+                <h3>5 шаг</h3>
+                <p>
+                  Наслаждайтесь цветами, если вы заказали их для дома или любовью, которой поделились, если вы заказали
+                  для друга
+                </p>
+              </article>
+            </div>
+            <div class="steps__line">
+              <img src="media/img/steps__line.svg" alt="" aria-hidden="true" />
+            </div>
+          </div>
+          <span class="order__signature brand-script" aria-hidden="true">lover<br />flower</span>
+        </div>
+      </section>
+      <section class="special" id="special" aria-labelledby="special-title">
+        <div class="decoration special__glow">
+          <img src="media/img/special__glow.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="container special__grid">
+          <h2 id="special-title">
+            Особенный
+            <span>повод?</span>
+          </h2>
+          <img src="media/img/special__top.webp" class="special__top" alt="Букет и подарок для особенного повода" />
+          <div class="special__copy">
+            <div class="special__line">
+              <picture>
+                <source media="(max-width: 760px)" srcset="media/home-mobile/special-rule.svg" />
+                <img src="media/img/special__line.webp" alt="" aria-hidden="true" />
+              </picture>
+            </div>
+            <p>
+              Мы готовы прийти на помощь и собрать уникальный букет, на любой вкус, бюджет и для любого события по
+              вашему индивидуальному заказу.
+            </p>
+            <ul>
+              <li>учтем даже самые изысканные пожелания;</li>
+              <li>подберем свежайшие цветы и сделаем уникальный букет или композицию;</li>
+              <li>оплатить можно наличными или картой при получении</li>
+            </ul>
+            <a href="#questions" class="btn">Собрать индивидуальный букет</a>
+            <span class="special__arrow">
+              <picture>
+                <source media="(max-width: 760px)" srcset="media/home-mobile/special-arrow.svg" />
+                <img src="media/img/special__arrow.webp" alt="" aria-hidden="true" />
+              </picture>
+            </span>
+          </div>
+          <div class="special__gallery">
+            <img src="media/img/special__gallery1.webp" class="" alt="Разноцветный авторский букет" />
+            <img src="media/img/special__gallery2.webp" class="" alt="Цветочная композиция" />
+            <img src="media/img/special__gallery3.webp" class="" alt="Праздничная композиция" />
+          </div>
+        </div>
+      </section>
+      <section class="contact" id="questions" aria-labelledby="contact-title">
+        <div class="decoration contact__glow--pink">
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/contact-glow-pink.svg" />
+            <img src="media/img/contact__glow--pink.svg" alt="" aria-hidden="true" />
+          </picture>
+        </div>
+        <div class="decoration contact__glow--green">
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/contact-glow-green.svg" />
+            <img src="media/img/contact__glow--green.svg" alt="" aria-hidden="true" />
+          </picture>
+        </div>
+        <picture>
+          <source media="(max-width: 760px)" srcset="media/home-mobile/contact-leaves-shadow.webp" />
+          <img
+            src="media/img/contact__leaves--shadow.svg"
+            class="contact__leaves contact__leaves--shadow"
+            alt=""
+            aria-hidden="true" />
+        </picture>
+        <picture>
+          <source media="(max-width: 760px)" srcset="media/home-mobile/contact-leaves.webp" />
+          <img src="media/img/contact__leaves.svg" class="contact__leaves" alt="" aria-hidden="true" />
+        </picture>
+        <div class="container contact__inner">
+          <h2 id="contact-title">
+            Остались
+            <span>вопросы?</span>
+          </h2>
+          <span class="contact__signature brand-script" aria-hidden="true">have any<br />questions?</span>
+          <div class="contact__right">
+            <div class="contact__description">
+              <div>
+                <img src="media/home-mobile/contact-rule.svg" alt="" aria-hidden="true" />
+              </div>
+              <p>
+                Отправьте ваш вопрос, заказ, предложение или жалобу через форму обратной связи, и наш специалист
+                свяжется с вами в течение 15 минут.
+              </p>
+            </div>
+            <form class="contact__form">
+              <label class="sr-only" for="name">Ваше имя</label>
+              <input id="name" name="name" autocomplete="name" placeholder="Ваше имя" required />
+              <label class="sr-only" for="phone">Телефон</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+375 (29) 123-45-67" required />
+              <label class="sr-only" for="comment">Ваш комментарий</label>
+              <textarea id="comment" name="comment" placeholder="Ваш комментарий" required></textarea>
+              <button class="btn" type="submit" aria-describedby="form-status" disabled>Отправить</button>
+              <p class="contact__consent">
+                Нажимая на кнопку «Отправить», я даю свое согласие на обработку персональных данных, в соответствии с
+                <a href="#user-agreement" data-open-agreement>Пользовательским соглашением</a>
+              </p>
+              <p class="form-status" id="form-status" role="status">Учебная заявка будет доступна менеджеру.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="social-section" aria-label="Фотографии цветочных композиций и социальные сети">
+        <div class="decoration social-section__glow--right">
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/social-glow-right.svg" />
+            <img src="media/img/social-section__glow--right.svg" alt="" aria-hidden="true" />
+          </picture>
+        </div>
+        <div class="decoration social-section__glow--bottom">
+          <img src="media/img/social-section__glow--bottom.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="decoration social-section__glow--left">
+          <picture>
+            <source media="(max-width: 760px)" srcset="media/home-mobile/social-glow-left.svg" />
+            <img src="media/img/social-section__glow--left.svg" alt="" aria-hidden="true" />
+          </picture>
+        </div>
+        <div class="container social-section__inner">
+          <div class="social-section__gallery">
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/social-1.webp" />
+              <img src="media/img/social-section__gallery1.webp" class="" alt="Цветочная композиция из нашей коллекции" />
+            </picture>
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/social-2.webp" />
+              <img src="media/img/social-section__gallery2.webp" class="" alt="Цветочная композиция из нашей коллекции" />
+            </picture>
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/social-3.webp" />
+              <img src="media/img/social-section__gallery3.webp" class="" alt="Цветочная композиция из нашей коллекции" />
+            </picture>
+            <picture>
+              <source media="(max-width: 760px)" srcset="media/home-mobile/social-4.webp" />
+              <img src="media/img/social-section__gallery4.webp" class="" alt="Цветочная композиция из нашей коллекции" />
+            </picture>
+          </div>
+          <div class="social-section__links">
+            <h2 class="social-section__signature brand-script">Наши социальные сети</h2>
+            <div>
+              <picture>
+                <source media="(max-width: 760px)" srcset="media/home-mobile/social-rule.svg" />
+                <img src="media/img/social-section__line.svg" alt="" aria-hidden="true" />
+              </picture>
+            </div>
+            <div class="socials">
+              <span title="Instagram"><img src="media/icons/icon_instagram.svg" class="" alt="Instagram" /></span>
+              <span title="WhatsApp"><img src="media/icons/icon_whatsapp.svg" class="" alt="WhatsApp" /></span>
+              <span title="Viber"><img src="media/icons/icon_viber.svg" class="" alt="Viber" /></span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <app-footer id="site-footer"></app-footer>
+    <app-mobile-menu></app-mobile-menu>
+    <app-callback-modal></app-callback-modal>
+    <app-auth-modal></app-auth-modal>
+    <app-cart-modal></app-cart-modal>
+    <app-history-modal></app-history-modal>
+    <app-settings></app-settings>
+    <app-notifications></app-notifications>
+  </body>
+</html>

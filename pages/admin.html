@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+    <script src="../scripts/settings-bootstrap.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Кабинет менеджера — Lover Flower</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400&family=Oswald:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+  <link rel="stylesheet" href="../css/cart.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <script src="../scripts/components/app-header.js" defer></script>
+  <script src="../scripts/components/app-footer.js" defer></script>
+  <script src="../scripts/components/app-mobile-menu.js" defer></script>
+  <script type="module" src="../scripts/components/app-auth-modal.js"></script>
+  <script type="module" src="../scripts/components/app-cart-modal.js"></script>
+  <script type="module" src="../scripts/components/app-inventory.js"></script>
+  <script type="module" src="../scripts/components/app-request-list.js"></script>
+  <link rel="stylesheet" href="../css/orders.css" />
+  <script type="module" src="../scripts/components/app-history-modal.js"></script>
+    <link rel="stylesheet" href="../css/settings.css" />
+    <script type="module" src="../scripts/components/app-settings.js"></script>
+    <link rel="stylesheet" href="../css/notifications.css" />
+    <script type="module" src="../scripts/components/app-notifications.js"></script>
+  </head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <app-header></app-header>
+  <main id="main" class="admin-page container">
+    <h1>Кабинет менеджера</h1>
+    <section class="admin-section" aria-labelledby="requests-title"><h2 id="requests-title">Заявки на звонки и обращения</h2><app-request-list></app-request-list></section>
+    <section class="admin-section" aria-labelledby="orders-title"><h2 id="orders-title">Заказы покупателей</h2><app-order-list mode="manager"></app-order-list></section>
+    <section class="admin-section" aria-labelledby="inventory-title"><h2 id="inventory-title">Управление каталогом</h2><app-inventory></app-inventory></section>
+  </main>
+  <app-footer></app-footer>
+  <app-mobile-menu></app-mobile-menu>
+  <app-auth-modal></app-auth-modal>
+  <app-cart-modal></app-cart-modal>
+  <app-history-modal></app-history-modal>
+    <app-settings></app-settings>
+    <app-notifications></app-notifications>
+  </body>
+</html>
